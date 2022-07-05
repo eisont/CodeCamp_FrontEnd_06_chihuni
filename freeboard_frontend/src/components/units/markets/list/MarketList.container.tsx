@@ -23,9 +23,6 @@ export default function MarketList() {
     IQueryFetchUseditemsArgs
   >(FETCH_USED_ITEMS);
 
-  const onClickMoveToMarketNew = () => {
-    router.push("/markets/new");
-  };
   const onClickMoveToMarketDetail =
     (el: any) => (event: MouseEvent<HTMLDivElement>) => {
       const watch = JSON.parse(localStorage.getItem("watch") || "[]");
@@ -66,7 +63,6 @@ export default function MarketList() {
     <MarketListUI
       data={data}
       onLoadMore={onLoadMore}
-      onClickMoveToMarketNew={onClickMoveToMarketNew}
       onClickMoveToMarketDetail={onClickMoveToMarketDetail}
       refetch={refetch}
       // refetchUseditemsCount={refetchUseditemsCount}

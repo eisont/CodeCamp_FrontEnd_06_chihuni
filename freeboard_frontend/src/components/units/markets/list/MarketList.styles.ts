@@ -75,31 +75,6 @@ export const BestBoardListLike = styled.div`
   // font-size: 20px;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  padding: 50px 0;
-`;
-
-export const Button = styled.button`
-  width: 20vh;
-  height: 7vh;
-  font-size: 2vh;
-  background-color: white;
-  border-radius: 15px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  cursor: pointer;
-
-  :hover {
-    background-color: #f5f2fc;
-  }
-`;
-
-export const UploadIcon = styled(UploadOutlined)``;
-
 export const Search = styled.div`
   width: 100%;
   height: 5vh;

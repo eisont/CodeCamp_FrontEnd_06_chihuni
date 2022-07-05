@@ -21,11 +21,13 @@ export default function LayoutHeader() {
   const [chargePrice] = useState(100);
   const [basketCount, setBasketCount] = useRecoilState(BasketCountState);
   const [logoutUser] = useMutation(LOGOUT_USER);
+
   const { data } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
+  const { data: loggedIn } = useQuery(FETCH_USER_LOGGED_IN);
+
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
-  const { data: loggedIn } = useQuery(FETCH_USER_LOGGED_IN);
 
   // 메인페이지 이동
   const onClickHome = () => {
@@ -94,6 +96,7 @@ export default function LayoutHeader() {
   return (
     <LayoutHeaderUI
       data={data}
+      loggedIn={loggedIn}
       basketCount={basketCount}
       onClickHome={onClickHome}
       onClickLogin={onClickLogin}

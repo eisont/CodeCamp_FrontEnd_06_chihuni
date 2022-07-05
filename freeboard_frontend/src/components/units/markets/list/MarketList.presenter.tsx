@@ -9,12 +9,6 @@ export default function MarketListUI(props: IMarketListUIProps) {
   if (!props.data) return <div />;
   return (
     <S.Wrapper>
-      <S.Header>
-        <S.Button onClick={props.onClickMoveToMarketNew}>
-          <S.UploadIcon />
-          상품 등록하기
-        </S.Button>
-      </S.Header>
       <S.Search>
         <S.SearchBox>
           <Searchbars01

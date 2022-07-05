@@ -1,42 +1,41 @@
 // 헤더 styles
 
+import { AppleFilled } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  margin: 0 auto;
   width: 100%;
-  height: 100px;
-  background: #fff;
-
+  height: 40px;
+  background: #000;
+`;
+export const CenterBox = styled.div`
+  margin: 0 auto;
+  width: 70%;
+  height: 40px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  color: #dbdbdb;
 `;
 
-export const HomeBt = styled.div`
-  background: #fff;
-  background: url("https://yt3.ggpht.com/ytc/AKedOLRxuIQKDj32NILJWQ-eJoeWCCjXs7pCkevkZrlmtg=s900-c-k-c0x00ffffff-no-rj");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 10vh;
-  height: 10vh;
+export const HomeBt = styled(AppleFilled)`
+  font-size: 25px;
   cursor: pointer;
-`;
-
-export const Menu = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  trasition: 0.2s;
+  color: #dbdbdb;
   &:hover {
-    color: #6400ff;
-    border-bottom: 1px solid #6400ff;
+    color: #fff;
   }
 `;
 export const MenuBt = styled.div`
   margin: 0 20px;
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
+  trasition: 0.2s;
+  cursor: pointer;
+  &:hover {
+    color: #fff;
+  }
 `;
 export const Point = styled.div`
   margin: 0 20px;
@@ -62,8 +61,7 @@ export const BasketNum = styled.div`
   text-align: center;
   line-height: 20px;
   font-size: 12px;
-  font-weight: 900;
   color: #f00;
-  background: yellow;
+  background: #dbdbdb;
   border-radius: 50%;
 `;

@@ -29,9 +29,9 @@ export default function BoardListUI(props: IBoardListUIProps) {
         </S.Row>
 
         {props.data?.fetchBoards.map((el: any, index: any) => (
-          <S.Row key={el._id}>
+          <S.Row key={uuidv4()}>
             <S.ColumnBasic>{index + 1}</S.ColumnBasic>
-            <S.ColumnTitle id={el._id} onClick={props.onClickMoveToBoardDetail}>
+            <S.ColumnTitle onClick={props.onClickMoveToBoardDetail} id={el._id}>
               {el.title
                 .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
                 .split("#$%")
