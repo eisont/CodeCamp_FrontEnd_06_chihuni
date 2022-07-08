@@ -30,7 +30,7 @@ export default function BoardList() {
   };
   const onClickMoveToBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target instanceof Element)
-      router.push(`/boards/${event.target.id}`);
+      router.push(`/boards/${event.currentTarget.id}`);
   };
 
   function onChangeKeyword(value: string) {
