@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 const BtBox = styled.div`
   margin: 0 auto;
   width: 70%;
-  height: 5vh;
+  height: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
