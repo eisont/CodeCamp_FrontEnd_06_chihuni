@@ -22,8 +22,8 @@ const LoginContainer = () => {
   const onChangePassword = (event: any) => {
     setPassword(event?.target.value);
   };
-  const onClickJoin = () => {
-    router.push("/join");
+  const onClickSignup = () => {
+    router.push("/signup");
   };
 
   const onClickCreateUser = async () => {
@@ -51,7 +51,7 @@ const LoginContainer = () => {
     <LoginUI
       onChangeEmail={onChangeEmail}
       onChangePassword={onChangePassword}
-      onClickJoin={onClickJoin}
+      onClickSignup={onClickSignup}
       onClickCreateUser={onClickCreateUser}
     />
   );

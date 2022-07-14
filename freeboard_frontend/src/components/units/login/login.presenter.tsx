@@ -14,22 +14,21 @@ export const LoginUI = (props: any) => {
           <S.Input
             type="name"
             onChange={props.onChangeEmail}
-            placeholder="아이디"
+            placeholder="아이디를 입력하세요."
           />
           <S.Input
             type="password"
             onChange={props.onChangePassword}
-            placeholder="비밀번호"
+            placeholder="비밀번호를 입력하세요."
           />
         </S.InputBx>
 
         <S.Button onClick={props.onClickCreateUser}>로그인</S.Button>
 
-        <S.JoinBox>
-          {" "}
-          아직 계정이 없으신가요?{" "}
-          <S.Join onClick={props.onClickJoin}>회원가입</S.Join>
-        </S.JoinBox>
+        <S.SignupBox>
+          아직 계정이 없으신가요?
+          <S.Signup onClick={props.onClickSignup}>회원가입</S.Signup>
+        </S.SignupBox>
       </S.Box>
     </S.Wrapper>
   );

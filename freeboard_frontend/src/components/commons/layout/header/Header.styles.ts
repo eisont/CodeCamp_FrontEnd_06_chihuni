@@ -1,9 +1,11 @@
-// 헤더 styles
+// Header styles
 
 import { AppleFilled } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+  position: relative;
+  z-index: 10;
   width: 100%;
   height: 40px;
   background: #000;
@@ -27,8 +29,11 @@ export const HomeBt = styled(AppleFilled)`
     color: #fff;
   }
 `;
+export const RightBox = styled.div`
+  display: flex;
+`;
 export const MenuBt = styled.div`
-  margin: 0 20px;
+  margin: 0 0 0 10px;
   font-size: 14px;
   font-weight: 500;
   trasition: 0.2s;

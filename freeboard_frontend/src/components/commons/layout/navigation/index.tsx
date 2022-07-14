@@ -1,46 +1,7 @@
-import styled from "@emotion/styled";
-import { useRouter } from "next/router";
+// LayoutNavigation Page
 
-const Wrapper = styled.div`
-  width: 100%;
-  box-shadow: 0 1px 0 #dbdbdb;
-  background: #fff;
-  display: flex;
-  align-items: center;
-`;
-const BtBox = styled.div`
-  margin: 0 auto;
-  width: 70%;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const Page = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const PageBt = styled.div`
-  padding: 0 50px 0 0;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
-  &:hover {
-    color: #999;
-    font-weight: 900;
-  }
-`;
-const WriteBt = styled.div`
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
-  &:hover {
-    color: #999;
-    font-weight: 900;
-  }
-`;
+import { useRouter } from "next/router";
+import * as S from "./Navigation.styles";
 
 export default function LayoutNavigation() {
   const router = useRouter();
@@ -59,15 +20,15 @@ export default function LayoutNavigation() {
   };
 
   return (
-    <Wrapper>
-      <BtBox>
-        <Page>
-          <PageBt onClick={onClickBoard}>Board</PageBt>
-          <PageBt onClick={onClickMarket}>Used Market</PageBt>
-          <PageBt onClick={onClickMypage}>My-Page</PageBt>
-        </Page>
-        <WriteBt onClick={onClickMoveToMarketNew}>상품 등록</WriteBt>
-      </BtBox>
-    </Wrapper>
+    <S.Wrapper>
+      <S.BtBox>
+        <S.Page>
+          <S.PageBt onClick={onClickBoard}>Board</S.PageBt>
+          <S.PageBt onClick={onClickMarket}>Used Market</S.PageBt>
+          <S.PageBt onClick={onClickMypage}>My-Page</S.PageBt>
+        </S.Page>
+        <S.WriteBt onClick={onClickMoveToMarketNew}>상품 등록</S.WriteBt>
+      </S.BtBox>
+    </S.Wrapper>
   );
 }

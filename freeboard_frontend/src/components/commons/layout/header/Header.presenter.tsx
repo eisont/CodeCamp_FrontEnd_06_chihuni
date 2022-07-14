@@ -1,4 +1,6 @@
-import * as S from "./Headerstyles";
+// Header Presenter
+
+import * as S from "./Header.styles";
 import Script from "next/script";
 import { PointComma } from "../../../../commons/libraries/point";
 // 로그인 시 유저 정보 컴포넌트
@@ -23,7 +25,7 @@ export default function LayoutHeaderUI(props: any) {
           {/* <LoginUserbar /> */}
           <S.HomeBt onClick={props.onClickHome}></S.HomeBt>
           {props.loggedIn?.fetchUserLoggedIn._id ? (
-            <>
+            <S.RightBox>
               <S.Point>
                 <S.Text>
                   {props.loggedIn?.fetchUserLoggedIn?.name} 님의 포인트{" "}
@@ -46,12 +48,12 @@ export default function LayoutHeaderUI(props: any) {
                 장바구니<S.BasketNum>{props.basketCount}</S.BasketNum>
               </S.MenuBasketBt>
               <S.MenuBt onClick={props.onClickLogout}>로그아웃</S.MenuBt>
-            </>
+            </S.RightBox>
           ) : (
-            <>
+            <S.RightBox>
               <S.MenuBt onClick={props.onClickLogin}>로그인</S.MenuBt>
-              <S.MenuBt onClick={props.onClickJoin}>회원가입</S.MenuBt>
-            </>
+              <S.MenuBt onClick={props.onClickSignup}>회원가입</S.MenuBt>
+            </S.RightBox>
           )}
         </S.CenterBox>
       </S.Wrapper>

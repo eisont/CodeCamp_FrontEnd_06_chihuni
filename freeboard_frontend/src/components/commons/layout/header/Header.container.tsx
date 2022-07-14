@@ -1,3 +1,5 @@
+// Header Container
+
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -8,8 +10,8 @@ import {
   FETCH_USED_ITEMS_COUNT_IPICKED,
   FETCH_USER_LOGGED_IN,
   LOGOUT_USER,
-} from "../header/Headerqueries";
-import LayoutHeaderUI from "./Headerpresenter";
+} from "./Header.queries";
+import LayoutHeaderUI from "./Header.presenter";
 
 // IMP 타입을 이렇게 지정해줍니다.
 declare const window: typeof globalThis & {
@@ -47,8 +49,8 @@ export default function LayoutHeader() {
     }
   };
   // 회원가입 이동
-  const onClickJoin = () => {
-    router.push("/join");
+  const onClickSignup = () => {
+    router.push("/signup");
   };
 
   // 장바구니 담기
@@ -101,7 +103,7 @@ export default function LayoutHeader() {
       onClickHome={onClickHome}
       onClickLogin={onClickLogin}
       onClickLogout={onClickLogout}
-      onClickJoin={onClickJoin}
+      onClickSignup={onClickSignup}
       onClickPoint={onClickPoint}
     />
   );
