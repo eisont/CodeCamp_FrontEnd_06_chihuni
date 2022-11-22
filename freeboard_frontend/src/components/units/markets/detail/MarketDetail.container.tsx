@@ -10,6 +10,7 @@ import {
   TOGGLE_USED_ITEM_PICK,
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   FETCH_USED_ITEMS_COUNT_IPICKED,
+  FETCH_USER_LOGGED_IN,
 } from "./MarketDetail.queries";
 import {
   IMutation,
@@ -18,7 +19,7 @@ import {
 } from "../../../../commons/types/generated/types";
 import { withAuth } from "../../../commons/hocs/withAuth";
 
-function MarketDetail() {
+const MarketDetail = () => {
   const [createPointTransactionOfBuyingAndSelling] = useMutation(
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
   );
@@ -28,7 +29,10 @@ function MarketDetail() {
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.useditemId },
   });
-  const { data: ipicked } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
+
+  const { data: likeCount } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
+  const { data: UserLoggedIn } = useQuery(FETCH_USER_LOGGED_IN);
+  console.log("UserLoggedIn", UserLoggedIn);
 
   // 삭제
   const [deleteUseditem] = useMutation<
@@ -61,7 +65,14 @@ function MarketDetail() {
   };
   // 수정하기 이동 버튼
   const onClickMoveToMarketEdit = () => {
-    router.push(`/markets/${router.query.useditemId}/edit`);
+    if (
+      UserLoggedIn?.fetchUserLoggedIn?.email ===
+      data?.fetchUseditem?.seller?.email
+    ) {
+      router.push(`/markets/${router.query.useditemId}/edit`);
+    } else {
+      alert("수정하기는 본인 게시물만 가능합니다.");
+    }
   };
   // 삭제 버튼
   const onClickDelete = async () => {
@@ -86,7 +97,7 @@ function MarketDetail() {
       });
       alert(`${data?.fetchUseditem?.name}을 구매하셨습니다.`);
       alert("새로고침 후 포인트 차감 확인 가능합니다.");
-    } catch (errors) {
+    } catch (errors: any) {
       alert(errors.message);
     }
   };
@@ -95,7 +106,7 @@ function MarketDetail() {
     <MarketDetailUI
       // 게시판의 정보를 담은 객체 data
       data={data}
-      ipicked={ipicked}
+      likeCount={likeCount}
       // pickedCount 버튼
       onClickPickedCount={onClickPickedCount}
       // 목록으로 버튼
@@ -108,6 +119,6 @@ function MarketDetail() {
       onClickBuy={onClickBuy}
     />
   );
-}
+};
 
 export default withAuth(MarketDetail);

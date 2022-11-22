@@ -47,6 +47,7 @@ const LoginContainer = () => {
       }
     } else alert("회원 정보를 입력 부탁드립니다.");
   };
+
   return (
     <LoginUI
       onChangeEmail={onChangeEmail}

@@ -5,8 +5,9 @@ import { Rate } from "antd";
 import { QuestionOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
-  width: 1200px;
+  width: 100%;
   margin: 0px auto;
+  padding: 0 0 20px 0;
 `;
 
 export const PencilIcon = styled(QuestionOutlined)`

@@ -9,14 +9,13 @@ import {
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
-import { MouseEvent, useState } from "react";
+import { MouseEvent } from "react";
 import { useRecoilState } from "recoil";
 import { WatchProductState } from "../../../../commons/store";
 
 export default function MarketList() {
   const [, setWatchProduct] = useRecoilState(WatchProductState);
   const router = useRouter();
-  const [keyword, setKeyword] = useState("");
 
   const { data, refetch, fetchMore } = useQuery<
     Pick<IQuery, "fetchUseditems">,
@@ -35,9 +34,7 @@ export default function MarketList() {
       if (event.target instanceof Element)
         router.push(`/markets/${event.target.id}`);
     };
-  function onChangeKeyword(value: string) {
-    setKeyword(value);
-  }
+
   const onLoadMore = () => {
     if (!data) return;
 
@@ -65,9 +62,6 @@ export default function MarketList() {
       onLoadMore={onLoadMore}
       onClickMoveToMarketDetail={onClickMoveToMarketDetail}
       refetch={refetch}
-      // refetchUseditemsCount={refetchUseditemsCount}
-      keyword={keyword}
-      onChangeKeyword={onChangeKeyword}
     />
   );
 }

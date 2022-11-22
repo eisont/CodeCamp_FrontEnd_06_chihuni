@@ -18,7 +18,7 @@ export default function MarketAnswerList(props: any) {
 
   const onLoadMore = () => {
     // 데이터가 없으면 리턴
-    if (!data) return;
+    if (!data) return <div />;
   };
   return (
     <MarketAnswerListUI

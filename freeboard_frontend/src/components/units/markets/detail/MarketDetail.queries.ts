@@ -22,12 +22,33 @@ export const FETCH_USED_ITEM = gql`
         lat
         lng
         createdAt
+        updatedAt
+        deletedAt
       }
       seller {
         _id
+        email
         name
+        picture
+        createdAt
+        updatedAt
       }
+      soldAt
       createdAt
+      updatedAt
+      deletedAt
+    }
+  }
+`;
+
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+      email
+      name
+      createdAt
+      updatedAt
     }
   }
 `;

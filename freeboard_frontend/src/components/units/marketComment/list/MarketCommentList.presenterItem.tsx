@@ -66,9 +66,16 @@ export default function MarketCommentListUIItem(
         <S.ItemWrapper>
           <S.FlexWrapper>
             <S.Box>
-              <S.Avatar />
+              <S.Avatar
+                src={
+                  props.commentel?.user?.picture === null
+                    ? "../img/profileUser.png"
+                    : `${props.commentel?.user?.picture}`
+                }
+              />
               <S.SecondBox>
                 <S.UserName>{props.commentel?.user?.name}</S.UserName>
+                <S.Contents>{props.commentel?.contents}</S.Contents>
                 <S.CreateAt>{getDate(props.commentel?.createdAt)}</S.CreateAt>
               </S.SecondBox>
             </S.Box>
@@ -79,8 +86,6 @@ export default function MarketCommentListUIItem(
               <S.DeleteIcon onClick={onClickDelete} />
             </S.OptionWrapper>
           </S.FlexWrapper>
-
-          <S.Contents>{props.commentel?.contents}</S.Contents>
         </S.ItemWrapper>
       )}
       {isEdit && (

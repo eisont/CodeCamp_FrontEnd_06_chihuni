@@ -14,8 +14,7 @@ import { onError } from "@apollo/client/link/error";
 interface IAppProps {
   children: ReactNode;
 }
-
-export default function ApolloSetting(props: IAppProps) {
+const ApolloSetting = (props: IAppProps) => {
   const [accessToken, setAccessToken] = useRecoilState(AccessTokenState);
 
   useEffect(() => {
@@ -56,4 +55,6 @@ export default function ApolloSetting(props: IAppProps) {
   });
 
   return <ApolloProvider client={client}>{props.children}</ApolloProvider>;
-}
+};
+
+export default ApolloSetting;

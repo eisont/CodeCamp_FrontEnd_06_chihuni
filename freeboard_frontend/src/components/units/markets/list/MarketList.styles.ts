@@ -1,24 +1,22 @@
 // 중고마켓 목록 styles
 
 import {
-  UploadOutlined,
   LikeOutlined,
   SearchOutlined,
   DollarCircleOutlined,
-  HeartOutlined,
 } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 90%;
+  width: 1000px;
   margin: 50px auto;
   text-align: center;
-  // background: #f00;
 `;
 
 interface IProps {
   isMatched: boolean;
 }
+
 export const Word = styled.span`
   color: ${(props: IProps) => (props.isMatched ? "red" : "#000")};
 `;
@@ -83,15 +81,6 @@ export const Search = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-export const SearchBox = styled.div`
-  // background: #f00;
-
-  width: 70%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
 export const SearchIcon = styled(SearchOutlined)`
   font-size: 30px;
 `;
@@ -101,22 +90,6 @@ export const Searchbar01 = styled.input`
   width: 95%;
   padding: 1vh;
   // background: #f0f;
-`;
-
-export const SearchDate = styled.div`
-  width: 30%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-`;
-export const SearchDateBox = styled.input`
-  border-radius: 10px;
-  border: 2px solid #dbdbdb;
-  width: 70%;
-  padding: 1vh;
-`;
-export const SearchBt = styled.button`
-  padding: 7px;
 `;
 
 export const TableTop = styled.div`
@@ -180,26 +153,31 @@ export const FlexBox = styled.div`
   display: flex;
   align-items: center;
 `;
-export const FlexUserpicture = styled.div`
+export const FlexUserpicture = styled.img`
   margin-right: 6px;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #dbdbdb;
 `;
 export const FlexUser = styled.div`
   margin-right: 22px;
   font-size: 16px;
   font-weight: 700;
 `;
-export const FlexPickIcon = styled(HeartOutlined)`
+
+export const LikeBox = styled.div`
+  height: 24px;
+  display: flex;
+  align-items: center;
+`;
+export const FlexPickIcon = styled.img`
   margin-right: 6px;
-  font-size: 16px;
+  width: 20px;
   color: #ffd600;
 `;
 export const FlexPick = styled.div`
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
 `;
 export const FlexPrice = styled.div`
   font-weight: 900;

@@ -5,7 +5,7 @@ import { Rate } from "antd";
 import { EditOutlined, CloseOutlined, FormOutlined } from "@ant-design/icons";
 
 export const ItemWrapper = styled.div`
-  width: 800px;
+  width: 792px;
   margin: 18px auto;
   padding: 10px 0;
   border-bottom: 1px solid lightgray;

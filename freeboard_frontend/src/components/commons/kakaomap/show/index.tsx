@@ -4,7 +4,7 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function KakaoMapShowPage(props: any) {
+const KakaoMapShowPage = (props: any) => {
   useEffect(() => {
     const script = document.createElement("script"); // <script></script>
     script.src =
@@ -17,8 +17,12 @@ export default function KakaoMapShowPage(props: any) {
         const mapContainer = document.getElementById("map"); // 지도를 표시할 div
         const mapOption = {
           center: new window.kakao.maps.LatLng(
-            props.data?.fetchUseditem?.useditemAddress?.lat,
-            props.data?.fetchUseditem?.useditemAddress?.lng
+            props.data?.fetchUseditem?.useditemAddress?.lat === null
+              ? "33.450701"
+              : props.data?.fetchUseditem?.useditemAddress?.lat,
+            props.data?.fetchUseditem?.useditemAddress?.lng === null
+              ? "126.570667"
+              : props.data?.fetchUseditem?.useditemAddress?.lng
           ), // 지도의 중심좌표
           level: 3, // 지도의 확대 레벨
         };
@@ -47,7 +51,9 @@ export default function KakaoMapShowPage(props: any) {
 
   return (
     <>
-      <div id="map" style={{ width: 860, height: 488 }}></div>
+      <div id="map" style={{ width: 792, height: 400 }}></div>
     </>
   );
-}
+};
+
+export default KakaoMapShowPage;

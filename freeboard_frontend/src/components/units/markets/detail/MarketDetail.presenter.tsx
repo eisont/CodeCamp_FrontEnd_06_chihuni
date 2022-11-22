@@ -9,6 +9,7 @@ import KakaoMapShowPage from "../../../commons/kakaomap/show";
 import Dompurify from "dompurify";
 import SectionPhoto from "../../../commons/slickImage";
 import MarketAnswerList from "../../marketQuestionAnswer/list/MarketAnswerList.container";
+import { PointComma } from "../../../../commons/libraries/point";
 
 export default function MarketDetailUI(props: IMarketDetailUIProps) {
   return (
@@ -23,69 +24,78 @@ export default function MarketDetailUI(props: IMarketDetailUIProps) {
       ></Script>
 
       <S.Wrapper>
-        <S.MarketNewTable>
-          <S.Header>
-            <S.UserInformation>
-              <S.UserProfilePhoto />
-              <S.UserProfile>
-                {/* seller */}
-                <S.UserName>
-                  {props.data?.fetchUseditem?.seller?.name}
-                </S.UserName>
-                {/* createAt */}
-                <S.CreatedAt>
-                  {getDate(props.data?.fetchUseditem?.createdAt)}
-                </S.CreatedAt>
-              </S.UserProfile>
-            </S.UserInformation>
-            <S.HeaderButtons>
-              <S.SharingImg />
-              {/* address, addressDetail */}
-              <Tooltip
-                placement="top"
-                title={`${props.data?.fetchUseditem.useditemAddress?.address} ${props.data?.fetchUseditem.useditemAddress?.addressDetail}`}
-              >
-                {props.data?.fetchUseditem.images && <S.LotationImg />}
-              </Tooltip>
-            </S.HeaderButtons>
-          </S.Header>
+        <S.Header>
+          <S.UserInformation>
+            <S.UserProfilePhoto
+              src={
+                props.data?.fetchUseditem?.seller?.picture === null
+                  ? "../img/profileUser.png"
+                  : `${props.data?.fetchUseditem?.seller?.picture}`
+              }
+            />
+            <div>
+              <S.UserName>{props.data?.fetchUseditem?.seller?.name}</S.UserName>
+              <S.CreatedAt>
+                Date: {getDate(props.data?.fetchUseditem?.createdAt)}
+              </S.CreatedAt>
+            </div>
+          </S.UserInformation>
+          <S.HeaderButtons>
+            <S.SharingImg />
+            <Tooltip
+              placement="top"
+              title={`${props.data?.fetchUseditem.useditemAddress?.address} ${props.data?.fetchUseditem.useditemAddress?.addressDetail}`}
+            >
+              {props.data?.fetchUseditem.images && <S.LotationImg />}
+            </Tooltip>
+          </S.HeaderButtons>
+        </S.Header>
 
-          <S.Body>
-            <S.Section1Box>
-              <S.Section1LBox>
-                <S.SectionText>
-                  {props.data?.fetchUseditem?.remarks}
-                </S.SectionText>
-                <S.ProductName>{props.data?.fetchUseditem?.name}</S.ProductName>
-              </S.Section1LBox>
-              <S.Section1RBox onClick={props.onClickPickedCount}>
-                {props.data?.fetchUseditem?.pickedCount}
-                <div>{props.ipicked?.fetchUseditemsCountIPicked}</div>
-              </S.Section1RBox>
-            </S.Section1Box>
-            <S.SectionPrice>
-              {props.data?.fetchUseditem?.price}원
-            </S.SectionPrice>
+        <S.Hr />
 
-            <SectionPhoto data={props.data} />
+        <S.Body>
+          <S.Section1Box>
+            <S.Section1LBox>
+              <S.SectionText>
+                {props.data?.fetchUseditem?.remarks}
+              </S.SectionText>
+              <S.ProductName>{props.data?.fetchUseditem?.name}</S.ProductName>
+            </S.Section1LBox>
+            <S.Section1RBox onClick={props.onClickPickedCount}>
+              {props.data?.fetchUseditem?.pickedCount === 0 ? (
+                <S.OutLineHeart />
+              ) : (
+                <S.FillHeart src="../img/heart.svg" />
+              )}
+              <div>{props.likeCount?.fetchUseditemsCountIPicked}</div>
+            </S.Section1RBox>
+          </S.Section1Box>
+          <S.SectionPrice>
+            {PointComma(props.data?.fetchUseditem?.price)}원
+          </S.SectionPrice>
 
-            {typeof window !== "undefined" && (
-              <S.SectionContent
-                dangerouslySetInnerHTML={{
-                  __html: Dompurify.sanitize(
-                    String(props.data?.fetchUseditem?.contents)
-                  ),
-                }}
-              />
-            )}
-            <KakaoMapShowPage data={props.data} />
-            <S.SectionTags>
-              {props.data?.fetchUseditem?.tags.map((el, idx) => (
-                <S.Text key={idx}>{el}</S.Text>
-              ))}
-            </S.SectionTags>
-          </S.Body>
-        </S.MarketNewTable>
+          <SectionPhoto data={props.data} />
+
+          {typeof window !== "undefined" && (
+            <S.SectionContent
+              dangerouslySetInnerHTML={{
+                __html: Dompurify.sanitize(
+                  String(props.data?.fetchUseditem?.contents)
+                ),
+              }}
+            />
+          )}
+
+          <S.SectionTags>
+            {props.data?.fetchUseditem?.tags?.map((el, idx) => (
+              <S.Text key={idx}>{el}</S.Text>
+            ))}
+          </S.SectionTags>
+        </S.Body>
+        <S.Hr />
+
+        <KakaoMapShowPage data={props.data} />
+        <S.Hr />
 
         <S.MenuButtons>
           <S.Button onClick={props.onClickMoveToMarketList}>목록으로</S.Button>
@@ -95,7 +105,7 @@ export default function MarketDetailUI(props: IMarketDetailUIProps) {
           </S.Button>
           <S.Button onClick={props.onClickBuy}>구매</S.Button>
         </S.MenuButtons>
-        <S.WrapperHr></S.WrapperHr>
+        <S.Hr />
 
         <MarketAnswerList />
       </S.Wrapper>

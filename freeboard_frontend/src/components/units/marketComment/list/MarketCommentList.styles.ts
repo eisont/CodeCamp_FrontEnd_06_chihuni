@@ -5,8 +5,8 @@ import { Rate } from "antd";
 import { EditOutlined, CloseOutlined, FormOutlined } from "@ant-design/icons";
 
 export const ItemWrapper = styled.div`
-  width: 1200px;
-  margin: 18px auto;
+  width: 792px;
+  margin: 0 auto;
   padding: 10px 0;
   border-bottom: 1px solid lightgray;
 `;
@@ -23,11 +23,10 @@ export const Box = styled.div`
   display: flex;
   align-items: center;
 `;
-export const Avatar = styled.div`
-  width: 50px;
-  height: 50px;
+export const Avatar = styled.img`
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: #888;
 `;
 export const SecondBox = styled.div`
   margin-left: 16px;
@@ -38,10 +37,18 @@ export const SecondBox = styled.div`
 `;
 
 export const UserName = styled.div`
-  font-size: 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+`;
+export const Contents = styled.div`
+  font-size: 16px;
+  color: #4f4f4f;
 `;
 export const CreateAt = styled.div`
-  font-size: 15px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #dbdbdb;
 `;
 export const WriterWrapper = styled.div`
   display: flex;
@@ -52,30 +59,37 @@ export const Writer = styled.div`
   font-size: 20px;
   font-weight: bold;
 `;
-export const Contents = styled.div`
-  font-size: 24px;
-  background: rgba(0, 0, 0, 0.1);
-`;
 
 export const OptionWrapper = styled.div`
   display: flex;
   flex-direction: row;
 `;
 export const QuestionIcon = styled(FormOutlined)`
-  font-size: 24px;
-  color: #888;
+  font-size: 18px;
+  color: #dbdbdb;
   cursor: pointer;
+  &:hover {
+    cursor: pointer;
+    color: #000;
+  }
 `;
 export const UpdateIcon = styled(EditOutlined)`
-  font-size: 24px;
-  cursor: pointer;
-  color: #888;
+  font-size: 18px;
+  color: #dbdbdb;
   margin: 0 10px;
+  &:hover {
+    cursor: pointer;
+    color: #000;
+  }
 `;
 export const DeleteIcon = styled(CloseOutlined)`
-  font-size: 24px;
-  color: #888;
+  font-size: 18px;
+  color: #dbdbdb;
   cursor: pointer;
+  &:hover {
+    cursor: pointer;
+    color: #000;
+  }
 `;
 
 export const DateString = styled.div`
