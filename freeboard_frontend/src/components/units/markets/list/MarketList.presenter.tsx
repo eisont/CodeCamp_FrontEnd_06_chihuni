@@ -10,6 +10,19 @@ export default function MarketListUI(props: IMarketListUIProps) {
   if (!props.data) return <div />;
   return (
     <S.Wrapper>
+      <S.BestProduct>
+        <S.BestProductBox>
+          <S.BestProductImage src="" />
+          <S.BestProductName></S.BestProductName>
+          <S.BestProductRemark></S.BestProductRemark>
+          <S.BestProductPrice></S.BestProductPrice>
+          <S.BestProductLikeBox>
+            <S.BestProductLikeIcon src="" />
+            <S.BestProductLikeCount></S.BestProductLikeCount>
+          </S.BestProductLikeBox>
+        </S.BestProductBox>
+      </S.BestProduct>
+
       <S.Search>
         <Searchbars01 refetch={props.refetch} />
       </S.Search>

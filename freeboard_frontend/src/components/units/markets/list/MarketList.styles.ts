@@ -1,10 +1,6 @@
 // 중고마켓 목록 styles
 
-import {
-  LikeOutlined,
-  SearchOutlined,
-  DollarCircleOutlined,
-} from "@ant-design/icons";
+import { SearchOutlined, DollarCircleOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
@@ -13,65 +9,29 @@ export const Wrapper = styled.div`
   text-align: center;
 `;
 
-interface IProps {
-  isMatched: boolean;
-}
+export const BestProduct = styled.div`
+  width: 1200px;
+  height: 473px;
 
-export const Word = styled.span`
-  color: ${(props: IProps) => (props.isMatched ? "red" : "#000")};
-`;
-export const BestTitle = styled.div`
-  font-weight: 900;
-  font-size: 30px;
-`;
-export const BestBoard = styled.div`
-  margin: 5vh 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
-export const BestBoardList = styled.div`
-  width: 23%;
-  height: 23vh;
 
-  display: flex;
-  flex-direction: column;
+  background-color: aqua;
+`;
+export const BestProductBox = styled.div`
+  width: 282px;
+  height: 391px;
 
-  border: 2px solid #dbdbdb;
-  border-radius: 10px;
+  background-color: red;
 `;
-
-export const BestBoardListPhoto = styled.div`
-  width: 100%;
-  height: 50%;
-  background: #f00;
-`;
-export const BestBoardListTitle = styled.div`
-  width: 100%;
-  overflow: hidden;
-  padding: 2vh 0;
-  background: #ff0;
-`;
-export const BestBoardBox = styled.div`
-  display: flex;
-`;
-export const BestInputBox = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-export const BestWriter = styled.div`
-  display: flex;
-  background: blue;
-`;
-export const BestBoardListProfilePhoto = styled.div``;
-export const BestBoardListWriter = styled.div``;
-export const BestBoardListCreateAt = styled.div``;
-export const BestBoardLikeOutlined = styled(LikeOutlined)`
-  font-size: 20px;
-`;
-export const BestBoardListLike = styled.div`
-  // font-size: 20px;
-`;
+export const BestProductImage = styled.img``;
+export const BestProductName = styled.div``;
+export const BestProductRemark = styled.div``;
+export const BestProductPrice = styled.div``;
+export const BestProductLikeBox = styled.div``;
+export const BestProductLikeIcon = styled.img``;
+export const BestProductLikeCount = styled.div``;
 
 export const Search = styled.div`
   width: 100%;
