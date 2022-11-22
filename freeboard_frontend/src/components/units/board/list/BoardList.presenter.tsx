@@ -5,19 +5,13 @@ import { getDate } from "../../../../commons/libraries/utils";
 import { IBoardListUIProps } from "./BoardList.types";
 import Paginations01 from "../../../commons/paginations/paginations/01/Paginations01.container";
 import { v4 as uuidv4 } from "uuid";
-import Searchbars01 from "../../../commons/searchbars/01/Searchbars01.container";
+import Searchbars02 from "../../../commons/searchbars/02/Searchbars02.container";
 
 export default function BoardListUI(props: IBoardListUIProps) {
   return (
     <S.Wrapper>
       <S.Search>
-        <S.SearchBox>
-          <Searchbars01
-            refetch={props.refetch}
-            refetchBoardsCount={props.refetchBoardsCount}
-            onChangeKeyword={props.onChangeKeyword}
-          />
-        </S.SearchBox>
+        <Searchbars02 refetch={props.refetch} />
       </S.Search>
 
       <S.TableTop>

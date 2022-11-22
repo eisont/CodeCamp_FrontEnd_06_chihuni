@@ -5,7 +5,6 @@ import _ from "lodash";
 
 const Searchbars01 = (props: ISearchbars01Props) => {
   const getDebounce = _.debounce((data: string) => {
-    console.log("gkdk", data);
     props.refetch({ search: data, page: 1 });
   }, 2000);
 

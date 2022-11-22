@@ -2,7 +2,7 @@ import { EditOutlined, LikeOutlined, SearchOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 60%;
+  width: 1000px;
   margin: 50px auto;
   text-align: center;
   // background: #f00;
@@ -62,23 +62,12 @@ export const BestBoardListCreateAt = styled.div``;
 export const BestBoardLikeOutlined = styled(LikeOutlined)`
   font-size: 20px;
 `;
-export const BestBoardListLike = styled.div`
-  // font-size: 20px;
-`;
+export const BestBoardListLike = styled.div``;
 
 export const Search = styled.div`
-  width: 100%;
+  width: 1000px;
   height: 5vh;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-export const SearchBox = styled.div`
-  // background: #f00;
-
-  width: 70%;
-  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -105,14 +94,12 @@ export const SearchDateBox = styled.input`
   border: 2px solid #dbdbdb;
   width: 70%;
   padding: 1vh;
-  // background: #f0f;
 `;
 export const SearchBt = styled.button`
   padding: 7px;
 `;
 
 export const TableTop = styled.div`
-  // background: #dbdbdb;
   margin: 3vh 0;
 `;
 
