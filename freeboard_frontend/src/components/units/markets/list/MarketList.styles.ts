@@ -4,11 +4,16 @@ import { SearchOutlined, DollarCircleOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1000px;
+  width: 1200px;
   margin: 50px auto;
   text-align: center;
 `;
 
+export const BestText = styled.div`
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+`;
 export const BestProduct = styled.div`
   width: 1200px;
   height: 473px;
@@ -16,30 +21,99 @@ export const BestProduct = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  background-color: aqua;
 `;
 export const BestProductBox = styled.div`
+  position: relative;
+  padding: 20px;
   width: 282px;
   height: 391px;
 
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
-export const BestProductImage = styled.img``;
-export const BestProductName = styled.div``;
-export const BestProductRemark = styled.div``;
-export const BestProductPrice = styled.div``;
-export const BestProductLikeBox = styled.div``;
-export const BestProductLikeIcon = styled.img``;
-export const BestProductLikeCount = styled.div``;
+export const BestProductImage = styled.img`
+  width: 242px;
+  height: 242px;
+  object-fit: contain;
+  cursor: pointer;
+`;
+export const BestProductName = styled.div`
+  padding: 20px 0 4px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+`;
+export const BestProductRemark = styled.div`
+  font-weight: 500;
+  font-size: 12px;
+  color: #4f4f4f;
+  text-align: start;
+`;
+export const BestProductPrice = styled.div`
+  padding: 12px 0 0 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000;
+`;
+export const BestProductLikeBox = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 24px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const BestProductLikeIcon = styled.img`
+  width: 20px;
+`;
+export const BestProductLikeCount = styled.div`
+  padding: 4.65px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+`;
 
-export const Search = styled.div`
+export const SectionBox = styled.div`
+  width: 1200px;
+  margin: 0 auto;
+`;
+export const MenuBox = styled.div`
   width: 100%;
-  height: 5vh;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+export const Menu = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const OnSaleProduct = styled.div`
+  margin: 0 20px 0 0;
+  font-weight: 400;
+  font-size: 18px;
+  color: #4f4f4f;
+
+  &:hover {
+    cursor: pointer;
+    color: #000;
+    font-weight: 500;
+    border-bottom: 1px solid #ffd600;
+  }
+`;
+export const SoldProduct = styled.div`
+  font-weight: 400;
+  font-size: 18px;
+  color: #4f4f4f;
+
+  &:hover {
+    cursor: pointer;
+    color: #000;
+    font-weight: 500;
+    border-bottom: 1px solid #ffd600;
+  }
 `;
 export const SearchIcon = styled(SearchOutlined)`
   font-size: 30px;

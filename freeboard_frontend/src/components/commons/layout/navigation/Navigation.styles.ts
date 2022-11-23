@@ -27,8 +27,11 @@ export const PageBt = styled.div`
   font-weight: 700;
   cursor: pointer;
   transition: 0.2s;
+  color: ${(props) =>
+    props.isMarkets || props.isBoard || props.isMyPage ? "#000" : "#dbdbdb"};
+
   &:hover {
-    color: #999;
+    color: #000;
     font-weight: 900;
   }
 `;

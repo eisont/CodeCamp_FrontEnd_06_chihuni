@@ -6,7 +6,7 @@ export default function Searchbars01UI(props: ISearchbars01UIProps) {
     <S.Searchbar>
       <S.SearchIcon />
       <S.SearchbarInput
-        placeholder="검색어를 입력해 주세요."
+        placeholder="제품을 검색해 주세요."
         onChange={props.onChangeSearchbar}
       />
     </S.Searchbar>

@@ -2,7 +2,10 @@
 
 import MarketListUI from "./MarketList.presenter";
 import { useQuery } from "@apollo/client";
-import { FETCH_USED_ITEMS } from "./MarketList.queries";
+import {
+  FETCH_USED_ITEMS_OF_THE_BEST,
+  FETCH_USED_ITEMS,
+} from "./MarketList.queries";
 import { useRouter } from "next/router";
 import _ from "lodash";
 import {
@@ -13,14 +16,18 @@ import { MouseEvent } from "react";
 import { useRecoilState } from "recoil";
 import { WatchProductState } from "../../../../commons/store";
 
-export default function MarketList() {
-  const [, setWatchProduct] = useRecoilState(WatchProductState);
+const MarketList = () => {
   const router = useRouter();
+
+  const [, setWatchProduct] = useRecoilState(WatchProductState);
 
   const { data, refetch, fetchMore } = useQuery<
     Pick<IQuery, "fetchUseditems">,
     IQueryFetchUseditemsArgs
   >(FETCH_USED_ITEMS);
+
+  const { data: BestProduct } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
+  console.log(BestProduct);
 
   const onClickMoveToMarketDetail =
     (el: any) => (event: MouseEvent<HTMLDivElement>) => {
@@ -31,9 +38,14 @@ export default function MarketList() {
       const removeid = _.uniqBy(watch, "_id");
       const result = removeid.slice(0, 3);
       setWatchProduct(result);
-      if (event.target instanceof Element)
-        router.push(`/markets/${event.target.id}`);
+
+      if (event.target instanceof Element) console.log(event?.target.id);
+      router.push(`/markets/${event.target.id}`);
     };
+
+  const onClickTest = (event) => {
+    router.push(`/markets/${event.target.id}`);
+  };
 
   const onLoadMore = () => {
     if (!data) return;
@@ -59,9 +71,13 @@ export default function MarketList() {
   return (
     <MarketListUI
       data={data}
+      BestProduct={BestProduct}
       onLoadMore={onLoadMore}
+      onClickTest={onClickTest}
       onClickMoveToMarketDetail={onClickMoveToMarketDetail}
       refetch={refetch}
     />
   );
-}
+};
+
+export default MarketList;
