@@ -62,7 +62,7 @@ export default function BoardCommentListUIItem(
   };
 
   return (
-    <>
+    <S.Wrapper>
       {isOpenDeleteModal && (
         <Modal visible={true} onOk={onClickDelete}>
           <div>비밀번호 입력: </div>
@@ -71,26 +71,34 @@ export default function BoardCommentListUIItem(
       )}
       {!isEdit && (
         <S.ItemWrapper>
-          <S.FlexWrapper>
-            <S.Avatar />
-            <S.MainWrapper>
-              <S.WriterWrapper>
-                <S.Writer>{props.el?.writer}</S.Writer>
-                <S.Star value={props.el?.rating} disabled />
-              </S.WriterWrapper>
-              <S.Contents>{props.el?.contents}</S.Contents>
-            </S.MainWrapper>
-            <S.OptionWrapper>
-              <S.UpdateIcon onClick={onClickUpdate} />
-              <S.DeleteIcon onClick={onClickOpenDeleteModal} />
-            </S.OptionWrapper>
-          </S.FlexWrapper>
-          <S.DateString>{getDate(props.el?.createdAt)}</S.DateString>
+          <S.Avatar src="../img/profileUser.png " />
+
+          <S.MainWrapper>
+            <S.WriterWrapper>
+              <S.Writer>{props.el?.writer}</S.Writer>
+              <S.Star value={props.el?.rating} disabled />
+            </S.WriterWrapper>
+            <S.Contents>
+              {props.el?.contents.length === 0
+                ? "컨텐츠 없음"
+                : props.el?.contents}
+            </S.Contents>
+            <S.Date>{getDate(props.el?.createdAt)}</S.Date>
+          </S.MainWrapper>
+
+          <S.OptionWrapper>
+            <S.UpdateIcon src="../img/pencil.png" onClick={onClickUpdate} />
+            <S.DeleteIcon
+              src="../img/close.png"
+              onClick={onClickOpenDeleteModal}
+            />
+          </S.OptionWrapper>
         </S.ItemWrapper>
       )}
       {isEdit && (
         <BoardCommentWrite isEdit={true} setIsEdit={setIsEdit} el={props.el} />
       )}
-    </>
+      <S.Hr />
+    </S.Wrapper>
   );
 }

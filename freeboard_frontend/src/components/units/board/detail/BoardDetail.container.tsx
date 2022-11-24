@@ -24,6 +24,7 @@ function BoardDetail() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
+
   // 삭제
   const [deleteBoard] = useMutation<
     Pick<IMutation, "deleteBoard">,

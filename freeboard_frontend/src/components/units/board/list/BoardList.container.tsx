@@ -2,7 +2,11 @@
 
 import BoardListUI from "./BoardList.presenter";
 import { useQuery } from "@apollo/client";
-import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardList.queries";
+import {
+  FETCH_BOARDS,
+  FETCH_BOARDS_COUNT,
+  FETCH_BOARDS_OF_THE_BEST,
+} from "./BoardList.queries";
 import { useRouter } from "next/router";
 import { MouseEvent, useState } from "react";
 import {
@@ -25,6 +29,8 @@ export default function BoardList() {
     IQueryFetchBoardsCountArgs
   >(FETCH_BOARDS_COUNT);
 
+  const { data: BestBoards } = useQuery(FETCH_BOARDS_OF_THE_BEST);
+
   const onClickMoveToBoardNew = () => {
     router.push("/boards/new");
   };
@@ -40,6 +46,7 @@ export default function BoardList() {
   return (
     <BoardListUI
       data={data}
+      BestBoards={BestBoards?.fetchBoardsOfTheBest}
       onClickMoveToBoardNew={onClickMoveToBoardNew}
       onClickMoveToBoardDetail={onClickMoveToBoardDetail}
       refetch={refetch}

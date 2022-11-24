@@ -6,7 +6,7 @@ const Searchbars02UI = (props: ISearchbars02UIProps) => {
     <S.Searchbar onSubmit={props.handleSubmit(props.onClickSearch)}>
       <S.SearchIcon />
       <S.SearchbarInput
-        placeholder="검색어를 입력해 주세요."
+        placeholder="제목을 검색해주세요."
         {...props.register("mysearch")}
       />
     </S.Searchbar>

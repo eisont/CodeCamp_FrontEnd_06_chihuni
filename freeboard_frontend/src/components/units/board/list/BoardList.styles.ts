@@ -2,101 +2,132 @@ import { EditOutlined, LikeOutlined, SearchOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1000px;
-  margin: 50px auto;
-  text-align: center;
-  // background: #f00;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
+export const BestText = styled.div`
+  font-size: 36px;
+  text-align: center;
+  font-weight: 700;
+  color: #000;
+`;
+export const BestBoards = styled.div`
+  width: 1200px;
+  height: 339px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const BestBoardsBox = styled.div`
+  position: relative;
+  width: 282px;
+  height: 257px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+export const BestBoardsImage = styled.img`
+  width: 282px;
+  height: 120px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 20px 20px 0 0;
+`;
+export const ContentsBox = styled.div`
+  padding: 20px;
+`;
+export const BestBoardsTitle = styled.div`
+  padding: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+`;
+export const UserBox = styled.div`
+  padding: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+`;
+export const BestBoardsUserIcon = styled.img`
+  width: 20px;
+  height: 20px;
+  margin: 0 6px 0 0;
+`;
+export const BestBoardsName = styled.div`
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+`;
+export const BestBoardsDate = styled.div`
+  font-weight: 400;
+  font-size: 12px;
+  color: #828282;
+`;
+export const BestBoardsLikeBox = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 24px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+export const BestBoardsLikeIcon = styled.img`
+  width: 20px;
+`;
+export const BestBoardsLikeCount = styled.div`
+  padding: 4.65px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+`;
+
+export const SectionBox = styled.div`
+  width: 1200px;
+`;
 interface IProps {
   isMatched: boolean;
 }
 export const Word = styled.span`
   color: ${(props: IProps) => (props.isMatched ? "red" : "#000")};
 `;
-export const BestTitle = styled.div`
-  font-weight: 900;
-  font-size: 30px;
-`;
-export const BestBoard = styled.div`
-  margin: 5vh 0;
+
+export const SearchBox = styled.div`
+  margin: 0 auto;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-`;
-export const BestBoardList = styled.div`
-  width: 23%;
-  height: 23vh;
-
-  display: flex;
-  flex-direction: column;
-
-  border: 2px solid #dbdbdb;
-  border-radius: 10px;
 `;
 
-export const BestBoardListPhoto = styled.div`
-  width: 100%;
-  height: 50%;
-  background: #f00;
-`;
-export const BestBoardListTitle = styled.div`
-  width: 100%;
-  padding: 2vh 0;
-  background: #ff0;
-`;
-export const BestBoardBox = styled.div`
-  display: flex;
-`;
-export const BestInputBox = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-export const BestWriter = styled.div`
-  display: flex;
-  background: blue;
-`;
-export const BestBoardListProfilePhoto = styled.div``;
-export const BestBoardListWriter = styled.div``;
-export const BestBoardListCreateAt = styled.div``;
-export const BestBoardLikeOutlined = styled(LikeOutlined)`
-  font-size: 20px;
-`;
-export const BestBoardListLike = styled.div``;
+export const SearchDate = styled.input`
+  border: 1px solid #dbdbdb;
+  padding: 20px;
 
-export const Search = styled.div`
-  width: 1000px;
-  height: 5vh;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-export const SearchIcon = styled(SearchOutlined)`
-  font-size: 30px;
-`;
-export const Searchbar01 = styled.input`
-  border-radius: 10px;
-  border: 2px solid #dbdbdb;
-  width: 95%;
-  padding: 1vh;
-  // background: #f0f;
-`;
-
-export const SearchDate = styled.div`
-  width: 30%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-`;
-export const SearchDateBox = styled.input`
-  border-radius: 10px;
-  border: 2px solid #dbdbdb;
-  width: 70%;
-  padding: 1vh;
+  width: 244px;
+  height: 52px;
 `;
 export const SearchBt = styled.button`
-  padding: 7px;
+  width: 94px;
+  height: 52px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  border: none;
 `;
 
 export const TableTop = styled.div`

@@ -2,27 +2,30 @@
 
 import styled from "@emotion/styled";
 import { Rate } from "antd";
-import { UserOutlined, EditOutlined, CloseOutlined } from "@ant-design/icons";
+
+export const Wrapper = styled.div`
+  padding: 40px 0 0 0;
+  width: 1200px;
+  height: 128px;
+  margin: 0px auto;
+`;
 
 export const ItemWrapper = styled.div`
-  width: 1200px;
-  margin: 0px auto;
-  padding-top: 20px;
-  height: 128px;
-  border-bottom: 1px solid lightgray;
-`;
-
-export const FlexWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  align-items: flex-start;
 `;
 
-export const Avatar = styled(UserOutlined)`
-  font-size: 48px;
+export const Avatar = styled.img`
+  margin: 0 16px 0 0;
+  width: 40px;
+  height: 40px;
   color: #888;
 `;
 
 export const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
   padding-left: 10px;
 `;
@@ -32,30 +35,36 @@ export const WriterWrapper = styled.div`
   align-items: center;
 `;
 export const Writer = styled.div`
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 500;
 `;
-export const Contents = styled.div``;
+export const Contents = styled.div`
+  font-size: 14px;
+  font-weight: 400;
+  color: #4f4f4f;
+`;
 
 export const OptionWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  align-items: center;
 `;
-export const UpdateIcon = styled(EditOutlined)`
-  font-size: 24px;
+export const UpdateIcon = styled.img`
+  margin: 0 16px 0 0;
+  width: 18px;
+  height: 18px;
   cursor: pointer;
   color: #888;
 `;
-export const DeleteIcon = styled(CloseOutlined)`
-  font-size: 24px;
+export const DeleteIcon = styled.img`
+  width: 14px;
+  height: 14px;
   color: #888;
   cursor: pointer;
 `;
 
-export const DateString = styled.div`
-  color: lightgray;
-  padding-top: 15px;
-  padding-left: 60px;
+export const Date = styled.div`
+  padding: 20px 0 0 0;
+  color: #dbdbdb;
 `;
 
 export const Star = styled(Rate)`
@@ -65,4 +74,11 @@ export const Star = styled(Rate)`
 export const PasswordInput = styled.input`
   width: 100%;
   margin-top: 10px;
+`;
+
+export const Hr = styled.div`
+  margin: 20px 0 0 0;
+  width: 1200px;
+  height: 1px;
+  background-color: #dbdbdb;
 `;

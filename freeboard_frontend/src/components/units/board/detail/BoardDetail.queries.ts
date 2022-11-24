@@ -11,6 +11,14 @@ export const FETCH_BOARD = gql`
       title
       contents
       youtubeUrl
+      user {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+      }
       likeCount
       dislikeCount
       boardAddress {
@@ -25,6 +33,7 @@ export const FETCH_BOARD = gql`
     }
   }
 `;
+
 // 게시판 삭제
 export const DELETE_BOARD = gql`
   mutation deleteBoard($boardId: ID!) {

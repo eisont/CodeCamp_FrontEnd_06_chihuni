@@ -115,7 +115,7 @@ function BoardWrite(props: IBoardWriteProps) {
     const newFileUrls = [...fileUrls];
     newFileUrls[index] = fileUrl;
     setFileUrls(newFileUrls);
-    console.log(fileUrls)
+    console.log(fileUrls);
   };
 
   // Click 함수
@@ -223,33 +223,31 @@ function BoardWrite(props: IBoardWriteProps) {
   }, [props.data]);
 
   return (
-    <div>
-      <BoardWriteUI
-        // onChange
-        onChangeWriter={onChangeWriter}
-        onChangePassword={onChangePassword}
-        onChangeTitle={onChangeTitle}
-        onChangeContents={onChangeContents}
-        onChangeYoutubeUrl={onChangeYoutubeUrl}
-        onChangeAddressDetail={onChangeAddressDetail}
-        onChangeFileUrls={onChangeFileUrls}
-        // State 변수
-        data={props.data}
-        fileUrls={fileUrls}
-        // Click
-        onClickSubmit={onClickSubmit}
-        onClickUpdate={onClickUpdate}
-        // Modal
-        onClickAddressSearch={onClickAddressSearch}
-        onCompleteAddressSearch={onCompleteAddressSearch}
-        // is 조건 활성화 변수
-        isActive={isActive}
-        isOpen={isOpen}
-        isEdit={props.isEdit}
-        address={address}
-        addressDetail={addressDetail}
-      />
-    </div>
+    <BoardWriteUI
+      // onChange
+      onChangeWriter={onChangeWriter}
+      onChangePassword={onChangePassword}
+      onChangeTitle={onChangeTitle}
+      onChangeContents={onChangeContents}
+      onChangeYoutubeUrl={onChangeYoutubeUrl}
+      onChangeAddressDetail={onChangeAddressDetail}
+      onChangeFileUrls={onChangeFileUrls}
+      // State 변수
+      data={props.data}
+      fileUrls={fileUrls}
+      // Click
+      onClickSubmit={onClickSubmit}
+      onClickUpdate={onClickUpdate}
+      // Modal
+      onClickAddressSearch={onClickAddressSearch}
+      onCompleteAddressSearch={onCompleteAddressSearch}
+      // is 조건 활성화 변수
+      isActive={isActive}
+      isOpen={isOpen}
+      isEdit={props.isEdit}
+      address={address}
+      addressDetail={addressDetail}
+    />
   );
 }
 

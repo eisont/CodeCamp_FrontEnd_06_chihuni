@@ -17,7 +17,6 @@ export default function BoardCommentList() {
   >(FETCH_BOARD_COMMENTS, {
     variables: { boardId: String(router.query.boardId) },
   });
-
   const onLoadMore = () => {
     if (!data) return;
 

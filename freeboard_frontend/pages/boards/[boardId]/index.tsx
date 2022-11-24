@@ -9,7 +9,7 @@ import BoardCommentList from "../../../src/components/units/boardComment/list/Bo
 
 export default function BoardDetailPage() {
   return (
-    <div>
+    <div style={{ padding: "80px 0" }}>
       {/* 상세보기 컨테이너와 연결 */}
       <BoardDetail />
       {/* 댓글 입력창과 연결 */}

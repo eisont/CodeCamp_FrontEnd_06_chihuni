@@ -39,8 +39,8 @@ export default function Layout(props: ILayoutProps) {
   return (
     <>
       <Wrapper>
-        {!isMainPage && <LayoutHeader />}
-        {!isMainPage && <LayoutNavigation />}
+        {!isLoginPage && !isMainPage && <LayoutHeader />}
+        {!isLoginPage && !isMainPage && <LayoutNavigation />}
 
         {!isMainPage && !Mypage && <LayoutBanner />}
         <Fixed>

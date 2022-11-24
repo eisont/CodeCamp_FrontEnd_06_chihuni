@@ -9,8 +9,29 @@ export const FETCH_BOARD_COMMENTS = gql`
       _id
       writer
       contents
-      createdAt
       rating
+      user {
+        _id
+        name
+        picture
+      }
+      createdAt
+    }
+  }
+`;
+
+// 회원정보 확인
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+      email
+      name
+      picture
+      userPoint {
+        amount
+      }
+      createdAt
     }
   }
 `;

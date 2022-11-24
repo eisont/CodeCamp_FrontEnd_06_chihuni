@@ -2,7 +2,6 @@
 
 import styled from "@emotion/styled";
 import {
-  UserOutlined,
   LinkOutlined,
   EnvironmentOutlined,
   LikeOutlined,
@@ -10,22 +9,22 @@ import {
 import ReactPlayer from "react-player";
 
 export const Wrapper = styled.div`
-  margin: 0 auto;
-  padding: 64px 0;
-  width: 1200px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const BoardNewTable = styled.div`
+export const Contents = styled.div`
   width: 1200px;
-  padding: 80px 0;
+  padding: 80px 120px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   border: 1px solid #bdbdbd;
   box-shadow: 0px 0px 10px #bdbdbd;
 `;
-
 export const Header = styled.div`
   width: 996px;
   margin: 0 auto;
@@ -39,8 +38,8 @@ export const UserInformation = styled.div`
   display: flex;
   align-items: center;
 `;
-export const UserProfilePhoto = styled(UserOutlined)`
-  font-size: 47px;
+export const UserProfilePhoto = styled.img`
+  width: 47px;
   margin-right: 20px;
 `;
 export const UserProfile = styled.div``;
@@ -57,7 +56,7 @@ export const HeaderButtons = styled.div`
   align-items: center;
 `;
 export const SharingImg = styled(LinkOutlined)`
-  ursor: pointer;
+  cursor: pointer;
   transform: rotate(45deg);
   font-size: 26px;
   color: #ffd600;
@@ -80,7 +79,8 @@ export const SectionText = styled.div`
 `;
 export const SectionPhoto = styled.div`
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  overflow-x: scroll;
 `;
 export const Image = styled.img`
   width: 996px;
@@ -149,17 +149,20 @@ export const DisLikeNumber = styled.p`
 `;
 
 export const MenuButtons = styled.div`
+  margin: 80px 0;
   display: flex;
+  align-items: center;
 `;
 export const Button = styled.button`
+  margin: 0 24px 0 0;
   width: 180px;
   height: 45px;
-  margin: 87px 12px;
   font-size: 16px;
   font-weight: 600;
   display: inline;
   background: #fff;
   border: 1px solid #bdbdbd;
+
   &:hover {
     background-color: gold;
     border-color: white;
@@ -167,6 +170,7 @@ export const Button = styled.button`
 `;
 
 export const WrapperHr = styled.div`
+  margin: 0 0 40px 0;
   width: 1200px;
   height: 1px;
   background: #bdbdbd;

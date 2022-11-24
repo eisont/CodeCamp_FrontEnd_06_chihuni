@@ -1,18 +1,11 @@
 import styled from "@emotion/styled";
 
-export const Column = styled.span`
-  margin: 0px 50px;
-`;
-
 interface IPageProps {
   isActive?: boolean;
 }
 export const Wrapper = styled.div`
-  width: 80%;
-  // background: #f00;
-  margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 `;
 export const Page = styled.span`
   font-size: 25px;

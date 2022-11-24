@@ -18,3 +18,28 @@ export const FETCH_BOARDS_COUNT = gql`
     fetchBoardsCount
   }
 `;
+
+export const FETCH_BOARDS_OF_THE_BEST = gql`
+  query fetchBoardsOfTheBest {
+    fetchBoardsOfTheBest {
+      _id
+      writer
+      title
+      contents
+      youtubeUrl
+      likeCount
+      dislikeCount
+      images
+      user {
+        _id
+        email
+        name
+        picture
+        createdAt
+        updatedAt
+      }
+      createdAt
+      deletedAt
+    }
+  }
+`;

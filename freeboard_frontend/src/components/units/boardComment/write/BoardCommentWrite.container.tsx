@@ -1,6 +1,6 @@
 // 게시판 댓글 등록 container
 
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import {
@@ -10,7 +10,10 @@ import {
   IUpdateBoardCommentInput,
 } from "../../../../commons/types/generated/types";
 import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
-import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
+import {
+  FETCH_BOARD_COMMENTS,
+  FETCH_USER_LOGGED_IN,
+} from "../list/BoardCommentList.queries";
 import {
   CREATE_BOARD_COMMENT,
   UPDATE_BOARD_COMMENT,
@@ -18,9 +21,17 @@ import {
 import { IBoardCommentWriteProps } from "./BoardCommentWrite.types";
 import { Modal, notification } from "antd";
 
-export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
+const BoardCommentWrite = (props: IBoardCommentWriteProps) => {
+  const { data: logginUser } = useQuery(FETCH_USER_LOGGED_IN);
+
   const router = useRouter();
-  const [writer, setWriter] = useState("");
+  const [writer, setWriter] = useState(
+    `${
+      logginUser?.fetchUserLoggedIn?.name === undefined
+        ? "작성자 없음"
+        : logginUser?.fetchUserLoggedIn?.name
+    }`
+  );
   const [password, setPassword] = useState("");
   const [contents, setContents] = useState("");
   const [star, setStar] = useState(0);
@@ -117,8 +128,10 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
       alert(error.message);
     }
   };
+
   return (
     <BoardCommentWriteUI
+      logginUser={logginUser?.fetchUserLoggedIn}
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
       onChangeContents={onChangeContents}
@@ -128,6 +141,9 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
       contents={contents}
       writer={writer}
       password={password}
+      isEdit={props.isEdit}
     />
   );
-}
+};
+
+export default BoardCommentWrite;

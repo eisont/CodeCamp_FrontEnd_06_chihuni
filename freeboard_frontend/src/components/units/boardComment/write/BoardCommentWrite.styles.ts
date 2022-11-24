@@ -2,16 +2,14 @@
 
 import styled from "@emotion/styled";
 import { Rate } from "antd";
-import { CommentOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
   width: 1200px;
   margin: 0px auto;
 `;
 
-export const PencilIcon = styled(CommentOutlined)`
-  font-size: 20px;
-  color: #ffd600;
+export const PencilIcon = styled.img`
+  width: 20px;
   margin-right: 14px;
 `;
 
@@ -23,10 +21,6 @@ export const InputWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-export const ContentsWrapper = styled.div`
-  border: 1px solid lightgray;
-`;
-
 export const Input = styled.input`
   width: 180px;
   height: 52px;
@@ -34,10 +28,20 @@ export const Input = styled.input`
   border: 1px solid lightgray;
   margin-right: 20px;
 `;
+export const Star = styled(Rate)``;
+
+export const ContentsWrapper = styled.div`
+  width: 1200px;
+  height: 161px;
+  border: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 export const Contents = styled.textarea`
   width: 100%;
-  min-height: 108px;
+  height: 108px;
   padding: 20px;
   border: none;
   border-bottom: 1px solid lightgray;
@@ -51,7 +55,7 @@ export const BottomWrapper = styled.div`
 
 export const ContentsLength = styled.div`
   width: 100%;
-  height: 51px;
+  height: 52px;
   line-height: 51px;
   padding-left: 20px;
   color: gray;
@@ -59,10 +63,8 @@ export const ContentsLength = styled.div`
 
 export const Button = styled.button`
   width: 91px;
-  height: 51px;
+  height: 52px;
   background-color: black;
   color: white;
   cursor: pointer;
 `;
-
-export const Star = styled(Rate)``;
