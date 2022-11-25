@@ -1,67 +1,76 @@
 // Signup Container
 
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
+import * as yup from "yup";
 import { useRouter } from "next/router";
 import { CREATE_USER } from "./signup.queries";
-import SignupUI from "./signup.presenter";
+import LoginUI from "../login/login.presenter";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
+
+interface IFormValues {
+  email?: string;
+  password?: string;
+  passwordCh?: string;
+  name?: string;
+}
+
+const schema = yup.object({
+  email: yup.string().required("이메일은 필수 입력 사항입니다."),
+  password: yup.string().required("비밀번호는 필수 입력 사항입니다."),
+  name: yup.string().required("이름은 필수 입력사항입니다."),
+});
 
 const SignupContainer = () => {
   const router = useRouter();
+  const isSignUp = router.asPath === `/signup`;
+
+  const [erremail, setErremail] = useState("");
+  const [errPassword, setErrPassword] = useState("");
   const [createUser] = useMutation(CREATE_USER);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
 
-  const onChangeName = (event) => {
-    setName(event?.target.value);
-  };
-  const onChangeEmail = (event) => {
-    setEmail(event?.target.value);
-  };
-  const onChangePassword = (event) => {
-    setPassword(event?.target.value);
-  };
-  const onChangePasswordCK = (event) => {
-    setPassword(event?.target.value);
-  };
-
-  const onClickCreateUser = async () => {
+  const onClickCreateUser = async (data: IFormValues) => {
     try {
-      // 1. 가입하기
-      await createUser({
-        variables: {
-          createUserInput: {
-            name,
-            email,
-            password,
+      if (data?.password === data?.passwordCh) {
+        // 1. 가입하기
+        await createUser({
+          variables: {
+            createUserInput: {
+              email: data?.email,
+              password: data?.password,
+              name: data?.name,
+            },
           },
-        },
-      });
-      // 2. 가입 성공 페이지로 이동하기
-      alert(`${name}님 가입을 축하합니다.`);
-      alert(`${email}으로 로그인해봐요!!!`);
-      router.push("/login");
-    } catch (errors) {
-      alert(errors.message);
+        });
+        alert(`${data?.name}님 회원가입을 축하합니다.`);
+        router.push("/login");
+      } else {
+        setErrPassword("비밀번호가 일치하지 않습니다.");
+      }
+    } catch (errors: any) {
+      setErremail(errors.message);
     }
+    console.log("data", data);
   };
-  const onClickCancel = () => {
-    alert("실망이예요...");
-    router.push("/");
-  };
+
   const onClickLogin = () => {
     router.push("/login");
   };
   return (
-    <SignupUI
-      onChangeName={onChangeName}
-      onChangeEmail={onChangeEmail}
-      onChangePassword={onChangePassword}
-      onChangePasswordCK={onChangePasswordCK}
+    <LoginUI
+      erremail={erremail}
+      errPassword={errPassword}
+      isSignUp={isSignUp}
+      register={register}
+      handleSubmit={handleSubmit}
+      formState={formState}
       onClickCreateUser={onClickCreateUser}
-      onClickCancel={onClickCancel}
       onClickLogin={onClickLogin}
     />
   );

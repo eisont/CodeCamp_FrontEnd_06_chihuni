@@ -24,21 +24,34 @@ export const BackBt = styled.img`
     cursor: pointer;
   }
 `;
+export const Title = styled.div`
+  margin: 0 0 40px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+`;
 export const Contents = styled.div`
   text-align: center;
 `;
-export const LoginTitle = styled.div`
-  margin-bottom: 32px;
-  font-size: 30px;
-  font-weight: 900;
-  color: #fff;
+export const CodeCampLogo = styled.img`
+  width: 288px;
+  margin-bottom: 80px;
 `;
-export const InputBx = styled.div`
+export const Section = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: start;
+`;
+export const InputTitle = styled.div`
+  padding: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+`;
+export const InputBox = styled.div`
+  margin: 0 0 20px 0;
 `;
 export const Input = styled.input`
-  margin: 0 0 20px 0;
   padding: 20px 16px;
   width: 384px;
   height: 64px;
@@ -55,6 +68,12 @@ export const Input = styled.input`
     color: rgba(255, 255, 255, 0.6);
   }
 `;
+export const Errors = styled.div`
+  padding: 0 0 0 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #f00;
+`;
 
 export const LoginStay = styled.div`
   margin: 0 0 40px 0;
@@ -64,6 +83,11 @@ export const LoginStay = styled.div`
   text-align: start;
   display: flex;
   align-items: center;
+
+  &:hover {
+    border-bottom: 1px solid #ffd600;
+    cursor: pointer;
+  }
 `;
 export const CheckIcon = styled.img`
   margin: 0 16px 0 0;
@@ -75,6 +99,7 @@ export const Button = styled.button`
   width: 384px;
   height: 64px;
 
+  margin: ${(props) => props.isSignup && "40px 0 0 0"};
   padding: 10px 0;
   border: none;
   font-size: 16px;
@@ -87,11 +112,12 @@ export const Button = styled.button`
 
   &:hover {
     background: #ffd600;
-    color: #737373;
+    color: #000;
     cursor: pointer;
   }
   &:active {
-    background: #dbbe18;
+    background: #000;
+    color: #fff;
     cursor: pointer;
   }
 `;

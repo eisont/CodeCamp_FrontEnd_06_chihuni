@@ -8,6 +8,7 @@ export const CREATE_USER = gql`
       _id
       email
       name
+      picture
       createdAt
     }
   }
