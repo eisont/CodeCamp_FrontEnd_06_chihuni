@@ -20,7 +20,7 @@ export default function FetchPolicyTest() {
 
   return (
     <div>
-      {data?.fetchBoards?.map((el) => (
+      {data?.fetchBoards?.map((el: any) => (
         <div key={el._id}>{el.title}</div>
       ))}
     </div>
