@@ -1,0 +1,68 @@
+import styled from "@emotion/styled";
+import { useRecoilState } from "recoil";
+import { Modal } from "../../../../commons/store";
+
+const Wrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-232px, -153px);
+  z-index: 8888;
+  width: 464px;
+  height: 306px;
+  background: #fff;
+  border-radius: 16px;
+  display: ${(props) => (props.modal ? "flex" : "none")};
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const CloseIcon = styled.img`
+  position: absolute;
+  top: 23.5px;
+  right: 23.5px;
+  width: 22px;
+  cursor: pointer;
+`;
+const Img = styled.img`
+  width: 236px;
+`;
+const Text = styled.div`
+  margin: 40px 0;
+  color: #000;
+  font-weight: 400;
+  font-size: 22px;
+`;
+const Bt = styled.div`
+  width: 384px;
+  height: 64px;
+  border-radius: 16px;
+  background: #ffd600;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+`;
+
+const Modal1 = (props: any) => {
+  const [modal, setModal] = useRecoilState(Modal);
+  const onClickClose = () => {
+    setModal(false);
+  };
+  return (
+    <Wrapper modal={modal}>
+      <CloseIcon onClick={onClickClose} src="./img/close.png" />
+      <Img src="./CodeCamplogoBlack.png" />
+      <Text>
+        {props.Title !== undefined ? props.Title : "로그인이 필요합니다."}
+      </Text>
+      <Bt onClick={onClickClose}>확인</Bt>
+    </Wrapper>
+  );
+};
+
+export default Modal1;

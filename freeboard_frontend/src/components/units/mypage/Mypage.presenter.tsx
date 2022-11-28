@@ -15,7 +15,7 @@ export default function MypageUIpage(props: any) {
 
       <S.Wrapper>
         <S.MenuList>
-          <S.MyPlofile>마이 페이지</S.MyPlofile>
+          <S.MyPlofile onClick={props.onClickResult}>마이 페이지</S.MyPlofile>
           <S.Menu onClick={props.onClickPickBought}>내가 찜한 목록</S.Menu>
           <S.Menu onClick={props.onClickPickList}>내가 구입한 목록</S.Menu>
           <S.Menu onClick={props.onClickPickSold}>내가 판매한 목록</S.Menu>

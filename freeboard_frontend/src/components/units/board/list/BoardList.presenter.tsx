@@ -24,9 +24,16 @@ export default function BoardListUI(props: IBoardListUIProps) {
 
       <S.SectionBox>
         <S.SearchBox>
-          <Searchbars02 refetch={props.refetch} />
-          <S.SearchDate placeholder="YY.MM.DD"></S.SearchDate>
-          <S.SearchBt>검색하기</S.SearchBt>
+          <Searchbars02
+            refetch={props.refetch}
+            setKeyword={props.setKeyword}
+            startDate={props.startDate}
+            setStartDate={props.setStartDate}
+            onChangeStartDate={props.onChangeStartDate}
+            endDate={props.endDate}
+            setEndDate={props.setEndDate}
+            onChangeEndDate={props.onChangeEndDate}
+          />
         </S.SearchBox>
 
         <S.TableTop>

@@ -26,9 +26,6 @@ const LoginContainer = () => {
     mode: "onChange",
   });
 
-  console.log("formState", formState?.errors?.email?.message);
-  console.log("formState", formState?.errors?.password?.message);
-
   const onClickSignup = () => {
     router.push("/signup");
   };

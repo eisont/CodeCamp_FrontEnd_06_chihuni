@@ -1,9 +1,10 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { Modal } from "antd";
+// import { Modal } from "antd";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import {
   accessTokenState,
+  Modal,
   restoreAccessTokenLoadable,
 } from "../../../commons/store";
 
@@ -12,6 +13,8 @@ import {
 // ts 무시
 export const withAuth = (Component) => (props) => {
   const router = useRouter();
+  const [, setModal] = useRecoilState(Modal);
+
   const [accessToken] = useRecoilState(accessTokenState);
   const restoreAccessToken = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
@@ -22,26 +25,31 @@ export const withAuth = (Component) => (props) => {
     if (!accessToken) {
       restoreAccessToken.toPromise().then((newAccessToken) => {
         if (!newAccessToken) {
-          Modal.warning({
-            content: "로그인이 필요합니다.",
-            width: 500,
-            centered: true,
-            closable: true,
-            okText: "이거 어떻게 없어지게 하지?",
-            mask: true,
-            maskClosable: true,
-            maskStyle: { backgroundColor: "rgba(0,0,0,.8)" },
-            bodyStyle: {
-              padding: 150,
-            },
-            style: {},
-          });
+          setModal(true);
+          // Modal.warning({
+          //   content: "로그인이 필요합니다.",
+          //   width: 500,
+          //   centered: true,
+          //   closable: true,
+          //   okText: "이거 어떻게 없어지게 하지?",
+          //   mask: true,
+          //   maskClosable: true,
+          //   maskStyle: { backgroundColor: "rgba(0,0,0,.8)" },
+          //   bodyStyle: {
+          //     padding: 150,
+          //   },
+          //   style: {},
+          // });
           // alert("로그인 후 이용 가능합니다!!!");
-          router.push("/markets");
+          router.push("/login");
         }
       });
     }
   }, []);
 
-  return <Component {...props} />;
+  return (
+    <>
+      <Component {...props} />;
+    </>
+  );
 };

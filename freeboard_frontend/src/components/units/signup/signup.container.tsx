@@ -4,10 +4,12 @@ import { useMutation } from "@apollo/client";
 import * as yup from "yup";
 import { useRouter } from "next/router";
 import { CREATE_USER } from "./signup.queries";
-import LoginUI from "../login/login.presenter";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import SignupUI from "./signup.presenter";
+import { Modal } from "../../../commons/store";
+import { useRecoilState } from "recoil";
 
 interface IFormValues {
   email?: string;
@@ -24,6 +26,8 @@ const schema = yup.object({
 
 const SignupContainer = () => {
   const router = useRouter();
+  const [, setModal] = useRecoilState(Modal);
+
   const isSignUp = router.asPath === `/signup`;
 
   const [erremail, setErremail] = useState("");
@@ -48,22 +52,22 @@ const SignupContainer = () => {
             },
           },
         });
-        alert(`${data?.name}님 회원가입을 축하합니다.`);
+        setModal(true);
         router.push("/login");
       } else {
         setErrPassword("비밀번호가 일치하지 않습니다.");
       }
     } catch (errors: any) {
       setErremail(errors.message);
+      console.log("error", errors?.message);
     }
-    console.log("data", data);
   };
 
   const onClickLogin = () => {
     router.push("/login");
   };
   return (
-    <LoginUI
+    <SignupUI
       erremail={erremail}
       errPassword={errPassword}
       isSignUp={isSignUp}

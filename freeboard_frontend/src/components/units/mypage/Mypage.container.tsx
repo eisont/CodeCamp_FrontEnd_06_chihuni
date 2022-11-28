@@ -28,23 +28,33 @@ function MypagePage() {
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
   );
 
+  const onClickResult = async () => {
+    try {
+      const result = await createPointTransactionOfBuyingAndSelling({
+        variables: { useritemId: "" },
+      });
+      console.log("result", result);
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  };
   const { data: boughtData } = useQuery<
     Pick<IQuery, "fetchUseditemsIBought">,
     IQueryFetchUseditemsIBoughtArgs
   >(FETCHUSED_ITEMS_IBOUGHT);
-  console.log(boughtData);
+  console.log("boughtData", boughtData);
 
   const { data: pickData } = useQuery<
     Pick<IQuery, "fetchUseditemsIPicked">,
     IQueryFetchUseditemsIPickedArgs
   >(FETCHUSED_ITEMS_IPICKED);
-  console.log(pickData);
+  console.log("pickData", pickData);
 
   const { data: soldData } = useQuery<
     Pick<IQuery, "fetchUseditemsISold">,
     IQueryFetchUseditemsISoldArgs
   >(FETCHUSED_ITEMS_ISOLD);
-  console.log(soldData);
+  console.log("soldData", soldData);
 
   const onClickPickBought = () => {
     alert("이동할 페이지를 못 찾음");
@@ -91,6 +101,7 @@ function MypagePage() {
 
   return (
     <MypageUIpage
+      onClickResult={onClickResult}
       onClickPickBought={onClickPickBought}
       onClickPickList={onClickPickList}
       onClickPickSold={onClickPickSold}

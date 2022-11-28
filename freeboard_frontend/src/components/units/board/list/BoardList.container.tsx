@@ -18,6 +18,10 @@ import {
 export default function BoardList() {
   const router = useRouter();
   const [keyword, setKeyword] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
+  const { data: BestBoards } = useQuery(FETCH_BOARDS_OF_THE_BEST);
 
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoards">,
@@ -27,9 +31,14 @@ export default function BoardList() {
   const { data: dataBoardsCount, refetch: refetchBoardsCount } = useQuery<
     Pick<IQuery, "fetchBoardsCount">,
     IQueryFetchBoardsCountArgs
-  >(FETCH_BOARDS_COUNT);
-
-  const { data: BestBoards } = useQuery(FETCH_BOARDS_OF_THE_BEST);
+  >(FETCH_BOARDS_COUNT, {
+    variables: {
+      startDate,
+      endDate,
+      search: keyword,
+    },
+  });
+  console.log("뭘까?", startDate, endDate, keyword);
 
   const onClickMoveToBoardNew = () => {
     router.push("/boards/new");
@@ -38,10 +47,6 @@ export default function BoardList() {
     if (event.target instanceof Element)
       router.push(`/boards/${event.currentTarget.id}`);
   };
-
-  function onChangeKeyword(value: string) {
-    setKeyword(value);
-  }
 
   return (
     <BoardListUI
@@ -53,7 +58,11 @@ export default function BoardList() {
       refetchBoardsCount={refetchBoardsCount}
       count={dataBoardsCount?.fetchBoardsCount}
       keyword={keyword}
-      onChangeKeyword={onChangeKeyword}
+      setKeyword={setKeyword}
+      startDate={startDate}
+      setStartDate={setStartDate}
+      endDate={endDate}
+      setEndDate={setEndDate}
     />
   );
 }

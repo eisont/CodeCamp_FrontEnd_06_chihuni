@@ -7,6 +7,7 @@ import LayoutNavigation from "./navigation";
 import { ReactNode } from "react";
 import { useRouter } from "next/router";
 import WatchProduct from "../WatchProduct";
+import Modal1 from "./modal";
 
 const Wrapper = styled.div``;
 const Body = styled.div``;
@@ -43,6 +44,7 @@ export default function Layout(props: ILayoutProps) {
         {!isLoginPage && !isSignupPage && !isMainPage && <LayoutNavigation />}
 
         {!isMainPage && !Mypage && <LayoutBanner />}
+        <Modal1 />
         <Fixed>
           {!isLoginPage &&
             !isSignupPage &&

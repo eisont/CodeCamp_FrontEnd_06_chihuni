@@ -1,59 +1,60 @@
 // Signup Presenter
 
+import Modal1 from "../../commons/layout/modal";
 import * as S from "./signup.styles";
 
 export const SignupUI = (props: any) => {
   return (
     <S.Wrapper>
-      <S.Box>
-        <S.Header>
-          <S.SignupTitle>회원가입</S.SignupTitle>
-        </S.Header>
+      <Modal1 Title="회원가입을 축하합니다!" />
+      <S.BackBt src="../img/Close.png" onClick={props.onClickLogin} />
+      <S.Contents>
+        <S.Title>회원가입</S.Title>
+        <form onSubmit={props.handleSubmit(props.onClickCreateUser)}>
+          <S.Section>
+            <S.InputTitle>이메일</S.InputTitle>
+            <S.InputBox>
+              <S.Input
+                type="email"
+                placeholder="이메일을 입력하세요."
+                {...props.register("email")}
+              />
+              <S.Errors>{props.formState?.errors?.email?.message}</S.Errors>
+            </S.InputBox>
+            <S.InputTitle>이름</S.InputTitle>
+            <S.InputBox>
+              <S.Input
+                type="name"
+                placeholder="이름을 입력하세요."
+                {...props.register("name")}
+              />
+              <S.Errors>{props.formState?.errors?.name?.message}</S.Errors>
+            </S.InputBox>
+            <S.InputTitle>비밀번호</S.InputTitle>
+            <S.InputBox>
+              <S.Input
+                type="password"
+                placeholder="비밀번호를 입력하세요."
+                {...props.register("password")}
+              />
+              <S.Errors>{props.formState?.errors?.password?.message}</S.Errors>
+            </S.InputBox>
+            <S.InputTitle>비밀번호 확인</S.InputTitle>
+            <S.InputBox>
+              <S.Input
+                type="password"
+                placeholder="비밀번호를 입력하세요."
+                {...props.register("passwordCh")}
+              />
+              <S.Errors>{props.formState?.errors?.password?.message}</S.Errors>
+            </S.InputBox>
+          </S.Section>
 
-        <S.InputSCBx>
-          아이디
-          <S.Input
-            type="name"
-            onChange={props.onChangeEmail}
-            placeholder="이메일 아이디를 @까지 정확하게 입력하세요."
-          />
-        </S.InputSCBx>
-        <S.InputSCBx>
-          비밀번호
-          <S.Input
-            type="password"
-            onChange={props.onChangePassword}
-            placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
-          />
-        </S.InputSCBx>
-        <S.InputSCBx>
-          비밀번호 확인
-          <S.Input
-            type="password"
-            onChange={props.onChangePasswordCK}
-            placeholder="영문+숫자 조합 8~16자리를 입력해주세요."
-          />
-        </S.InputSCBx>
-        <S.InputSCBx>
-          이름
-          <S.Input
-            type="text"
-            onChange={props.onChangeName}
-            placeholder="ex) 홍길동"
-          />
-        </S.InputSCBx>
-
-        <S.ButtonBox>
-          <S.SignupButton onClick={props.onClickCreateUser}>
+          <S.Button type="submit" isSignup={props.isSignUp}>
             회원가입하기
-          </S.SignupButton>
-          <S.CancelButton onClick={props.onClickCancel}>취소</S.CancelButton>
-        </S.ButtonBox>
-        <S.SignupBox>
-          이미 아이디가 있으신가요?
-          <S.Login onClick={props.onClickLogin}>로그인</S.Login>
-        </S.SignupBox>
-      </S.Box>
+          </S.Button>
+        </form>
+      </S.Contents>
     </S.Wrapper>
   );
 };

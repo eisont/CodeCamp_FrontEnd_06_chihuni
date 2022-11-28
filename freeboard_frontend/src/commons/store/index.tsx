@@ -7,6 +7,11 @@ export const AccessTokenState = atom({
   default: "",
 });
 
+export const Modal = atom({
+  key: "Modal",
+  default: false,
+});
+
 export const userInfoState = atom({
   key: "userInfo",
   default: {

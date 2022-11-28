@@ -1,8 +1,15 @@
 import { SearchOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
-export const Searchbar = styled.form`
-  width: 776px;
+export const Wrapper = styled.form`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Searchbar = styled.div`
+  width: 700px;
   height: 52px;
   border-radius: 15px;
   padding: 14px 19px;
@@ -32,4 +39,24 @@ export const SearchbarInput = styled.input`
   :placeholder {
     color: #000;
   }
+`;
+
+export const SearchDate = styled.input`
+  border: 1px solid #dbdbdb;
+  padding: 20px;
+
+  width: 190px;
+  height: 52px;
+`;
+
+export const SearchBt = styled.button`
+  width: 94px;
+  height: 52px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  border: none;
 `;

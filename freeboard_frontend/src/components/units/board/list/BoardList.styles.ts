@@ -111,25 +111,6 @@ export const SearchBox = styled.div`
   justify-content: space-between;
 `;
 
-export const SearchDate = styled.input`
-  border: 1px solid #dbdbdb;
-  padding: 20px;
-
-  width: 244px;
-  height: 52px;
-`;
-export const SearchBt = styled.button`
-  width: 94px;
-  height: 52px;
-  border-radius: 10px;
-  background: #000;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 500;
-  outline: none;
-  border: none;
-`;
-
 export const TableTop = styled.div`
   margin: 3vh 0;
 `;
