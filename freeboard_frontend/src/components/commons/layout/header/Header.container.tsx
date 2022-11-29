@@ -4,7 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { BasketCountState } from "../../../../commons/store";
+import { BasketCountState, FetchUserLoggedIn } from "../../../../commons/store";
 import {
   CREATE_POINT_TRANSACTION_OF_LOADING,
   FETCH_USED_ITEMS_COUNT_IPICKED,
@@ -22,10 +22,12 @@ export default function LayoutHeader() {
   const router = useRouter();
   const [chargePrice] = useState(100);
   const [basketCount, setBasketCount] = useRecoilState(BasketCountState);
+  const [, setLoggenInUser] = useRecoilState(FetchUserLoggedIn);
   const [logoutUser] = useMutation(LOGOUT_USER);
 
-  const { data } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
+  const { data: IPicked } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
   const { data: loggedIn } = useQuery(FETCH_USER_LOGGED_IN);
+  setLoggenInUser(loggedIn);
 
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
@@ -33,7 +35,7 @@ export default function LayoutHeader() {
 
   // 메인페이지 이동
   const onClickHome = () => {
-    router.push("../");
+    router.push("/");
   };
   // 로그인 이동
   const onClickLogin = () => {
@@ -97,7 +99,7 @@ export default function LayoutHeader() {
 
   return (
     <LayoutHeaderUI
-      data={data}
+      IPicked={IPicked}
       loggedIn={loggedIn}
       basketCount={basketCount}
       onClickHome={onClickHome}

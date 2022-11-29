@@ -30,7 +30,7 @@ const Product = styled.img`
   height: 85px;
   background: #c4c4c4;
 `;
-export default function WatchProduct() {
+const WatchProduct = () => {
   const [watchProduct] = useRecoilState(WatchProductState);
 
   useEffect(() => {
@@ -53,4 +53,5 @@ export default function WatchProduct() {
       ))}
     </Wrapper>
   );
-}
+};
+export default WatchProduct;

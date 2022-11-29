@@ -1,6 +1,8 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { FetchUserLoggedIn } from "../../../commons/store";
 import {
   IQuery,
   IQueryFetchUseditemsIBoughtArgs,
@@ -14,6 +16,7 @@ import {
   FETCHUSED_ITEMS_IBOUGHT,
   FETCHUSED_ITEMS_IPICKED,
   FETCHUSED_ITEMS_ISOLD,
+  FETCH_USED_ITEMS_COUNT_IPICKED,
 } from "./Mypage.queries";
 
 declare const window: typeof globalThis & {
@@ -21,8 +24,12 @@ declare const window: typeof globalThis & {
 };
 
 function MypagePage() {
-  const [chargePrice] = useState(100);
   const router = useRouter();
+  const isMypage = `/mypage`.includes(router.asPath);
+  console.log("router", router);
+  console.log("isMypage", isMypage);
+  const [chargePrice] = useState(100);
+  const [loggedInUser] = useRecoilState(FetchUserLoggedIn);
 
   const [createPointTransactionOfBuyingAndSelling] = useMutation(
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
@@ -42,19 +49,21 @@ function MypagePage() {
     Pick<IQuery, "fetchUseditemsIBought">,
     IQueryFetchUseditemsIBoughtArgs
   >(FETCHUSED_ITEMS_IBOUGHT);
-  console.log("boughtData", boughtData);
+  console.log("구매내역", boughtData);
 
-  const { data: pickData } = useQuery<
+  const { data: pickCountData } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
+  console.log("pickCountData", pickCountData);
+  const { data: pickData, refetch: IPickedRefetch } = useQuery<
     Pick<IQuery, "fetchUseditemsIPicked">,
     IQueryFetchUseditemsIPickedArgs
-  >(FETCHUSED_ITEMS_IPICKED);
-  console.log("pickData", pickData);
+  >(FETCHUSED_ITEMS_IPICKED, { variables: { search: "" } });
+  console.log("마이찜", pickData);
 
   const { data: soldData } = useQuery<
     Pick<IQuery, "fetchUseditemsISold">,
     IQueryFetchUseditemsISoldArgs
   >(FETCHUSED_ITEMS_ISOLD);
-  console.log("soldData", soldData);
+  console.log("판매내역", soldData);
 
   const onClickPickBought = () => {
     alert("이동할 페이지를 못 찾음");
@@ -101,11 +110,16 @@ function MypagePage() {
 
   return (
     <MypageUIpage
+      loggedInUser={loggedInUser?.fetchUserLoggedIn}
       onClickResult={onClickResult}
       onClickPickBought={onClickPickBought}
       onClickPickList={onClickPickList}
       onClickPickSold={onClickPickSold}
       onClickPoint={onClickPoint}
+      pickData={pickData?.fetchUseditemsIPicked}
+      pickCountData={pickCountData?.fetchUseditemsCountIPicked}
+      IPickedRefetch={IPickedRefetch}
+      isMypage={isMypage}
     />
   );
 }

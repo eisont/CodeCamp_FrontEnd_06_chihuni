@@ -29,7 +29,7 @@ export default function Layout(props: ILayoutProps) {
   const MarketWrite = ["/markets/new"];
   const MarketDetail = [`/markets/${router.query.useditemId}`];
   const MarketEdit = [`/markets/${router.query.useditemId}/edit`];
-  const Mypage = ["/boards/mypage"];
+  const Mypage = ["/mypage"];
 
   const isMainPage = MainPage.includes(router.asPath);
   const isLoginPage = LoginPage.includes(router.pathname);
@@ -37,6 +37,7 @@ export default function Layout(props: ILayoutProps) {
   const isMarketWrite = MarketWrite.includes(router.asPath);
   const isMarketDetail = MarketDetail.includes(router.asPath);
   const isMarketEdit = MarketEdit.includes(router.asPath);
+  const isMypage = Mypage.includes(router.asPath);
   return (
     <>
       <Wrapper>
@@ -48,6 +49,7 @@ export default function Layout(props: ILayoutProps) {
         <Fixed>
           {!isLoginPage &&
             !isSignupPage &&
+            !isMypage &&
             !isMarketDetail &&
             !isMarketWrite &&
             !isMarketEdit && <WatchProduct />}

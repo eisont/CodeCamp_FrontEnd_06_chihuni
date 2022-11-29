@@ -51,25 +51,26 @@ export const FETCHUSED_ITEMS_IBOUGHT = gql`
     }
   }
 `;
+
+// 마이찜 Count
+export const FETCH_USED_ITEMS_COUNT_IPICKED = gql`
+  query fetchUseditemsCountIPicked {
+    fetchUseditemsCountIPicked
+  }
+`;
+// 마이찜
 export const FETCHUSED_ITEMS_IPICKED = gql`
   query fetchUseditemsIPicked($page: Int, $search: String) {
     fetchUseditemsIPicked(page: $page, search: $search) {
       _id
-      name
-      remarks
       contents
       price
-      tags
-      images
-      pickedCount
-      useditemAddress {
-        zipcode
-        address
-        addressDetail
-        lat
-        lng
+      buyer {
+        _id
       }
-      soldAt
+      seller {
+        name
+      }
       createdAt
     }
   }

@@ -41,7 +41,7 @@ export default function LayoutHeaderUI(props: any) {
               <S.MenuBasketBt>
                 찜
                 <S.BasketNum>
-                  {props.data?.fetchUseditemsCountIPicked}
+                  {props.IPicked?.fetchUseditemsCountIPicked}
                 </S.BasketNum>
               </S.MenuBasketBt>
               <S.MenuBasketBt>
