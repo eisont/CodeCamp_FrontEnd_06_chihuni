@@ -37,12 +37,12 @@ export default function MarketCommentAnswerWrite(props: any) {
       await createUseditemQuestionAnswer({
         variables: {
           createUseditemQuestionAnswerInput: { contents },
-          useditemQuestionId: props.commentel?._id,
+          useditemQuestionId: props.commentID,
         },
         refetchQueries: [
           {
             query: FETCH_USED_ITEMS_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: String(props.commentel?._id) },
+            variables: { useditemQuestionId: String(props.commentID) },
           },
         ],
       });
@@ -74,7 +74,7 @@ export default function MarketCommentAnswerWrite(props: any) {
         refetchQueries: [
           {
             query: FETCH_USED_ITEMS_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: String(props.commentel?._id) },
+            variables: { useditemQuestionId: String(props.commentID) },
           },
         ],
       });
@@ -90,7 +90,6 @@ export default function MarketCommentAnswerWrite(props: any) {
       onClickAnswer={onClickAnswer}
       onClickUpdate={onClickUpdate}
       isEditSub={props.isEditSub}
-      commentel={props.commentel}
       contents={contents}
     />
   );

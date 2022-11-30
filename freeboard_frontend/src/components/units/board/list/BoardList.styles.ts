@@ -1,4 +1,4 @@
-import { EditOutlined, LikeOutlined, SearchOutlined } from "@ant-design/icons";
+import { EditOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
@@ -59,11 +59,6 @@ export const UserBox = styled.div`
   display: flex;
   align-items: center;
 `;
-export const BestBoardsUserIcon = styled.img`
-  width: 20px;
-  height: 20px;
-  margin: 0 6px 0 0;
-`;
 export const BestBoardsName = styled.div`
   font-weight: 400;
   font-size: 16px;
@@ -83,9 +78,6 @@ export const BestBoardsLikeBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-export const BestBoardsLikeIcon = styled.img`
-  width: 20px;
 `;
 export const BestBoardsLikeCount = styled.div`
   padding: 4.65px;

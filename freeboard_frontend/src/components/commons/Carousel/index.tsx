@@ -8,16 +8,28 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
 const Slick = styled(Slider)`
   width: 400px;
+
+  .slick-prev:before,
+  .slick-next:before {
+    font-size: 36px;
+    color: rgba(0, 0, 0, 0.2);
+  }
 `;
 
 const Image = styled.img`
-  width: 400px;
-  object-fit: scale-down;
+  width: 296px;
+  height: 296px;
+  object-fit: contain;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export default function SectionPhoto(props: any) {
+const Carousel = (props: any) => {
   const settings = {
     // 리스트 모양 보여주기
     dots: false,
@@ -34,13 +46,17 @@ export default function SectionPhoto(props: any) {
     // cssEase: 'ease',
   };
 
+  const result = props.data?.filter((ee: string) => ee);
+
   return (
     <Wrapper>
       <Slick {...settings}>
-        {props.data?.fetchUseditem?.images.map((el: any) => (
+        {result?.map((el: any) => (
           <Image key={uuidv4()} src={`https://storage.googleapis.com/${el}`} />
         ))}
       </Slick>
     </Wrapper>
   );
-}
+};
+
+export default Carousel;

@@ -15,7 +15,12 @@ import {
 } from "./BoardCommentList.queries";
 import * as S from "./BoardCommentList.styles";
 import { IBoardCommentListUIItemProps } from "./BoardCommentList.types";
-import { getDate } from "../../../../commons/libraries/utils";
+import { getDatecomma } from "../../../../commons/libraries/utils";
+import {
+  Closesvg,
+  Pencilsvg,
+  Profilesvg,
+} from "../../../../commons/styles/svgFill";
 
 export default function BoardCommentListUIItem(
   props: IBoardCommentListUIItemProps
@@ -71,7 +76,7 @@ export default function BoardCommentListUIItem(
       )}
       {!isEdit && (
         <S.ItemWrapper>
-          <S.Avatar src="../img/profileUser.png " />
+          <Profilesvg width="40" heigh="40" fill="#bdbdbd" />
 
           <S.MainWrapper>
             <S.WriterWrapper>
@@ -83,15 +88,21 @@ export default function BoardCommentListUIItem(
                 ? "컨텐츠 없음"
                 : props.el?.contents}
             </S.Contents>
-            <S.Date>{getDate(props.el?.createdAt)}</S.Date>
+            <S.Date>{getDatecomma(props.el?.createdAt)}</S.Date>
           </S.MainWrapper>
 
           <S.OptionWrapper>
-            <S.UpdateIcon src="../img/pencil.png" onClick={onClickUpdate} />
-            <S.DeleteIcon
-              src="../img/close.png"
-              onClick={onClickOpenDeleteModal}
-            />
+            <div onClick={onClickUpdate}>
+              <Pencilsvg
+                margin="0 16px 0 0"
+                width="19"
+                height="18"
+                fill="#BDBDBD"
+              />
+            </div>
+            <div onClick={onClickOpenDeleteModal}>
+              <Closesvg width="14" height="14" fill="#bdbdbd" />
+            </div>
           </S.OptionWrapper>
         </S.ItemWrapper>
       )}

@@ -15,13 +15,6 @@ export const ItemWrapper = styled.div`
   align-items: flex-start;
 `;
 
-export const Avatar = styled.img`
-  margin: 0 16px 0 0;
-  width: 40px;
-  height: 40px;
-  color: #888;
-`;
-
 export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,19 +40,6 @@ export const Contents = styled.div`
 export const OptionWrapper = styled.div`
   display: flex;
   align-items: center;
-`;
-export const UpdateIcon = styled.img`
-  margin: 0 16px 0 0;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  color: #888;
-`;
-export const DeleteIcon = styled.img`
-  width: 14px;
-  height: 14px;
-  color: #888;
-  cursor: pointer;
 `;
 
 export const Date = styled.div`

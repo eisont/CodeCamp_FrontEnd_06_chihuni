@@ -1,10 +1,16 @@
 // 게시판 상세보기 presenter
 
-import { getDate } from "../../../../commons/libraries/utils";
+import { getDatecomma } from "../../../../commons/libraries/utils";
 import { IBoardDetailUIProps } from "./BoardDetail.types";
 import * as S from "./BoardDetail.styles";
 import SectionVideoURL from "react-player";
 import { Tooltip } from "antd";
+import {
+  Addresssvg,
+  LikeIconsvg,
+  LinkIconsvg,
+  Profilesvg,
+} from "../../../../commons/styles/svgFill";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (
@@ -12,22 +18,32 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
       <S.Contents>
         <S.Header>
           <S.UserInformation>
-            <S.UserProfilePhoto
-              src={
-                props.data?.fetchBoard?.user?.picture !== undefined
-                  ? `https://storage.googleapis.com/${props.data?.fetchBoard?.user?.picture}`
-                  : "../img/profileUser.png"
-              }
-            />
-            <S.UserProfile>
+            {props.data?.fetchBoard?.user?.picture !== undefined ? (
+              <S.UserProfilePhoto
+                src={`https://storage.googleapis.com/${props.data?.fetchBoard?.user?.picture}`}
+              />
+            ) : (
+              <Profilesvg
+                margin="0 16.67px 0 0"
+                width="47"
+                height="47"
+                fill="#bdbdbd"
+              />
+            )}
+            <div>
               <S.UserName>{props.data?.fetchBoard?.writer}</S.UserName>
               <S.CreatedAt>
-                Date: {getDate(props.data?.fetchBoard?.createdAt)}
+                Date: {getDatecomma(props.data?.fetchBoard?.createdAt)}
               </S.CreatedAt>
-            </S.UserProfile>
+            </div>
           </S.UserInformation>
           <S.HeaderButtons>
-            <S.SharingImg />
+            <LinkIconsvg
+              margin="29.33px"
+              width="28"
+              height="14"
+              fill="#ffd600"
+            />
             <Tooltip
               placement="top"
               title={
@@ -36,7 +52,10 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
                   : "등록한 주소가 없습니다."
               }
             >
-              {props.data?.fetchBoard.images && <S.LotationImg />}
+              {/* div로 감싸지 않으면 Tooltip이 적용이 되지 않습니다. */}
+              <div>
+                <Addresssvg width="32" height="32" fill="#ffd600" />
+              </div>
             </Tooltip>
           </S.HeaderButtons>
         </S.Header>
@@ -71,11 +90,22 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
 
         <S.LikeButtonBox>
           <S.LikeButton>
-            <S.LikeButtonImg onClick={props.onlikeCount} />
+            <LikeIconsvg
+              onClick={props.onlikeCount}
+              width="22"
+              height="20"
+              fill="#FFD600"
+            />
             <S.LikeNumber>{props.data?.fetchBoard.likeCount}</S.LikeNumber>
           </S.LikeButton>
           <S.DisLikeButton>
-            <S.DisLikeButtonImg onClick={props.ondislikeCount} />
+            <LikeIconsvg
+              onClick={props.ondislikeCount}
+              width="22"
+              height="20"
+              fill="#828282"
+              rotate="rotate(180deg)"
+            />
             <S.DisLikeNumber>
               {props.data?.fetchBoard.dislikeCount}
             </S.DisLikeNumber>

@@ -89,11 +89,6 @@ export const LoginStay = styled.div`
     cursor: pointer;
   }
 `;
-export const CheckIcon = styled.img`
-  margin: 0 16px 0 0;
-  width: 20px;
-  height: 20px;
-`;
 
 export const Button = styled.button`
   width: 384px;

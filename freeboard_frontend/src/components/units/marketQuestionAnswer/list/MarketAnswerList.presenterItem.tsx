@@ -8,7 +8,6 @@ import {
   IMutationDeleteUseditemQuestionAnswerArgs,
 } from "../../../../commons/types/generated/types";
 import * as S from "./MarketAnswerList.styles";
-import { getDate } from "../../../../commons/libraries/utils";
 import {
   DELETE_USED_ITEM_QUESTION_ANSWER,
   FETCH_USED_ITEMS_QUESTION_ANSWERS,
@@ -17,6 +16,12 @@ import { IMarketCommentListUIItemProps } from "./MarketAnswerList.types";
 import { useMutation } from "@apollo/client";
 import MarketCommentAnswerWrite from "../write/MarketCommentAnswerWrite.container";
 import MarketCommentAnswerUpdate from "../../marketQuestionAnswerUpdate/update/MarketCommentAnswerUpdate.container";
+import {
+  AnswerArrow,
+  Closesvg,
+  Pencilsvg,
+  Profilesvg,
+} from "../../../../commons/styles/svgFill";
 
 export default function MarketAnswerListUIItem(
   props: IMarketCommentListUIItemProps
@@ -42,7 +47,7 @@ export default function MarketAnswerListUIItem(
         refetchQueries: [
           {
             query: FETCH_USED_ITEMS_QUESTION_ANSWERS,
-            variables: { useditemQuestionId: String(props.commentel?._id) },
+            variables: { useditemQuestionId: String(props?.commentID) },
           },
         ],
       });
@@ -59,22 +64,49 @@ export default function MarketAnswerListUIItem(
     <>
       {!isEditSub && (
         <S.ItemWrapper>
-          <S.FlexWrapper>
-            <S.Box>
-              <S.Avatar />
-              <S.SecondBox>
-                <S.UserName>{props.answerel?.user?.name}</S.UserName>
-                <S.CreateAt>{getDate(props.answerel?.createdAt)}</S.CreateAt>
-              </S.SecondBox>
-            </S.Box>
+          <S.Box>
+            <AnswerArrow
+              margin="0 24px 0 60px"
+              width="15"
+              height="17"
+              fill="#000"
+            />
+            {props.answerel?.user?.picture === null ? (
+              <Profilesvg width="40" height="40" fill="#bdbdbd" />
+            ) : (
+              <S.Avatar
+                src={
+                  props.answerel?.user?.picture?.inclueds("data:image")
+                    ? props.answerel?.user?.picture
+                    : `https://storage.googleapis.com/${props.answerel?.user?.picture}`
+                }
+              />
+            )}
 
-            <S.OptionWrapper>
-              {/* <S.UpdateIcon onClick={onClickUpdate} /> */}
-              <S.DeleteIcon onClick={onClickDelete} />
-            </S.OptionWrapper>
-          </S.FlexWrapper>
+            <S.ContentsBox>
+              <S.Name>{props.answerel?.user?.name}</S.Name>
+              <S.Contents>{props.answerel?.contents}</S.Contents>
+            </S.ContentsBox>
+          </S.Box>
 
-          <S.Contents>{props.answerel?.contents}</S.Contents>
+          <S.OptionWrapper>
+            <S.UpdateBt onClick={onClickUpdate}>
+              <Pencilsvg
+                margin="0 16px 0 0"
+                width="18"
+                height="18"
+                fill="#bdbdbd"
+              />
+            </S.UpdateBt>
+            <S.DeleteBt onClick={onClickDelete}>
+              <Closesvg
+                margin="0 16px 0 0"
+                width="18"
+                height="18"
+                fill="#bdbdbd"
+              />
+            </S.DeleteBt>
+          </S.OptionWrapper>
         </S.ItemWrapper>
       )}
       {isEditSub && (

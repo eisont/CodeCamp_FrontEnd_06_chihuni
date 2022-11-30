@@ -39,5 +39,10 @@ export default function MarketCommentList() {
     });
   };
 
-  return <MarketCommentListUI data={data} onLoadMore={onLoadMore} />;
+  return (
+    <MarketCommentListUI
+      data={data?.fetchUseditemQuestions}
+      onLoadMore={onLoadMore}
+    />
+  );
 }

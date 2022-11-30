@@ -7,10 +7,9 @@ export const Wrapper = styled.div`
   width: 1200px;
   margin: 0px auto;
 `;
-
-export const PencilIcon = styled.img`
-  width: 20px;
-  margin-right: 14px;
+export const Flexbox = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 export const InputWrapper = styled.div`

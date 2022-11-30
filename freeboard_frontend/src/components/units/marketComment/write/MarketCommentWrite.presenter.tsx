@@ -1,5 +1,6 @@
 // 중고마켓 댓글 등록 presenter
 
+import { CommentIconsvg } from "../../../../commons/styles/svgFill";
 import * as S from "./MarketCommentWrite.styles";
 import { IMarketCommentWriteUIProps } from "./MarketCommentWrite.types";
 
@@ -10,10 +11,15 @@ export default function MarketCommentWriteUI(
     <S.Wrapper>
       {/* isEdit이 false일때 댓글 입력창 보여줘 */}
       {!props.isEdit && (
-        <>
-          <S.PencilIcon />
-          <span>문의하기</span>
-        </>
+        <S.Title>
+          <CommentIconsvg
+            margin="0 14px 0 0"
+            width="20"
+            height="20"
+            fill="#ffd600"
+          />
+          문의하기
+        </S.Title>
       )}
       <S.ContentsWrapper>
         <S.Contents
@@ -28,7 +34,7 @@ export default function MarketCommentWriteUI(
           <S.Button
             onClick={props.isEdit ? props.onClickUpdate : props.onClickComment}
           >
-            {props.isEdit ? "수정하기" : "등록하기"}
+            {props.isEdit ? "수정하기" : "문의하기"}
           </S.Button>
         </S.BottomWrapper>
       </S.ContentsWrapper>

@@ -9,7 +9,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  &: hover {
+
+  &:hover {
     filter: invert(100%);
     transition: 1s;
   }
@@ -27,6 +28,7 @@ const ChanelImg = styled.div`
 const BackgroundImg = styled.div`
   text-align: center;
 `;
+
 export default function Home() {
   const router = useRouter();
   const Mainpage = () => {

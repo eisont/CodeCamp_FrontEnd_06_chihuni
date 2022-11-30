@@ -1,10 +1,18 @@
+import { PagenationArrowsvg } from "../../../../../commons/styles/svgFill";
 import * as S from "./Paginations01.styles";
 import { IPaginations01UIProps } from "./Paginations01.types";
 
 export default function Paginations01UI(props: IPaginations01UIProps) {
   return (
-    <S.Wrapper>
-      <S.Page onClick={props.onClickPrevPage}>{`<`}</S.Page>
+    <S.Wrapper margin={props.margin}>
+      <S.Page>
+        <PagenationArrowsvg
+          margin={props.margin}
+          width="8"
+          height="12"
+          fill="#000"
+        />
+      </S.Page>
       {new Array(10).fill(1).map(
         (_, index) =>
           props.startPage + index <= props.lastPage && (
@@ -18,7 +26,9 @@ export default function Paginations01UI(props: IPaginations01UIProps) {
             </S.Page>
           )
       )}
-      <S.Page onClick={props.onClickNextPage}>{`>`}</S.Page>
+      <S.Page rotate="rotate(180deg)">
+        <PagenationArrowsvg width="8" height="12" fill="#000" />
+      </S.Page>
     </S.Wrapper>
   );
 }

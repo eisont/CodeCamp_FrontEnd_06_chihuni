@@ -1,5 +1,6 @@
 // login Presenter
 
+import { CheckIconsvg } from "../../../commons/styles/svgFill";
 import * as S from "./login.styles";
 
 export const LoginUI = (props: any) => {
@@ -28,7 +29,12 @@ export const LoginUI = (props: any) => {
               <S.Errors>{props.formState?.errors?.password?.message}</S.Errors>
             </S.InputBox>
             <S.LoginStay>
-              <S.CheckIcon src="../img/LoginStayIcon.png" />
+              <CheckIconsvg
+                margin="0 16px 0 0"
+                width="20"
+                height="20"
+                fill="#fff"
+              />
               로그인 상태 유지
             </S.LoginStay>
           </S.Section>

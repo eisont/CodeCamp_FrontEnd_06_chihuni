@@ -8,25 +8,28 @@ import {
 import { FETCH_USED_ITEMS_QUESTION_ANSWERS } from "./MarketAnswerList.queries";
 import MarketAnswerListUI from "./MarketAnswerList.presenter";
 
-export default function MarketAnswerList(props: any) {
+const MarketAnswerList = (props: any) => {
   const { data } = useQuery<
     Pick<IQuery, "fetchUseditemQuestionAnswers">,
     IQueryFetchUseditemQuestionAnswersArgs
   >(FETCH_USED_ITEMS_QUESTION_ANSWERS, {
-    variables: { useditemQuestionId: String(props.commentel?._id) }, // questions의 데이터를 사용
+    variables: { useditemQuestionId: String(props.commentID) }, // questions의 데이터를 사용
   });
 
   const onLoadMore = () => {
     // 데이터가 없으면 리턴
     if (!data) return <div />;
   };
+
   return (
     <MarketAnswerListUI
       isEditSub={props.isEditSub}
       setIsEditSub={props.setIsEditSub}
       data={data}
       onLoadMore={onLoadMore}
-      commentel={props.commentel}
+      commentID={props.commentID}
     />
   );
-}
+};
+
+export default MarketAnswerList;

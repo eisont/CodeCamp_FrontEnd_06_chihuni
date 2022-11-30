@@ -6,17 +6,17 @@ import MarketAnswerListUIItem from "./MarketAnswerList.presenterItem";
 
 export default function MarketAnswerListUI(props: IMarketCommentListUIProps) {
   if (!props.data) return <div />;
+  console.log("data", props.data);
+
   return (
-    <>
-      <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
-        {props.data?.fetchUseditemQuestionAnswers.map((answerel: any) => (
-          <MarketAnswerListUIItem
-            key={answerel._id}
-            commentel={props.commentel}
-            answerel={answerel}
-          />
-        ))}
-      </InfiniteScroll>
-    </>
+    <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
+      {props.data?.fetchUseditemQuestionAnswers.map((answerel: any) => (
+        <MarketAnswerListUIItem
+          key={answerel._id}
+          answerel={answerel}
+          commentID={props.commentID}
+        />
+      ))}
+    </InfiniteScroll>
   );
 }

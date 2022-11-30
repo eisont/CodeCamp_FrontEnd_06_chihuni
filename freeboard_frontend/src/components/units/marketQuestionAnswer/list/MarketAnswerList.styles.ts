@@ -2,47 +2,44 @@
 
 import styled from "@emotion/styled";
 import { Rate } from "antd";
-import { EditOutlined, CloseOutlined, FormOutlined } from "@ant-design/icons";
+import { FormOutlined } from "@ant-design/icons";
 
 export const ItemWrapper = styled.div`
-  width: 792px;
-  margin: 18px auto;
-  padding: 10px 0;
-  border-bottom: 1px solid lightgray;
-`;
+  width: 1200px;
+  margin: 0 auto 20px auto;
 
-export const FlexWrapper = styled.div`
-  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
 export const Box = styled.div`
-  height: 60px;
   display: flex;
   align-items: center;
 `;
-export const Avatar = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: #888;
+export const Avatar = styled.img`
+  width: 40px;
+  height: 40px;
 `;
-export const SecondBox = styled.div`
+export const ContentsBox = styled.div`
   margin-left: 16px;
-  height: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `;
 
-export const UserName = styled.div`
-  font-size: 24px;
+export const Name = styled.div`
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
 `;
-export const CreateAt = styled.div`
-  font-size: 15px;
+export const Contents = styled.div`
+  font-size: 16px;
+  font-weight: 400;
+  color: #4f4f4f;
 `;
+
 export const WriterWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -51,10 +48,6 @@ export const WriterWrapper = styled.div`
 export const Writer = styled.div`
   font-size: 20px;
   font-weight: bold;
-`;
-export const Contents = styled.div`
-  font-size: 24px;
-  background: rgba(255, 0, 0, 0.1);
 `;
 
 export const OptionWrapper = styled.div`
@@ -66,16 +59,15 @@ export const QuestionIcon = styled(FormOutlined)`
   color: #888;
   cursor: pointer;
 `;
-export const UpdateIcon = styled(EditOutlined)`
-  font-size: 24px;
-  cursor: pointer;
-  color: #888;
-  margin: 0 10px;
+export const UpdateBt = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
 `;
-export const DeleteIcon = styled(CloseOutlined)`
-  font-size: 24px;
-  color: #888;
-  cursor: pointer;
+export const DeleteBt = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const DateString = styled.div`

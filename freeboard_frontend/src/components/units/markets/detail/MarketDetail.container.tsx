@@ -32,7 +32,6 @@ const MarketDetail = () => {
 
   const { data: likeCount } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
   const { data: UserLoggedIn } = useQuery(FETCH_USER_LOGGED_IN);
-  console.log("UserLoggedIn", UserLoggedIn);
 
   // 삭제
   const [deleteUseditem] = useMutation<

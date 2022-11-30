@@ -10,18 +10,29 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { RecoilRoot } from "recoil";
 import ApolloSetting from "../src/components/commons/apollo";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <ApolloSetting>
-        {/* 글로벌 스타일을 적용하기 위한 것 */}
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloSetting>
-    </RecoilRoot>
+    <>
+      <Head>
+        <title>CodeCamp_Portfolio</title>
+        <link rel="icon" href="/chihunIcon.jpg" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <RecoilRoot>
+        <ApolloSetting>
+          {/* 글로벌 스타일을 적용하기 위한 것 */}
+          <Global styles={globalStyles} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloSetting>
+      </RecoilRoot>
+    </>
   );
 }
 export default MyApp;

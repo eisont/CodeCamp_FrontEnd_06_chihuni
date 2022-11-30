@@ -10,7 +10,8 @@ import styled from "@emotion/styled";
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  width: 792px;
+  padding: 64px 0 82px 0;
+  width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;

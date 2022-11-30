@@ -1,27 +1,37 @@
 // 중고마켓 목록 styles
 
-import { SearchOutlined, DollarCircleOutlined } from "@ant-design/icons";
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+  margin: 0 auto;
   width: 1200px;
-  margin: 50px auto;
-  text-align: center;
 `;
 
+// Best Box
+export const BestBox = styled.div`
+  margin: 80px auto;
+
+  width: 100%;
+  height: 473px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
 export const BestText = styled.div`
   font-size: 36px;
   font-weight: 700;
   color: #000;
 `;
 export const BestProduct = styled.div`
-  width: 1200px;
-  height: 473px;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
+
+// Best Product
 export const BestProductBox = styled.div`
   position: relative;
   padding: 20px;
@@ -30,28 +40,32 @@ export const BestProductBox = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  text-align: start;
+  backgroun: #fff;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 `;
 export const BestProductImage = styled.img`
   width: 242px;
   height: 242px;
   object-fit: contain;
-  cursor: pointer;
 `;
 export const BestProductName = styled.div`
   padding: 20px 0 4px 0;
+  width: 100%;
   font-size: 18px;
   font-weight: 500;
   color: #000;
 `;
 export const BestProductRemark = styled.div`
+  width: 100%;
   font-weight: 500;
   font-size: 12px;
   color: #4f4f4f;
-  text-align: start;
 `;
 export const BestProductPrice = styled.div`
-  padding: 12px 0 0 0;
+  width: 100%;
   font-weight: 700;
   font-size: 18px;
   color: #000;
@@ -60,37 +74,33 @@ export const BestProductLikeBox = styled.div`
   position: absolute;
   bottom: 20px;
   right: 20px;
+
   width: 24px;
   height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
-export const BestProductLikeIcon = styled.img`
-  width: 20px;
-`;
+
 export const BestProductLikeCount = styled.div`
-  padding: 4.65px;
   font-weight: 400;
   font-size: 16px;
   color: #000;
 `;
 
-export const SectionBox = styled.div`
-  width: 1200px;
-  margin: 0 auto;
-`;
-export const MenuBox = styled.div`
+// Section Box
+export const SearchBox = styled.div`
+  margin: 0 0 40px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
-export const Menu = styled.div`
+export const MenuBox = styled.div`
   display: flex;
   align-items: center;
 `;
-export const OnSaleProduct = styled.div`
+export const Menu = styled.div`
   margin: 0 20px 0 0;
   font-weight: 400;
   font-size: 18px;
@@ -103,52 +113,20 @@ export const OnSaleProduct = styled.div`
     border-bottom: 1px solid #ffd600;
   }
 `;
-export const SoldProduct = styled.div`
-  font-weight: 400;
-  font-size: 18px;
-  color: #4f4f4f;
 
-  &:hover {
-    cursor: pointer;
-    color: #000;
-    font-weight: 500;
-    border-bottom: 1px solid #ffd600;
-  }
-`;
-export const SearchIcon = styled(SearchOutlined)`
-  font-size: 30px;
-`;
-export const Searchbar01 = styled.input`
-  border-radius: 10px;
-  border: 2px solid #dbdbdb;
-  width: 95%;
-  padding: 1vh;
-  // background: #f0f;
-`;
-
-export const TableTop = styled.div`
-  margin: 3vh 0;
-  width: 100%;
-  flex-direction: row;
-`;
-
+// infiniteScroll part
 export const Row = styled.div`
+  margin: 0 0 20px 0;
+  padding: 20px 0 0 0;
   width: 100%;
-  height: 200px;
-  margin: 1% 0;
+  height: 181px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 2px solid #000;
+  border-top: 1px solid #bdbdbd;
 `;
-export const BigBox = styled.div`
+export const FlexBox = styled.div`
   display: flex;
-`;
-export const FlexImages = styled.div`
-  height: 200px;
-  width: 200px;
-  display: flex;
-  justify-content: center;
   align-items: center;
 `;
 export const Image = styled.img`
@@ -159,72 +137,51 @@ export const Image = styled.img`
 `;
 
 export const ColumnBox = styled.div`
+  margin: 0 0 0 40px;
+  width: 850px; // 임시 가로길이
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: start;
+  justify-content: space-between;
 `;
 
-export const ColumnName = styled.div`
-  overflow: hidden;
-  text-align: center;
-  cursor: default;
+export const Name = styled.div`
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 500;
+  color: #000;
 `;
-export const ColumnRemarks = styled.div`
+export const Remarks = styled.div`
+  margin: 4px 0 8px 0;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
+  color: #4f4f4f;
 `;
 export const ColumnTags = styled.div`
-  margin: 8px 0;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   color: #bdbdbd;
 `;
-export const FlexBox = styled.div`
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-`;
-export const FlexUserpicture = styled.img`
-  margin-right: 6px;
+
+export const SellerIcon = styled.img`
+  margin: 0 6px 0 0;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  object-fit: contain;
 `;
-export const FlexUser = styled.div`
+export const Seller = styled.div`
   margin-right: 22px;
   font-size: 16px;
   font-weight: 700;
+  color: #4f4f4f;
 `;
-
-export const LikeBox = styled.div`
-  height: 24px;
-  display: flex;
-  align-items: center;
-`;
-export const FlexPickIcon = styled.img`
-  margin-right: 6px;
-  width: 20px;
-  color: #ffd600;
-`;
-export const FlexPick = styled.div`
+export const Pick = styled.div`
   font-size: 16px;
   font-weight: 400;
+  color: #4f4f4f;
 `;
 export const FlexPrice = styled.div`
   font-weight: 900;
   font-size: 24px;
-`;
-
-export const ColumnBasic = styled.div`
-  width: 20%;
-  text-align: center;
-  font-size: 16px;
-`;
-export const Dollar = styled(DollarCircleOutlined)`
-  font-size: 24px;
-  color: #ffd600;
-  margin-right: 11px;
+  display: flex;
+  align-items: center;
+  color: #000;
 `;

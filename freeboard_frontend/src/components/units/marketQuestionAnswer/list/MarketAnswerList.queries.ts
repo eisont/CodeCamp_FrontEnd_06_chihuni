@@ -17,11 +17,9 @@ export const FETCH_USED_ITEMS_QUESTION_ANSWERS = gql`
       _id
       contents
       user {
-        _id
         name
-        createdAt
+        picture
       }
-      createdAt
     }
   }
 `;

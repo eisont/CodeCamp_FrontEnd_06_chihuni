@@ -1,3 +1,4 @@
+import { CommentIconsvg } from "../../../../commons/styles/svgFill";
 import * as S from "./BoardCommentWrite.styles";
 import { IBoardCommentWriteUIProps } from "./BoardCommentWrite.types";
 
@@ -6,10 +7,15 @@ export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
     <S.Wrapper>
       {/* 등록하기 일때 보여줘 */}
       {!props.isEdit && (
-        <>
-          <S.PencilIcon src="../img/Comment.png" />
-          <span>댓글</span>
-        </>
+        <S.Flexbox>
+          <CommentIconsvg
+            margin="0 14px 0 0"
+            width="20"
+            height="20"
+            fill="#ffd600"
+          />{" "}
+          댓글
+        </S.Flexbox>
       )}
       <S.InputWrapper>
         <S.Input

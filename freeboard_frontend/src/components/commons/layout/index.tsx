@@ -8,6 +8,7 @@ import { ReactNode } from "react";
 import { useRouter } from "next/router";
 import WatchProduct from "../WatchProduct";
 import Modal1 from "./modal";
+import LayoutFooter from "./footer/footer.container";
 
 const Wrapper = styled.div``;
 const Body = styled.div``;
@@ -56,6 +57,7 @@ export default function Layout(props: ILayoutProps) {
         </Fixed>
 
         <Body>{props.children}</Body>
+        {!isLoginPage && !isSignupPage && <LayoutFooter />}
       </Wrapper>
     </>
   );

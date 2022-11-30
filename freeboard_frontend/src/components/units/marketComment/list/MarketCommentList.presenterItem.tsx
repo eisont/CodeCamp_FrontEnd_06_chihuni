@@ -15,9 +15,15 @@ import {
 } from "./MarketCommentList.queries";
 import * as S from "./MarketCommentList.styles";
 import { IMarketCommentListUIItemProps } from "./MarketCommentList.types";
-import { getDate } from "../../../../commons/libraries/utils";
+import { getDatecomma } from "../../../../commons/libraries/utils";
 import MarketCommentAnswerWrite from "../../marketQuestionAnswer/write/MarketCommentAnswerWrite.container";
 import MarketAnswerList from "../../marketQuestionAnswer/list/MarketAnswerList.container";
+import {
+  Closesvg,
+  Pencilsvg,
+  Profilesvg,
+  Questionsvg,
+} from "../../../../commons/styles/svgFill";
 
 export default function MarketCommentListUIItem(
   props: IMarketCommentListUIItemProps
@@ -62,51 +68,66 @@ export default function MarketCommentListUIItem(
 
   return (
     <>
-      {!isEdit && (
-        <S.ItemWrapper>
-          <S.FlexWrapper>
-            <S.Box>
-              <S.Avatar
-                src={
-                  props.commentel?.user?.picture === null
-                    ? "../img/profileUser.png"
-                    : `${props.commentel?.user?.picture}`
-                }
-              />
-              <S.SecondBox>
-                <S.UserName>{props.commentel?.user?.name}</S.UserName>
-                <S.Contents>{props.commentel?.contents}</S.Contents>
-                <S.CreateAt>{getDate(props.commentel?.createdAt)}</S.CreateAt>
-              </S.SecondBox>
-            </S.Box>
-
-            <S.OptionWrapper>
-              <S.QuestionIcon onClick={onClickCreateAnswer} />
-              <S.UpdateIcon onClick={onClickUpdate} />
-              <S.DeleteIcon onClick={onClickDelete} />
-            </S.OptionWrapper>
-          </S.FlexWrapper>
-        </S.ItemWrapper>
-      )}
-      {isEdit && (
+      {isEdit ? (
         <MarketCommentWrite
           isEdit={true}
           setIsEdit={setIsEdit}
-          commentel={props.commentel}
+          commentID={props.commentel?._id}
         />
+      ) : (
+        <S.ItemWrapper>
+          <S.FlexBox>
+            {props.commentel?.user?.picture === null ? (
+              <Profilesvg width="40" height="40" fill="#bdbdbd" />
+            ) : (
+              <S.Avatar src={props.commentel?.user?.picture} />
+            )}
+
+            <S.TitleBox>
+              <S.UserName>{props.commentel?.user?.name}</S.UserName>
+              <S.Contents>{props.commentel?.contents}</S.Contents>
+              <S.CreateAt>
+                {getDatecomma(props.commentel?.createdAt)}
+              </S.CreateAt>
+            </S.TitleBox>
+          </S.FlexBox>
+
+          <S.BtBox>
+            <S.Bt onClick={onClickCreateAnswer}>
+              <Questionsvg
+                margin="0 16px 0 0"
+                width="20"
+                heigth="20"
+                fill="#bdbdbd"
+              />
+            </S.Bt>
+            <S.Bt onClick={onClickUpdate}>
+              <Pencilsvg
+                margin="0 16px 0 0"
+                width="18"
+                heigth="18"
+                fill="#bdbdbd"
+              />
+            </S.Bt>
+            <S.Bt onClick={onClickDelete}>
+              <Closesvg width="14" heigth="14" fill="#bdbdbd" />
+            </S.Bt>
+          </S.BtBox>
+        </S.ItemWrapper>
       )}
       {isEditSub && (
         <MarketCommentAnswerWrite
           isEditSub={true}
           setIsEditSub={setIsEditSub}
-          commentel={props.commentel}
+          commentID={props.commentel?._id}
         />
       )}
       <MarketAnswerList
         isEditSub={isEditSub}
         setIsEditSub={setIsEditSub}
-        commentel={props.commentel}
+        commentID={props.commentel?._id}
       />
+      <S.Hr />
     </>
   );
 }

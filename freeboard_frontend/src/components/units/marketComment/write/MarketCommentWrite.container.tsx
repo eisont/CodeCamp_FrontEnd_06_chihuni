@@ -78,7 +78,7 @@ export default function MarketCommentWrite(props: any) {
       await updateUseditemQuestion({
         variables: {
           updateUseditemQuestionInput,
-          useditemQuestionId: String(props.commentel?._id),
+          useditemQuestionId: String(props.commentID),
         },
         refetchQueries: [
           {

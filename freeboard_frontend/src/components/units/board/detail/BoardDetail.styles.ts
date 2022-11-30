@@ -42,7 +42,6 @@ export const UserProfilePhoto = styled.img`
   width: 47px;
   margin-right: 20px;
 `;
-export const UserProfile = styled.div``;
 export const UserName = styled.div`
   font-size: 24px;
   font-weight: 900;
@@ -54,17 +53,6 @@ export const CreatedAt = styled.div`
 export const HeaderButtons = styled.div`
   display: flex;
   align-items: center;
-`;
-export const SharingImg = styled(LinkOutlined)`
-  cursor: pointer;
-  transform: rotate(45deg);
-  font-size: 26px;
-  color: #ffd600;
-`;
-export const LotationImg = styled(EnvironmentOutlined)`
-  margin-left: 25px;
-  font-size: 27px;
-  color: #ffd600;
 `;
 
 export const Body = styled.div`
@@ -117,12 +105,6 @@ export const LikeButton = styled.div`
   margin-right: 40px;
   // background: #f00;
 `;
-export const LikeButtonImg = styled(LikeOutlined)`
-  font-size: 40px;
-  color: #ffd600;
-  cursor: pointer;
-  // background: #ff0;
-`;
 export const LikeNumber = styled.p`
   color: #ffd600;
   font-size: 25px;
@@ -134,12 +116,6 @@ export const LikeNumber = styled.p`
 export const DisLikeButton = styled.div`
   flex-direction: column;
   text-align: center;
-`;
-export const DisLikeButtonImg = styled(LikeOutlined)`
-  font-size: 40px;
-  transform: rotate(180deg);
-  color: #828282;
-  cursor: pointer;
 `;
 export const DisLikeNumber = styled.p`
   color: #828282;
