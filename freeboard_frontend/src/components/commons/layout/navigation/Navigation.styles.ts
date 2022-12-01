@@ -1,47 +1,35 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  position: relative;
-  z-index: 10;
   width: 100%;
-  box-shadow: 0 1px 0 #dbdbdb;
-  background: #fff;
+  height: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background: #ffd600;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
 `;
-export const BtBox = styled.div`
-  width: 70%;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-export const Page = styled.div`
-  display: flex;
-  align-items: center;
-`;
+
 export const PageBt = styled.div`
-  padding: 0 50px 0 0;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
+  font-size: 18px;
+  font-weight: ${(props) =>
+    props.isMarkets || props.isBoard || props.isMyPage ? "700" : "500"};
   color: ${(props) =>
-    props.isMarkets || props.isBoard || props.isMyPage ? "#000" : "#dbdbdb"};
+    props.isMarkets || props.isBoard || props.isMyPage ? "#514400" : "#AB9000"};
+  transition: 0.2s;
 
   &:hover {
-    color: #000;
-    font-weight: 900;
+    cursor: pointer;
+    color: #514400;
+    font-weight: 700;
   }
 `;
-export const WriteBt = styled.div`
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s;
-  &:hover {
-    color: #999;
-    font-weight: 900;
-  }
+
+export const Hr = styled.div`
+  margin: 0 40px;
+  width: 1px;
+  height: 20px;
+
+  background: #fff;
 `;

@@ -3,8 +3,14 @@
 import * as S from "./Header.styles";
 import Script from "next/script";
 import { PointComma } from "../../../../commons/libraries/point";
-// 로그인 시 유저 정보 컴포넌트
-// import LoginUserbar from "../loginuserbar";
+import { CodeCampLogosvg } from "../../../../commons/styles/Imgsvg";
+import {
+  ImageChange,
+  Logoutsvg,
+  PointPigsvg,
+  ProfileArrow,
+  Profilesvg,
+} from "../../../../commons/styles/Iconsvg";
 
 export default function LayoutHeaderUI(props: any) {
   return (
@@ -21,39 +27,91 @@ export default function LayoutHeaderUI(props: any) {
 
       <S.Wrapper>
         <S.CenterBox>
-          {/* 로그인 시 유저 정보 컴포넌트 */}
-          {/* <LoginUserbar /> */}
-          <S.HomeBt onClick={props.onClickHome}></S.HomeBt>
-          {props.loggedIn?.fetchUserLoggedIn._id ? (
-            <S.RightBox>
-              <S.Point>
-                <S.Text>
-                  {props.loggedIn?.fetchUserLoggedIn?.name} 님의 포인트{" "}
-                  <u>
-                    {PointComma(
-                      props.loggedIn?.fetchUserLoggedIn?.userPoint?.amount
-                    )}
-                  </u>
-                  P
-                </S.Text>
-              </S.Point>
-              <S.MenuBt onClick={props.onClickPoint}>충전</S.MenuBt>
-              <S.MenuBasketBt>
-                찜
-                <S.BasketNum>
-                  {props.IPicked?.fetchUseditemsCountIPicked}
-                </S.BasketNum>
-              </S.MenuBasketBt>
-              <S.MenuBasketBt>
-                장바구니<S.BasketNum>{props.basketCount}</S.BasketNum>
-              </S.MenuBasketBt>
-              <S.MenuBt onClick={props.onClickLogout}>로그아웃</S.MenuBt>
-            </S.RightBox>
+          <CodeCampLogosvg width="236" height="36" fill="#000" />
+          {props.loggedIn?._id ? (
+            <S.UserInfoBox>
+              <S.FlexBox onClick={props.onClickModal}>
+                {props.loggedIn?.picture === null ? (
+                  <Profilesvg
+                    margin="0 28px 0 0"
+                    width="48"
+                    height="48"
+                    fill="#c4c4c4"
+                  />
+                ) : (
+                  <S.Picture src={props.loggedIn?.picture} />
+                )}
+                <ProfileArrow width="12" height="9" fill="#000" />
+              </S.FlexBox>
+
+              {props.isModal && (
+                <>
+                  <S.ModalabsoluteBox isModal={props.isModal}>
+                    <ProfileArrow
+                      ratate="rotate(180deg)"
+                      width="16"
+                      height="12"
+                      fill="#fff"
+                    />
+                  </S.ModalabsoluteBox>
+
+                  <S.ModalBox isModal={props.isModal}>
+                    <S.UserInfo>
+                      {props.loggedIn?.picture === null ? (
+                        <div style={{ position: "relative" }}>
+                          <Profilesvg width="48" height="48" fill="#c4c4c4" />
+                          <S.SettingabsoluteBox
+                            onClick={props.onClickChangeImage}
+                          >
+                            <ImageChange
+                              width="16"
+                              height="16"
+                              CilcleFill="#000"
+                              SettingFill="#fff"
+                            />
+                          </S.SettingabsoluteBox>
+                        </div>
+                      ) : (
+                        <S.Picture src={props.loggedIn?.picture} />
+                      )}
+                      <S.User>
+                        <S.UserName>{props.loggedIn?.name}</S.UserName>
+                        <S.UserPoint>
+                          {PointComma(props.loggedIn?.userPoint?.amount)} P
+                        </S.UserPoint>
+                      </S.User>
+                    </S.UserInfo>
+                    <S.Hr Bg="#000" />
+                    <S.MenuBox onClick={props.onClickPoint}>
+                      <PointPigsvg
+                        margin="0 14px 0 0"
+                        width="20"
+                        height="19"
+                        fill="#bdbdbd"
+                      />
+                      충전하기
+                    </S.MenuBox>
+
+                    <S.Hr Bg="#efefef" />
+
+                    <S.MenuBox onClick={props.onClickLogout}>
+                      <Logoutsvg
+                        margin="0 15px 0 0"
+                        width="18"
+                        height="18"
+                        fill="#bdbdbd"
+                      />
+                      로그아웃
+                    </S.MenuBox>
+                  </S.ModalBox>
+                </>
+              )}
+            </S.UserInfoBox>
           ) : (
-            <S.RightBox>
-              <S.MenuBt onClick={props.onClickLogin}>로그인</S.MenuBt>
-              <S.MenuBt onClick={props.onClickSignup}>회원가입</S.MenuBt>
-            </S.RightBox>
+            <S.FlexBox2>
+              <S.LoginBt onClick={props.onClickLogin}>로그인</S.LoginBt>
+              <S.SignupBt onClick={props.onClickSignup}>회원가입</S.SignupBt>
+            </S.FlexBox2>
           )}
         </S.CenterBox>
       </S.Wrapper>

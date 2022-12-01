@@ -21,6 +21,7 @@ declare const window: typeof globalThis & {
 export default function LayoutHeader() {
   const router = useRouter();
   const [chargePrice] = useState(100);
+  const [isModal, setIsModal] = useState(false);
   const [basketCount, setBasketCount] = useRecoilState(BasketCountState);
   const [, setLoggenInUser] = useRecoilState(FetchUserLoggedIn);
   const [logoutUser] = useMutation(LOGOUT_USER);
@@ -53,6 +54,13 @@ export default function LayoutHeader() {
   // 회원가입 이동
   const onClickSignup = () => {
     router.push("/signup");
+  };
+
+  const onClickModal = () => {
+    setIsModal((prev) => !prev);
+  };
+  const onClickChangeImage = () => {
+    alert("이미지 변경 버튼");
   };
 
   // 장바구니 담기
@@ -100,12 +108,15 @@ export default function LayoutHeader() {
   return (
     <LayoutHeaderUI
       IPicked={IPicked}
-      loggedIn={loggedIn}
+      loggedIn={loggedIn?.fetchUserLoggedIn}
       basketCount={basketCount}
       onClickHome={onClickHome}
       onClickLogin={onClickLogin}
       onClickLogout={onClickLogout}
       onClickSignup={onClickSignup}
+      onClickModal={onClickModal}
+      isModal={isModal}
+      onClickChangeImage={onClickChangeImage}
       onClickPoint={onClickPoint}
     />
   );

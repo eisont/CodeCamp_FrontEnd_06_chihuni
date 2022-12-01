@@ -1,5 +1,6 @@
 // Signup Presenter
 
+import { Closesvg } from "../../../commons/styles/Iconsvg";
 import Modal1 from "../../commons/layout/modal";
 import * as S from "./signup.styles";
 
@@ -7,7 +8,9 @@ export const SignupUI = (props: any) => {
   return (
     <S.Wrapper>
       <Modal1 Title="회원가입을 축하합니다!" />
-      <S.BackBt src="../img/Close.png" onClick={props.onClickLogin} />
+      <S.BackBt onClick={props.onClickLogin}>
+        <Closesvg width="22" height="22" fill="#fff" />
+      </S.BackBt>
       <S.Contents>
         <S.Title>회원가입</S.Title>
         <form onSubmit={props.handleSubmit(props.onClickCreateUser)}>

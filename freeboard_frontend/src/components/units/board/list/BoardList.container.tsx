@@ -26,35 +26,39 @@ export default function BoardList() {
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoards">,
     IQueryFetchBoardsArgs
-  >(FETCH_BOARDS);
+  >(FETCH_BOARDS, {
+    variables: {
+      search: keyword,
+    },
+  });
 
   const { data: dataBoardsCount, refetch: refetchBoardsCount } = useQuery<
     Pick<IQuery, "fetchBoardsCount">,
     IQueryFetchBoardsCountArgs
   >(FETCH_BOARDS_COUNT, {
     variables: {
-      startDate,
-      endDate,
+      // startDate,
+      // endDate,
       search: keyword,
     },
   });
-  console.log("뭘까?", startDate, endDate, keyword);
+  console.log("data", data);
 
-  const onClickMoveToBoardNew = () => {
-    router.push("/boards/new");
-  };
   const onClickMoveToBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target instanceof Element)
       router.push(`/boards/${event.currentTarget.id}`);
   };
 
+  const onClickMoveToBoardNew = () => {
+    router.push("/boards/new");
+  };
+
   return (
     <BoardListUI
       data={data}
-      BestBoards={BestBoards?.fetchBoardsOfTheBest}
-      onClickMoveToBoardNew={onClickMoveToBoardNew}
-      onClickMoveToBoardDetail={onClickMoveToBoardDetail}
       refetch={refetch}
+      BestBoards={BestBoards?.fetchBoardsOfTheBest}
+      onClickMoveToBoardDetail={onClickMoveToBoardDetail}
       refetchBoardsCount={refetchBoardsCount}
       count={dataBoardsCount?.fetchBoardsCount}
       keyword={keyword}
@@ -63,6 +67,7 @@ export default function BoardList() {
       setStartDate={setStartDate}
       endDate={endDate}
       setEndDate={setEndDate}
+      onClickMoveToBoardNew={onClickMoveToBoardNew}
     />
   );
 }

@@ -12,15 +12,12 @@ export const Wrapper = styled.div`
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
     url("../BG.png");
 `;
-export const BackBt = styled.img`
-  width: 17px;
+export const BackBt = styled.div`
   position: absolute;
   top: 80px;
   right: 80px;
-  transition: 0.2s;
 
   &:hover {
-    width: 20px;
     cursor: pointer;
   }
 `;

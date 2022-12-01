@@ -2,45 +2,84 @@ import styled from "@emotion/styled";
 import Slider from "react-slick";
 // import { baseUrl } from "./config";
 
-export default function LayoutBanner() {
-  const Wrapper = styled.div`
-    width: 100%;
-    height: 50vh;
-    background: #000;
-    background: url("https://www.chanel.com/apac/img/t_one/q_auto:good,fl_lossy,dpr_1.2,f_auto/w_1920/prd-emea/sys-master/content/h6a/h17/8914196627486-2880x900_LOGO_CENTRE.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  `;
-  const Slick = styled(Slider)`
-    width: 60%;
-    height: 100%;
+const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.2);
 
-    margin: 0 auto;
-  `;
-  const DogImg = styled.img`
-    margin: 0 auto;
-    height: 50vh;
-  `;
+  /* chanel 사진 */
+  /* background: url("https://www.chanel.com/apac/img/t_one/q_auto:good,fl_lossy,dpr_1.2,f_auto/w_1920/prd-emea/sys-master/content/h6a/h17/8914196627486-2880x900_LOGO_CENTRE.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; */
+`;
+const Slick = styled(Slider)`
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 400px;
+
+  .slick-prev {
+    z-index: 1;
+    left: 20%;
+
+    &::before {
+      font-size: 48px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+  .slick-next {
+    z-index: 1;
+    right: 20%;
+
+    &::before {
+      font-size: 48px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  .slick-dots {
+    bottom: 19px;
+
+    li button:before {
+      color: #fff;
+      font-size: 18px;
+    }
+  }
+`;
+const DogImg = styled.img`
+  height: 400px;
+  object-fit: cover;
+`;
+
+export default function LayoutBanner() {
   const settings = {
     // 리스트 모양 보여주기
-    dots: false,
+    dots: true,
     // 무제한으로 돌릴꺼야?
-    infinite: true,
+    infinite: false,
     // 넘어가는 속도
     speed: 1000,
     // 사진 몇개 보여줄꺼야?
     slidesToShow: 1,
     // 몇 개씩 넘길꺼야?
     slidesToScroll: 1,
-    autoplay: false,
-    autoplaySpeed: 0o0,
+    autoplay: true,
+    // autoplaySpeed: 0o0,
     cssEase: "ease",
   };
 
   return (
     <Wrapper>
       <Slick {...settings}>
+        <DogImg src="./carousel_1.png" />
+        <DogImg src="./carousel_2.png" />
+        <DogImg src="./carousel_3.png" />
+        <DogImg src="./carousel_4.png" />
+
+        {/*
+        샤넬 모델 사진
         <div>
           <DogImg src="https://www.chanel.com/apac/img//t_one///q_auto:good,f_auto,fl_lossy,dpr_1.2/w_250//prd-emea/sys-master-content-h28-hd7-9485373636638look-001-metiers-art-2021-22-chanel-show.jpg" />
         </div>
@@ -130,7 +169,7 @@ export default function LayoutBanner() {
         </div>
         <div>
           <DogImg src=" https://www.chanel.com/apac/img//t_one///q_auto:good,f_auto,fl_lossy,dpr_1.2/w_250//prd-emea/sys-master-content-hc8-hde-9485369999390look-033-metiers-art-2021-22-chanel-show.jpg " />
-        </div>
+        </div> */}
       </Slick>
     </Wrapper>
   );

@@ -14,13 +14,7 @@ export default function MarketListUI(props: IMarketListUIProps) {
   if (!props.data) return <div />;
   return (
     <S.Wrapper>
-      <S.BestBox
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <S.BestBox>
         <S.BestText>베스트 상품</S.BestText>
         <S.BestProduct>
           {props.BestProduct?.fetchUseditemsOfTheBest.map((el) => (
@@ -33,15 +27,15 @@ export default function MarketListUI(props: IMarketListUIProps) {
         </S.BestProduct>
       </S.BestBox>
 
-      <div>
-        <S.SearchBox>
-          <S.MenuBox>
-            <S.Menu>판매중 상품</S.Menu>
-            <S.Menu>판매된 상품</S.Menu>
-          </S.MenuBox>
-          <Searchbars01 refetch={props.refetch} />
-        </S.SearchBox>
+      <S.SearchBox>
+        <S.MenuBox>
+          <S.Menu>판매중 상품</S.Menu>
+          <S.Menu>판매된 상품</S.Menu>
+        </S.MenuBox>
+        <Searchbars01 refetch={props.refetch} />
+      </S.SearchBox>
 
+      <S.Box>
         <InfiniteScroll
           pageStart={0}
           loadMore={props.onLoadMore}
@@ -55,7 +49,13 @@ export default function MarketListUI(props: IMarketListUIProps) {
             />
           ))}
         </InfiniteScroll>
-      </div>
+      </S.Box>
+
+      <S.JustifyBox>
+        <S.WriteItem onClick={props.onClickMoveToMarketNew}>
+          상품 등록하기
+        </S.WriteItem>
+      </S.JustifyBox>
     </S.Wrapper>
   );
 }

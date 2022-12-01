@@ -1,17 +1,12 @@
-import { PagenationArrowsvg } from "../../../../../commons/styles/svgFill";
+import { PagenationArrowsvg } from "../../../../../commons/styles/Iconsvg";
 import * as S from "./Paginations01.styles";
 import { IPaginations01UIProps } from "./Paginations01.types";
 
 export default function Paginations01UI(props: IPaginations01UIProps) {
   return (
-    <S.Wrapper margin={props.margin}>
+    <S.Wrapper>
       <S.Page>
-        <PagenationArrowsvg
-          margin={props.margin}
-          width="8"
-          height="12"
-          fill="#000"
-        />
+        <PagenationArrowsvg width="8" height="12" fill="#000" />
       </S.Page>
       {new Array(10).fill(1).map(
         (_, index) =>

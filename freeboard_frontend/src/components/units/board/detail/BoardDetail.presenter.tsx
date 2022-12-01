@@ -10,7 +10,7 @@ import {
   LikeIconsvg,
   LinkIconsvg,
   Profilesvg,
-} from "../../../../commons/styles/svgFill";
+} from "../../../../commons/styles/Iconsvg";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   return (

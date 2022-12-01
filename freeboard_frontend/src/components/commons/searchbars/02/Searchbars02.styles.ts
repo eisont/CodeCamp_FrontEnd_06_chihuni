@@ -59,4 +59,12 @@ export const SearchBt = styled.button`
   font-weight: 500;
   outline: none;
   border: none;
+
+  transition: 0.2s;
+  &:hover {
+    font-weight: 600;
+    cursor: pointer;
+    background: #ffd600;
+    color: #000;
+  }
 `;

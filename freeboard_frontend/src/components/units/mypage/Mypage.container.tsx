@@ -52,12 +52,11 @@ function MypagePage() {
   console.log("구매내역", boughtData);
 
   const { data: pickCountData } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
-  console.log("pickCountData", pickCountData);
+
   const { data: pickData, refetch: IPickedRefetch } = useQuery<
     Pick<IQuery, "fetchUseditemsIPicked">,
     IQueryFetchUseditemsIPickedArgs
   >(FETCHUSED_ITEMS_IPICKED, { variables: { search: "" } });
-  console.log("마이찜", pickData);
 
   const { data: soldData } = useQuery<
     Pick<IQuery, "fetchUseditemsISold">,

@@ -1,4 +1,4 @@
-import { Instagramsvg } from "../../../../commons/styles/svgFill";
+import { Instagramsvg } from "../../../../commons/styles/Iconsvg";
 import * as S from "./Footer.styled";
 
 const LayoutFooter = () => {
@@ -7,7 +7,7 @@ const LayoutFooter = () => {
       <S.Body>
         <S.Text>FOOTER</S.Text>
         <S.SnSBox>
-          <Instagramsvg />
+          <Instagramsvg width="32" height="32" fill="#bdbdbdb" />
         </S.SnSBox>
         <S.Hr />
         <S.InfoText>@2022 chihuni portfolio</S.InfoText>

@@ -20,7 +20,7 @@ import {
   Closesvg,
   Pencilsvg,
   Profilesvg,
-} from "../../../../commons/styles/svgFill";
+} from "../../../../commons/styles/Iconsvg";
 
 export default function BoardCommentListUIItem(
   props: IBoardCommentListUIItemProps

@@ -1,6 +1,6 @@
 // 중고마켓 댓글 등록 presenter
 
-import { CommentIconsvg } from "../../../../commons/styles/svgFill";
+import { CommentIconsvg } from "../../../../commons/styles/Iconsvg";
 import * as S from "./MarketCommentWrite.styles";
 import { IMarketCommentWriteUIProps } from "./MarketCommentWrite.types";
 

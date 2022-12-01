@@ -1,4 +1,4 @@
-import { SearchIconsvg } from "../../../../commons/styles/svgFill";
+import { SearchIconsvg } from "../../../../commons/styles/Iconsvg";
 import * as S from "./Searchbars01.styles";
 import { ISearchbars01UIProps } from "./Searchbars01.types";
 

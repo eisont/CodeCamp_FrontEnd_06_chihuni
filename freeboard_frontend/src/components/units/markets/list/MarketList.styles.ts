@@ -3,7 +3,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 377px auto;
   width: 1200px;
 `;
 
@@ -43,8 +43,15 @@ export const BestProductBox = styled.div`
   justify-content: space-between;
   align-items: center;
   text-align: start;
-  backgroun: #fff;
+  background: #fff;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    transform: translate(-2px, -2px);
+  }
 `;
 export const BestProductImage = styled.img`
   width: 242px;
@@ -90,7 +97,6 @@ export const BestProductLikeCount = styled.div`
 
 // Section Box
 export const SearchBox = styled.div`
-  margin: 0 0 40px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -114,17 +120,81 @@ export const Menu = styled.div`
   }
 `;
 
-// infiniteScroll part
-export const Row = styled.div`
-  margin: 0 0 20px 0;
-  padding: 20px 0 0 0;
-  width: 100%;
-  height: 181px;
+export const Box = styled.div`
+  margin: 40px 0;
+  width: 1226px;
+  height: 1004px;
+
   display: flex;
   justify-content: space-between;
+
+  overflow: hidden;
+  overflow-y: scroll;
+
+  // 스크롤 바 스타일링
+  &::-webkit-scrollbar {
+    width: 6px;
+    background: #f2f2f2;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ffd600;
+    border-radius: 4px;
+  }
+`;
+export const JustifyBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+export const WriteItem = styled.div`
+  width: 124px;
+  height: 52px;
+
+  color: #000;
+  font-weight: 500;
+  font-size: 16px;
+
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f2f2f2;
+  border-radius: 10px;
+
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    border: 1px solid #000;
+    font-weight: 600;
+    background: #ffd600;
+  }
+`;
+
+// infiniteScroll part
+export const Row = styled.div`
+  padding: 20px 0;
+  width: 1200px;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
   align-items: center;
   border-top: 1px solid #bdbdbd;
 `;
+export const FlexOutBox = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  transition: 0.2s;
+  &:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+`;
+
 export const FlexBox = styled.div`
   display: flex;
   align-items: center;
@@ -133,7 +203,6 @@ export const Image = styled.img`
   height: 160px;
   width: 160px;
   object-fit: contain;
-  cursor: pointer;
 `;
 
 export const ColumnBox = styled.div`

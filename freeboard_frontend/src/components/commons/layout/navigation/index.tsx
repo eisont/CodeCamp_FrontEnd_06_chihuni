@@ -23,35 +23,19 @@ export default function LayoutNavigation() {
   const onClickMypage = () => {
     router.push("/mypage");
   };
-  const onClickMoveToMarketNew = () => {
-    router.push("/markets/new");
-  };
-  const onClickMoveToBoardNew = () => {
-    router.push("/boards/new");
-  };
-
-  console.log(isBoard, isMarkets);
   return (
     <S.Wrapper>
-      <S.BtBox>
-        <S.Page>
-          <S.PageBt onClick={onClickBoard} isBoard={isBoard}>
-            Board
-          </S.PageBt>
-          <S.PageBt onClick={onClickMarket} isMarkets={isMarkets}>
-            Market
-          </S.PageBt>
-          <S.PageBt onClick={onClickMypage} isMyPage={isMyPage}>
-            My-Page
-          </S.PageBt>
-        </S.Page>
-        {isBoard && (
-          <S.WriteBt onClick={onClickMoveToBoardNew}>게시판 등록</S.WriteBt>
-        )}
-        {isMarkets && (
-          <S.WriteBt onClick={onClickMoveToMarketNew}>상품 등록</S.WriteBt>
-        )}
-      </S.BtBox>
+      <S.PageBt onClick={onClickBoard} isBoard={isBoard}>
+        자유게시판
+      </S.PageBt>
+      <S.Hr />
+      <S.PageBt onClick={onClickMarket} isMarkets={isMarkets}>
+        중고마켓
+      </S.PageBt>
+      <S.Hr />
+      <S.PageBt onClick={onClickMypage} isMyPage={isMyPage}>
+        My-Page
+      </S.PageBt>
     </S.Wrapper>
   );
 }

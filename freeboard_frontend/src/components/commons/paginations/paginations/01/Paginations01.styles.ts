@@ -5,15 +5,14 @@ interface IPageProps {
 }
 
 export const Wrapper = styled.div`
-  margin: ${(props) => props.margin};
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
 export const Page = styled.span`
+  margin: 0 10px;
   font-size: 16px;
-  margin: 0px 20px 0 0;
   color: ${(props: IPageProps) => (props.isActive ? "#ffd600" : "#4f4f4f")};
   font-weight: ${(props: IPageProps) => (props.isActive ? "700" : "400")};
   cursor: ${(props: IPageProps) => (props.isActive ? "default" : "pointer")};

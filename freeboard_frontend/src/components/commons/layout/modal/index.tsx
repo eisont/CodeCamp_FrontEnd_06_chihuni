@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { useRecoilState } from "recoil";
 import { Modal } from "../../../../commons/store";
-import { Closesvg } from "../../../../commons/styles/svgFill";
+import { Closesvg } from "../../../../commons/styles/Iconsvg";
+import { CodeCampLogosvg } from "../../../../commons/styles/Imgsvg";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -58,7 +59,8 @@ const Modal1 = (props: any) => {
       <CloseIcon onClick={onClickClose}>
         <Closesvg width="22" height="22" fill="#000" />
       </CloseIcon>
-      <Img src="./CodeCamplogoBlack.png" />
+      <CodeCampLogosvg width="236" height="36" fill="#000" />
+
       <Text>
         {props.Title !== undefined ? props.Title : "로그인이 필요합니다."}
       </Text>

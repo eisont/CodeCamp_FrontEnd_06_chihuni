@@ -8,7 +8,7 @@ import {
   Cartsvg,
   PointPigsvg,
   Profilesvg,
-} from "../../../commons/styles/svgFill";
+} from "../../../commons/styles/Iconsvg";
 import DOMPurify from "dompurify";
 // import Searchbars01 from "../../commons/searchbars/01/Searchbars01.container";
 
@@ -110,11 +110,12 @@ export default function MypageUIpage(props: any) {
             ))}
           </S.SectionMain>
 
-          <Paginations01
-            count={props.pickCountData}
-            refetch={props.IPickedRefetch}
-            margin="40px 0"
-          />
+          <div style={{ margin: "40px 0" }}>
+            <Paginations01
+              count={props.pickCountData}
+              refetch={props.IPickedRefetch}
+            />
+          </div>
         </S.Section>
       </S.Wrapper>
     </>

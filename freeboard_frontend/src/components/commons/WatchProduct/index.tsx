@@ -5,6 +5,10 @@ import { useRecoilState } from "recoil";
 import { WatchProductState } from "../../../commons/store";
 
 const Wrapper = styled.div`
+  position: fixed;
+  right: 0;
+  top: 257px;
+  z-index: 1;
   width: 155px;
   padding: 10px 0;
 
@@ -13,6 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid #000;
+  border-radius: 10px;
 `;
 const RBox = styled.div`
   font-size: 20px;
@@ -39,7 +44,7 @@ const WatchProduct = () => {
 
   return (
     <Wrapper>
-      <RBox>오늘 본 상품</RBox>
+      <RBox>최근 본 상품</RBox>
       {watchProduct.map((el) => (
         <Best key={el._id}>
           <Product

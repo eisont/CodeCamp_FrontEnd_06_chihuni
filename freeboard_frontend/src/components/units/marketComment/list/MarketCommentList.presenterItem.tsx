@@ -23,7 +23,7 @@ import {
   Pencilsvg,
   Profilesvg,
   Questionsvg,
-} from "../../../../commons/styles/svgFill";
+} from "../../../../commons/styles/Iconsvg";
 
 export default function MarketCommentListUIItem(
   props: IMarketCommentListUIItemProps

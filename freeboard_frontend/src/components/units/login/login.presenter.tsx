@@ -1,14 +1,22 @@
 // login Presenter
 
-import { CheckIconsvg } from "../../../commons/styles/svgFill";
+import { BackArrow, CheckIconsvg } from "../../../commons/styles/Iconsvg";
+import { CodeCampLogosvg } from "../../../commons/styles/Imgsvg";
 import * as S from "./login.styles";
 
 export const LoginUI = (props: any) => {
   return (
     <S.Wrapper>
-      <S.BackBt src="../img/Arrow.png" onClick={props.onClickHome} />
+      <S.BackBt onClick={props.onClickHome}>
+        <BackArrow width="24" height="23" fill="#fff" />
+      </S.BackBt>
       <S.Contents>
-        <S.CodeCampLogo src="../CodeCampLogo.png" />
+        <CodeCampLogosvg
+          margin="0 0 80px 0"
+          width="288"
+          height="44"
+          fill="#fff"
+        />
 
         <form onSubmit={props.handleSubmit(props.onClickLogin)}>
           <S.Section>

@@ -7,14 +7,14 @@ import { Tooltip } from "antd";
 import Script from "next/script";
 import KakaoMapShowPage from "../../../commons/kakaomap/show";
 import Dompurify from "dompurify";
-import Carousel from "../../../commons/Carousel";
+import Carousel from "../../../commons/carousel";
 import { PointComma } from "../../../../commons/libraries/point";
 import {
   Addresssvg,
   Heartsvg,
   LinkIconsvg,
   Profilesvg,
-} from "../../../../commons/styles/svgFill";
+} from "../../../../commons/styles/Iconsvg";
 
 const MarketDetailUI = (props: IMarketDetailUIProps) => {
   return (

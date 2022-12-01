@@ -30,7 +30,6 @@ export default function Paginations01(props: IPaginations01Props) {
 
   return (
     <Paginations01UI
-      margin={props.margin}
       startPage={startPage}
       lastPage={lastPage}
       activedPage={activedPage}

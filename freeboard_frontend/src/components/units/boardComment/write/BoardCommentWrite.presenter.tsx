@@ -1,4 +1,4 @@
-import { CommentIconsvg } from "../../../../commons/styles/svgFill";
+import { CommentIconsvg } from "../../../../commons/styles/Iconsvg";
 import * as S from "./BoardCommentWrite.styles";
 import { IBoardCommentWriteUIProps } from "./BoardCommentWrite.types";
 

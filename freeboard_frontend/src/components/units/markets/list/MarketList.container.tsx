@@ -43,7 +43,7 @@ const MarketList = () => {
       router.push(`/markets/${event.target.id}`);
     };
 
-  const onClickTest = (event) => {
+  const onClickTest = (event: any) => {
     router.push(`/markets/${event.target.id}`);
   };
 
@@ -68,6 +68,10 @@ const MarketList = () => {
     });
   };
 
+  const onClickMoveToMarketNew = () => {
+    router.push("/markets/new");
+  };
+
   return (
     <MarketListUI
       data={data}
@@ -76,6 +80,7 @@ const MarketList = () => {
       onClickTest={onClickTest}
       onClickMoveToMarketDetail={onClickMoveToMarketDetail}
       refetch={refetch}
+      onClickMoveToMarketNew={onClickMoveToMarketNew}
     />
   );
 };

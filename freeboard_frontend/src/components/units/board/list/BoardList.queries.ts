@@ -39,21 +39,14 @@ export const FETCH_BOARDS_OF_THE_BEST = gql`
       _id
       writer
       title
-      contents
-      youtubeUrl
       likeCount
-      dislikeCount
       images
       user {
         _id
-        email
         name
         picture
-        createdAt
-        updatedAt
       }
       createdAt
-      deletedAt
     }
   }
 `;
