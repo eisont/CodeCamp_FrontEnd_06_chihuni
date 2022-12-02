@@ -52,13 +52,13 @@ export const Hr = styled.div`
   background: rgba(242, 242, 242, 0.4);
 `;
 
-export const Menu = styled.div`
+export const MyMarketsItems = styled.div`
   margin: 0 0 23px 0;
-  font-weight: 500;
+  font-weight: ${(props) => (props.myMarketsItems ? "700" : "500")};
   font-size: 18px;
   display: flex;
   align-items: center;
-  color: ${(props) => (props.isMypage ? "#000" : "#b2b2b2")};
+  color: ${(props) => (props.myMarketsItems ? "#000" : "#b2b2b2")};
 
   &:hover {
     cursor: pointer;
@@ -66,72 +66,31 @@ export const Menu = styled.div`
     color: #000;
   }
 `;
-
-export const Section = styled.div`
-  width: 980px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-export const SectionHead = styled.div`
-  width: 100%;
-  padding: 0 0 16px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const MenuBox = styled.div`
-  height: 52px;
+export const MyPoint = styled.div`
+  margin: 0 0 23px 0;
+  font-weight: ${(props) => (props.myPoint ? "700" : "500")};
+  font-size: 18px;
   display: flex;
   align-items: center;
-`;
-export const SubMenu = styled.div`
-  font-weight: 400;
-  font-size: 16px;
-  color: ${(props) => (props.isMypage ? "#000" : "#828282")};
-  border-bottom: ${(props) => props.isMypage && "1px solid #ffd600"};
+  color: ${(props) => (props.myPoint ? "#000" : "#b2b2b2")};
 
   &:hover {
     cursor: pointer;
+    font-weight: 700;
     color: #000;
-    border-bottom: 1px solid #ffd600;
   }
 `;
-export const Hrs = styled.div`
-  margin: 0 12px;
-  width: 1px;
-  height: 16px;
-  background: #bdbdbd;
-`;
-
-export const SectionMain = styled.div`
-  width: 100%;
-
-  border: 1px solid #000;
-  border-right: none;
-  border-left: none;
-  display: flex;
-  flex-direction: column;
-`;
-export const Row = styled.div`
-  width: 980px;
-  height: 52px;
-  line-height: 52px;
-  border-bottom: 1px solid #dbdbdb;
-
-  display: grid;
-  grid-template-rows: 52px;
-  grid-template-columns: 1fr 8fr repeat(4, 1.5fr);
-  text-align: center;
-`;
-export const Th = styled.div`
-  font-weight: 500;
+export const MyProfile = styled.div`
+  margin: 0 0 23px 0;
+  font-weight: ${(props) => (props.myProfile ? "700" : "500")};
   font-size: 18px;
-  color: #000;
-`;
-export const Td = styled.div`
-  font-weight: 400;
-  font-size: 16px;
-  color: #4f4f4f;
+  display: flex;
+  align-items: center;
+  color: ${(props) => (props.myProfile ? "#000" : "#b2b2b2")};
+
+  &:hover {
+    cursor: pointer;
+    font-weight: 700;
+    color: #000;
+  }
 `;

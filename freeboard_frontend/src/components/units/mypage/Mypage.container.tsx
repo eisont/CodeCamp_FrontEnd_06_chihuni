@@ -1,12 +1,10 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { FetchUserLoggedIn } from "../../../commons/store";
 import {
   IQuery,
   IQueryFetchUseditemsIBoughtArgs,
-  IQueryFetchUseditemsIPickedArgs,
   IQueryFetchUseditemsISoldArgs,
 } from "../../../commons/types/generated/types";
 import { withAuth } from "../../commons/hocs/withAuth";
@@ -14,9 +12,7 @@ import MypageUIpage from "./Mypage.presenter";
 import {
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   FETCHUSED_ITEMS_IBOUGHT,
-  FETCHUSED_ITEMS_IPICKED,
   FETCHUSED_ITEMS_ISOLD,
-  FETCH_USED_ITEMS_COUNT_IPICKED,
 } from "./Mypage.queries";
 
 declare const window: typeof globalThis & {
@@ -24,17 +20,22 @@ declare const window: typeof globalThis & {
 };
 
 function MypagePage() {
-  const router = useRouter();
-  const isMypage = `/mypage`.includes(router.asPath);
-  console.log("router", router);
-  console.log("isMypage", isMypage);
   const [chargePrice] = useState(100);
+
+  // 내 장터
+  const [myMarketsItems, setMyMarketsItems] = useState(true);
+  // 내 포인트
+  const [myPoint, setMyPoint] = useState(false);
+  // 내 프로필
+  const [myProfile, setMyProfile] = useState(false);
+
   const [loggedInUser] = useRecoilState(FetchUserLoggedIn);
 
   const [createPointTransactionOfBuyingAndSelling] = useMutation(
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
   );
 
+  //
   const onClickResult = async () => {
     try {
       const result = await createPointTransactionOfBuyingAndSelling({
@@ -45,37 +46,8 @@ function MypagePage() {
       console.log(error.message);
     }
   };
-  const { data: boughtData } = useQuery<
-    Pick<IQuery, "fetchUseditemsIBought">,
-    IQueryFetchUseditemsIBoughtArgs
-  >(FETCHUSED_ITEMS_IBOUGHT);
-  console.log("구매내역", boughtData);
 
-  const { data: pickCountData } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
-
-  const { data: pickData, refetch: IPickedRefetch } = useQuery<
-    Pick<IQuery, "fetchUseditemsIPicked">,
-    IQueryFetchUseditemsIPickedArgs
-  >(FETCHUSED_ITEMS_IPICKED, { variables: { search: "" } });
-
-  const { data: soldData } = useQuery<
-    Pick<IQuery, "fetchUseditemsISold">,
-    IQueryFetchUseditemsISoldArgs
-  >(FETCHUSED_ITEMS_ISOLD);
-  console.log("판매내역", soldData);
-
-  const onClickPickBought = () => {
-    alert("이동할 페이지를 못 찾음");
-    router.push("");
-  };
-  const onClickPickList = () => {
-    alert("이동할 페이지를 못 찾음");
-    router.push("");
-  };
-  const onClickPickSold = () => {
-    alert("이동할 페이지를 못 찾음");
-    router.push("");
-  };
+  // 충전
   const onClickPoint = () => {
     const IMP = window.IMP; // 생략 가능
     IMP.init("imp48430943"); // 예: imp00000000
@@ -107,18 +79,36 @@ function MypagePage() {
     );
   };
 
+  // 내 장터
+  const onClickMyMarketItems = () => {
+    setMyMarketsItems(true);
+    setMyPoint(false);
+    setMyProfile(false);
+  };
+  // 내 포인트
+  const onClickMyPoint = () => {
+    setMyMarketsItems(false);
+    setMyPoint(true);
+    setMyProfile(false);
+  };
+  // 내 프로필
+  const onClickMyProfile = () => {
+    setMyMarketsItems(false);
+    setMyPoint(false);
+    setMyProfile(true);
+  };
+
   return (
     <MypageUIpage
+      myMarketsItems={myMarketsItems}
+      myPoint={myPoint}
+      myProfile={myProfile}
       loggedInUser={loggedInUser?.fetchUserLoggedIn}
       onClickResult={onClickResult}
-      onClickPickBought={onClickPickBought}
-      onClickPickList={onClickPickList}
-      onClickPickSold={onClickPickSold}
       onClickPoint={onClickPoint}
-      pickData={pickData?.fetchUseditemsIPicked}
-      pickCountData={pickCountData?.fetchUseditemsCountIPicked}
-      IPickedRefetch={IPickedRefetch}
-      isMypage={isMypage}
+      onClickMyMarketItems={onClickMyMarketItems}
+      onClickMyPoint={onClickMyPoint}
+      onClickMyProfile={onClickMyProfile}
     />
   );
 }

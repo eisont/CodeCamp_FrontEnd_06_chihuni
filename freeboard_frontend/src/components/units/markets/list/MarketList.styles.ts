@@ -4,14 +4,14 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   margin: 0 auto 377px auto;
-  width: 1200px;
+  width: 100%;
 `;
 
 // Best Box
 export const BestBox = styled.div`
   margin: 80px auto;
 
-  width: 100%;
+  width: 1200px;
   height: 473px;
   display: flex;
   flex-direction: column;
@@ -97,7 +97,9 @@ export const BestProductLikeCount = styled.div`
 
 // Section Box
 export const SearchBox = styled.div`
-  width: 100%;
+  margin: 0 auto;
+
+  width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -111,17 +113,41 @@ export const Menu = styled.div`
   font-weight: 400;
   font-size: 18px;
   color: #4f4f4f;
+  border-bottom: ${(props) => (!props.isSoldOut ? "2px solid #ffd600" : "")};
 
   &:hover {
     cursor: pointer;
     color: #000;
     font-weight: 500;
-    border-bottom: 1px solid #ffd600;
+    border-bottom: 2px solid #ffd600;
+  }
+`;
+export const SoldOutMenu = styled.div`
+  margin: 0 20px 0 0;
+  font-weight: 400;
+  font-size: 18px;
+  color: #4f4f4f;
+  border-bottom: ${(props) => (props.isSoldOut ? "2px solid #ffd600" : "")};
+
+  &:hover {
+    cursor: pointer;
+    color: #000;
+    font-weight: 500;
+    border-bottom: 2px solid #ffd600;
   }
 `;
 
-export const Box = styled.div`
-  margin: 40px 0;
+export const MainBox = styled.div`
+  position: relative;
+  margin: 40px auto;
+  width: 1442px;
+  transform: translateX(121px);
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+`;
+export const InfiniteScrollBox = styled.div`
   width: 1226px;
   height: 1004px;
 
@@ -142,8 +168,15 @@ export const Box = styled.div`
     border-radius: 4px;
   }
 `;
+export const WatchProductBox = styled.div`
+  position: absolute;
+  right: 0px;
+  /*z-index: 10; */
+`;
+
 export const JustifyBox = styled.div`
-  width: 100%;
+  margin: 0 auto;
+  width: 1200px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -183,6 +216,7 @@ export const Row = styled.div`
   align-items: center;
   border-top: 1px solid #bdbdbd;
 `;
+
 export const FlexOutBox = styled.div`
   width: 100%;
   display: flex;
@@ -190,6 +224,7 @@ export const FlexOutBox = styled.div`
 
   transition: 0.2s;
   &:hover {
+    cursor: pointer;
     transform: translate(1px, 1px);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   }

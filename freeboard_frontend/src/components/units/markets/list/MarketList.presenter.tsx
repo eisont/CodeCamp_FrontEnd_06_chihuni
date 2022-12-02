@@ -7,11 +7,10 @@ import Searchbars01 from "../../../commons/searchbars/01/Searchbars01.container"
 import MarketListUIItem from "./MarketList.presenterItem";
 import { v4 as uuidv4 } from "uuid";
 import MarketListBestProduct from "./MarketList.presenterBestProduct";
+import WatchProduct from "../../../commons/WatchProduct/WatchProduct.container";
 
 export default function MarketListUI(props: IMarketListUIProps) {
-  console.log("data", props.data?.fetchUseditems);
-
-  if (!props.data) return <div />;
+  if (!props.MarketsItemsData) return <div />;
   return (
     <S.Wrapper>
       <S.BestBox>
@@ -29,27 +28,56 @@ export default function MarketListUI(props: IMarketListUIProps) {
 
       <S.SearchBox>
         <S.MenuBox>
-          <S.Menu>판매중 상품</S.Menu>
-          <S.Menu>판매된 상품</S.Menu>
+          <S.Menu onClick={props.onClickItems} isSoldOut={props.isSoldOut}>
+            판매중 상품
+          </S.Menu>
+          <S.SoldOutMenu
+            onClick={props.onClicksoldoutItems}
+            isSoldOut={props.isSoldOut}
+          >
+            판매된 상품
+          </S.SoldOutMenu>
         </S.MenuBox>
         <Searchbars01 refetch={props.refetch} />
       </S.SearchBox>
 
-      <S.Box>
-        <InfiniteScroll
-          pageStart={0}
-          loadMore={props.onLoadMore}
-          hasMore={true}
-        >
-          {props.data?.fetchUseditems.map((el: any) => (
-            <MarketListUIItem
-              key={el._id}
-              el={el}
-              onClickMoveToMarketDetail={props.onClickMoveToMarketDetail}
-            />
-          ))}
-        </InfiniteScroll>
-      </S.Box>
+      <S.MainBox>
+        <S.InfiniteScrollBox>
+          <InfiniteScroll
+            pageStart={0}
+            loadMore={props.onLoadMore}
+            hasMore={true}
+          >
+            {props.isSoldOut ? (
+              <>
+                {props.MarketsItemsSoldoutData?.map((el: any) => (
+                  <MarketListUIItem
+                    key={el._id}
+                    el={el}
+                    onClickMoveToMarketDetail={props.onClickMoveToMarketDetail}
+                  />
+                ))}
+              </>
+            ) : (
+              <>
+                {props.MarketsItemsData?.map((el: any) => (
+                  <MarketListUIItem
+                    key={el._id}
+                    el={el}
+                    onClickMoveToMarketDetail={props.onClickMoveToMarketDetail}
+                  />
+                ))}
+              </>
+            )}
+
+            {/* } */}
+          </InfiniteScroll>
+        </S.InfiniteScrollBox>
+
+        <S.WatchProductBox>
+          <WatchProduct />
+        </S.WatchProductBox>
+      </S.MainBox>
 
       <S.JustifyBox>
         <S.WriteItem onClick={props.onClickMoveToMarketNew}>

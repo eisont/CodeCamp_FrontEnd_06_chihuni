@@ -52,29 +52,6 @@ export const FETCHUSED_ITEMS_IBOUGHT = gql`
   }
 `;
 
-// 마이찜 Count
-export const FETCH_USED_ITEMS_COUNT_IPICKED = gql`
-  query fetchUseditemsCountIPicked {
-    fetchUseditemsCountIPicked
-  }
-`;
-// 마이찜
-export const FETCHUSED_ITEMS_IPICKED = gql`
-  query fetchUseditemsIPicked($page: Int, $search: String) {
-    fetchUseditemsIPicked(page: $page, search: $search) {
-      _id
-      contents
-      price
-      buyer {
-        _id
-      }
-      seller {
-        name
-      }
-      createdAt
-    }
-  }
-`;
 export const FETCHUSED_ITEMS_ISOLD = gql`
   query fetchUseditemsISold($page: Int, $search: String) {
     fetchUseditemsISold(page: $page, search: $search) {

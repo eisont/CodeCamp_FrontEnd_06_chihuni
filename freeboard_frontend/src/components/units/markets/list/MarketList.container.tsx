@@ -12,22 +12,42 @@ import {
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../../commons/types/generated/types";
-import { MouseEvent } from "react";
+import { MouseEvent, useState } from "react";
 import { useRecoilState } from "recoil";
 import { WatchProductState } from "../../../../commons/store";
 
 const MarketList = () => {
   const router = useRouter();
 
+  const [isSoldOut, setIsSoldOut] = useState(false);
+
   const [, setWatchProduct] = useRecoilState(WatchProductState);
 
-  const { data, refetch, fetchMore } = useQuery<
+  const {
+    data: MarketsItemsData,
+    refetch,
+    fetchMore,
+  } = useQuery<Pick<IQuery, "fetchUseditems">, IQueryFetchUseditemsArgs>(
+    FETCH_USED_ITEMS
+  );
+
+  const { data: MarketsItemsSoldoutData } = useQuery<
     Pick<IQuery, "fetchUseditems">,
     IQueryFetchUseditemsArgs
-  >(FETCH_USED_ITEMS);
+  >(FETCH_USED_ITEMS, {
+    variables: {
+      isSoldout: true,
+    },
+  });
 
   const { data: BestProduct } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
-  console.log(BestProduct);
+
+  const onClicksoldoutItems = () => {
+    setIsSoldOut(true);
+  };
+  const onClickItems = () => {
+    setIsSoldOut(false);
+  };
 
   const onClickMoveToMarketDetail =
     (el: any) => (event: MouseEvent<HTMLDivElement>) => {
@@ -48,10 +68,12 @@ const MarketList = () => {
   };
 
   const onLoadMore = () => {
-    if (!data) return;
+    if (!MarketsItemsData) return;
 
     fetchMore({
-      variables: { page: Math.ceil(data?.fetchUseditems.length / 10) + 1 },
+      variables: {
+        page: Math.ceil(MarketsItemsData?.fetchUseditems.length / 10) + 1,
+      },
       updateQuery: (prev, { fetchMoreResult }) => {
         // 받아올 데이터가 없을 경우 return(기존 데이터 보여줘)
         if (!fetchMoreResult?.fetchUseditems)
@@ -74,12 +96,16 @@ const MarketList = () => {
 
   return (
     <MarketListUI
-      data={data}
+      onClickItems={onClickItems}
+      onClicksoldoutItems={onClicksoldoutItems}
+      isSoldOut={isSoldOut}
+      MarketsItemsSoldoutData={MarketsItemsSoldoutData?.fetchUseditems}
+      MarketsItemsData={MarketsItemsData?.fetchUseditems}
+      refetch={refetch}
       BestProduct={BestProduct}
       onLoadMore={onLoadMore}
       onClickTest={onClickTest}
       onClickMoveToMarketDetail={onClickMoveToMarketDetail}
-      refetch={refetch}
       onClickMoveToMarketNew={onClickMoveToMarketNew}
     />
   );
