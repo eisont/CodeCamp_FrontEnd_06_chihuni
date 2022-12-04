@@ -15,7 +15,6 @@ export const SectionHead = styled.div`
 `;
 
 export const MenuBox = styled.div`
-  height: 52px;
   display: flex;
   align-items: center;
 `;
@@ -60,7 +59,20 @@ export const SectionMain = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const Row = styled.div`
+
+export const Row5 = styled.div`
+  width: 980px;
+  height: 52px;
+  line-height: 52px;
+  border-bottom: 1px solid #dbdbdb;
+
+  display: grid;
+  grid-template-rows: 52px;
+  grid-template-columns: 1fr 8fr repeat(3, 1.5fr);
+  text-align: center;
+`;
+
+export const Row6 = styled.div`
   width: 980px;
   height: 52px;
   line-height: 52px;

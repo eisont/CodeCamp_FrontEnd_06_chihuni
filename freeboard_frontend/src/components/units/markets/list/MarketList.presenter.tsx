@@ -49,6 +49,7 @@ export default function MarketListUI(props: IMarketListUIProps) {
             hasMore={true}
           >
             {props.isSoldOut ? (
+              // 판매된 상품
               <>
                 {props.MarketsItemsSoldoutData?.map((el: any) => (
                   <MarketListUIItem
@@ -59,6 +60,7 @@ export default function MarketListUI(props: IMarketListUIProps) {
                 ))}
               </>
             ) : (
+              // 판매중 상품
               <>
                 {props.MarketsItemsData?.map((el: any) => (
                   <MarketListUIItem

@@ -3,12 +3,14 @@ import { PointComma } from "../../../commons/libraries/point";
 import * as S from "./Mypage.styles";
 import {
   Cartsvg,
+  ImageChange,
   PointPigsvg,
   Profilesvg,
 } from "../../../commons/styles/Iconsvg";
 import MyMarketsItems from "../../commons/mypageComponents/myMarketItems/MyMarketItems.container";
 import MyPoint from "../../commons/mypageComponents/myPoint/MyPoint.container";
 import MyProfile from "../../commons/mypageComponents/myProfile/MyProfile.container";
+import Uploads02 from "../../commons/uploads/02/Uploads02.containder";
 
 export default function MypageUIpage(props: any) {
   return (
@@ -25,11 +27,12 @@ export default function MypageUIpage(props: any) {
       <S.Wrapper>
         <S.UserInfo>
           <S.Title>MYPAGE</S.Title>
-          {props.loggedInUser?.picture !== null ? (
-            <S.UserPicture src={props.loggedInUser?.picture} />
-          ) : (
-            <Profilesvg width="80" height="80" fill="#bdbdbd" />
-          )}
+
+          <Uploads02
+            picture={props.loggedInUser?.picture}
+            myProfile={props.myProfile}
+          />
+
           <S.UserName>{props.loggedInUser?.name}</S.UserName>
           <S.UserPoint>
             <PointPigsvg
@@ -76,16 +79,10 @@ export default function MypageUIpage(props: any) {
 
         <S.Hr />
 
-        {props.myMarketsItems && !props.myPoint && !props.myProfile && (
-          <MyMarketsItems />
-        )}
+        {props.myMarketsItems && <MyMarketsItems />}
 
-        {!props.myMarketsItems && props.myPoint && !props.myProfile && (
-          <MyPoint />
-        )}
-        {!props.myMarketsItems && !props.myPoint && props.myProfile && (
-          <MyProfile />
-        )}
+        {props.myPoint && <MyPoint />}
+        {props.myProfile && <MyProfile />}
       </S.Wrapper>
     </>
   );

@@ -27,15 +27,37 @@ export const Text = styled.div`
   font-weight: 700;
   color: #4f4f4f;
 `;
+export const InputFlexBox = styled.div`
+  margin: 10px 0;
+  width: 690px;
+
+  display: grid;
+  grid-template-rows: 52px;
+  grid-template-columns: 15fr 1fr;
+  background: rgba(244, 244, 244, 0.3);
+`;
 export const Input = styled.input`
   padding: 14px 16px;
-  width: 690px;
   height: 52px;
 
-  background: #e0e0e0;
-  opacity: 0.3;
+  background: transparent;
   outline: none;
   border: none;
+
+  font-weight: 400;
+  font-size: 16px;
+
+  ::placeholder {
+    color: #bdbdbd;
+    font-weight: 400;
+    font-size: 16px;
+  }
+`;
+export const ClickBt = styled.div`
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const RightBox = styled.div`
@@ -57,10 +79,23 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
 
   transition: 0.2s;
   &:hover {
+    cursor: pointer;
     color: #000;
     background: #ffd600;
   }
+`;
+
+export const ColumnBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+`;
+export const Error = styled.div`
+  font-weight: 900;
+  font-size: 16px;
+  color: ${(props) => props.color};
 `;

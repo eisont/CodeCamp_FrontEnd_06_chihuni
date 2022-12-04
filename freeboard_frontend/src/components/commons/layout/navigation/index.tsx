@@ -6,13 +6,17 @@ import * as S from "./Navigation.styles";
 export default function LayoutNavigation() {
   const router = useRouter();
 
-  const Board = ["/boards"];
-  const isBoard = Board.includes(router.asPath);
-  const Markets = ["/markets"];
-  const isMarkets = Markets.includes(router.asPath);
+  const isBoard = router.asPath.includes("/boards");
+  const isMarkets = router.asPath.includes("/markets");
+  const isMyPage = router.asPath.includes("/mypage");
 
-  const MyPage = ["/mypage"];
-  const isMyPage = MyPage.includes(router.asPath);
+  // const Board = ["/boards"];
+  // const isBoard = Board.includes(router.asPath);
+  // const Markets = ["/markets"];
+  // const isMarkets = Markets.includes(router.asPath);
+
+  // const MyPage = ["/mypage"];
+  // const isMyPage = MyPage.includes(router.asPath);
 
   const onClickBoard = () => {
     router.push("/boards");
