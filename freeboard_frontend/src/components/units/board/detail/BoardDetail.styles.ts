@@ -1,11 +1,6 @@
 // 게시판 상세보기 styles
 
 import styled from "@emotion/styled";
-import {
-  LinkOutlined,
-  EnvironmentOutlined,
-  LikeOutlined,
-} from "@ant-design/icons";
 import ReactPlayer from "react-player";
 
 export const Wrapper = styled.div`
@@ -139,7 +134,9 @@ export const Button = styled.button`
   background: #fff;
   border: 1px solid #bdbdbd;
 
+  transition: 0.2s;
   &:hover {
+    cursor: pointer;
     background-color: gold;
     border-color: white;
   }

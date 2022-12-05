@@ -7,21 +7,8 @@ import { IBoardWriteUIProps } from "./BoardWrite.types";
 import DaumPostcode from "react-daum-postcode";
 import { v4 as uuidv4 } from "uuid";
 import Uploads01 from "../../../commons/uploads/01/Uploads01.containder";
-import {
-  contentsErrorState,
-  passwordErrorState,
-  titleErrorState,
-  writerErrorState,
-  zipcodeState,
-} from "../../../../commons/store";
-import { useRecoilState } from "recoil";
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
-  const [writerError] = useRecoilState(writerErrorState);
-  const [passwordError] = useRecoilState(passwordErrorState);
-  const [titleError] = useRecoilState(titleErrorState);
-  const [contentsError] = useRecoilState(contentsErrorState);
-  const [zipcode] = useRecoilState(zipcodeState);
   return (
     <S.Wrapper>
       <S.Title>{props.isEdit ? "게시판 수정" : "게시판 등록"}</S.Title>
@@ -29,14 +16,16 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         {/* 작성자 */}
         <S.InputWrapper>
           <S.Label>작성자</S.Label>
-          <S.Writer
-            type="text"
-            placeholder="(필수) 이름을 입력해주세요."
-            onChange={props.onChangeWriter}
-            readOnly={!!props.data?.fetchBoard.writer}
-            defaultValue={props.data?.fetchBoard.writer || ""}
-          />{" "}
-          <S.Error>{writerError}</S.Error>
+          <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+            <S.Writer
+              type="text"
+              placeholder="(필수) 이름을 입력해주세요."
+              // onChange={props.onChangeWriter}
+              {...props.register("writer")}
+              readOnly={!!props.data?.fetchBoard.writer}
+              defaultValue={props.data?.fetchBoard.writer || ""}
+            />
+          </form>
         </S.InputWrapper>
         {/* 비밀번호 */}
         <S.InputWrapper>
@@ -46,7 +35,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             placeholder="(필수) 비밀번호를 작성해주세요."
             onChange={props.onChangePassword}
           />
-          <S.Error>{passwordError}</S.Error>
         </S.InputWrapper>
       </S.WriterWrapper>
 
@@ -58,7 +46,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           placeholder="(필수) 제목을 작성해주세요."
           onChange={props.onChangeTitle}
         />
-        <S.Error>{titleError}</S.Error>
       </S.InputWrapper>
 
       <S.InputWrapper>
@@ -67,7 +54,6 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
           placeholder="(필수) 내용을 작성해주세요."
           onChange={props.onChangeContents}
         />
-        <S.Error>{contentsError}</S.Error>
       </S.InputWrapper>
 
       <S.InputWrapper>
@@ -78,10 +64,12 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             readOnly
             // value랑 defaultValue를 같이 작성합니다.
             value={
-              zipcode || props.data?.fetchBoard.boardAddress?.zipcode || "00000"
+              props.zonecode ||
+              props.data?.fetchBoard.boardAddress?.zipcode ||
+              "00000"
             }
           />
-          <S.SearchButton onClick={props.onClickAddressSearch}>
+          <S.SearchButton type="button" onClick={props.onClickAddressSearch}>
             우편번호 검색
           </S.SearchButton>
           {props.isOpen && (

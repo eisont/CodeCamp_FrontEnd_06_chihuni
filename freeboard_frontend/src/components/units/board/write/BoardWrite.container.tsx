@@ -7,14 +7,14 @@ import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 import { IBoardWriteProps, IUpdateBoardInput } from "./BoardWrite.types";
 import { useRouter } from "next/router";
 import { Modal } from "antd";
-import { useRecoilState } from "recoil";
-import {
-  contentsErrorState,
-  passwordErrorState,
-  titleErrorState,
-  writerErrorState,
-} from "../../../../commons/store";
 import { withAuth } from "../../../commons/hocs/withAuth";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object({
+  wirter: yup.string().required("작성자는 필수 입력사항입니다."),
+});
 
 function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter();
@@ -30,7 +30,7 @@ function BoardWrite(props: IBoardWriteProps) {
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
-  const [zipcode, setZipcode] = useState("");
+  const [zonecode, setZonecode] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
@@ -38,59 +38,27 @@ function BoardWrite(props: IBoardWriteProps) {
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
   // const [imageUrl, setImageUrl] = useState<string | undefined>("");
-  // 오류 메세지
-  const [, setWriterError] = useRecoilState(writerErrorState);
-  const [, setPasswordError] = useRecoilState(passwordErrorState);
-  const [, setTitleError] = useRecoilState(titleErrorState);
-  const [, setContentsError] = useRecoilState(contentsErrorState);
+
+  const { register, handleSubmit, formState } = useForm({
+    resolver: yupResolver(schema),
+    mode: "onChange",
+  });
 
   // onChange 함수
   const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
     setWriter(event.target.value);
-    if (event.target.value !== "") {
-      setWriterError("");
-    }
-    if (event.target.value && password && title && contents) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
   };
 
   const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
-    if (event.target.value !== "") {
-      setPasswordError("");
-    }
-    if (writer && event.target.value && title && contents) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
   };
 
   const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
     setTitle(event.target.value);
-    if (event.target.value !== "") {
-      setTitleError("");
-    }
-    if (writer && password && event.target.value && contents) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
   };
 
   const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setContents(event.target.value);
-    if (event.target.value !== "") {
-      setContentsError("");
-    }
-    if (writer && password && title && event.target.value) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
   };
 
   const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
@@ -101,13 +69,13 @@ function BoardWrite(props: IBoardWriteProps) {
     setAddressDetail(event.target.value);
   };
 
-  // Modal 부분
+  // 주소 Modal 부분
   const onClickAddressSearch = () => {
     setIsOpen((prev) => !prev);
   };
   const onCompleteAddressSearch = (data: any) => {
     setAddress(data.address);
-    setZipcode(data.zonecode);
+    setZonecode(data.zonecode);
     setIsOpen(false);
   };
 
@@ -120,45 +88,36 @@ function BoardWrite(props: IBoardWriteProps) {
 
   // Click 함수
   // 등록하기 버튼
-  const onClickSubmit = async () => {
-    if (writer === "") {
-      setWriterError("작성자를 입력해주세요.");
-    }
-    if (password === "") {
-      setPasswordError("비밀번호를 입력해주세요.");
-    }
-    if (title === "") {
-      setTitleError("제목을 입력해주세요.");
-    }
-    if (contents === "") {
-      setContentsError("내용을 입력해주세요.");
-    }
-    if (writer && password && title && contents) {
-      try {
-        const result = await createBoard({
-          variables: {
-            createBoardInput: {
-              writer,
-              password,
-              title,
-              contents,
-              youtubeUrl,
-              boardAddress: {
-                zipcode,
-                address,
-                addressDetail,
-              },
-              images: fileUrls,
-            },
-          },
-        });
-        Modal.success({ content: "게시물 등록에 성공하였습니다!" });
-        router.push(`/boards/${result.data.createBoard._id}`);
-      } catch (error: any) {
-        Modal.error({ content: error.message });
-      }
-    }
+  const onClickSubmit = (data: string) => {
+    console.log("data", data);
   };
+
+  // const onClickSubmit = async () => {
+  //   try {
+  //     const result = await createBoard({
+  //       variables: {
+  //         createBoardInput: {
+  //           writer,
+  //           password,
+  //           title,
+  //           contents,
+  //           youtubeUrl,
+  //           boardAddress: {
+  //             zipcode: zonecode,
+  //             address,
+  //             addressDetail,
+  //           },
+  //           images: fileUrls,
+  //         },
+  //       },
+  //     });
+  //     Modal.success({ content: "게시물 등록에 성공하였습니다!" });
+  //     router.push(`/boards/${result.data.createBoard._id}`);
+  //   } catch (errors: any) {
+  //     alert(errors.message);
+  //   }
+  // };
+
   // 수정하기 버튼
   const onClickUpdate = async () => {
     const currentFiles = JSON.stringify(fileUrls);
@@ -174,7 +133,7 @@ function BoardWrite(props: IBoardWriteProps) {
       !youtubeUrl &&
       !address &&
       !addressDetail &&
-      !zipcode &&
+      !zonecode &&
       !isChangedFiles
     ) {
       Modal.error({ content: "수정한 내용이 없습니다." });
@@ -189,9 +148,9 @@ function BoardWrite(props: IBoardWriteProps) {
     if (title) updateBoardInput.title = title;
     if (contents) updateBoardInput.contents = contents;
     if (youtubeUrl) updateBoardInput.youtubeUrl = youtubeUrl;
-    if (zipcode || address || addressDetail) {
+    if (zonecode || address || addressDetail) {
       updateBoardInput.boardAddress = {};
-      if (zipcode) updateBoardInput.boardAddress.zipcode = zipcode;
+      if (zonecode) updateBoardInput.boardAddress.zipcode = zonecode;
       if (address) updateBoardInput.boardAddress.address = address;
       if (addressDetail)
         updateBoardInput.boardAddress.addressDetail = addressDetail;
@@ -208,8 +167,8 @@ function BoardWrite(props: IBoardWriteProps) {
       });
       Modal.success({ content: "게시물 수정에 성공하였습니다!" });
       router.push(`/boards/${router.query.boardId}`);
-    } catch (error: any) {
-      Modal.error({ content: error.message });
+    } catch (errors: any) {
+      alert(errors.message);
     }
   };
   // =========================================
@@ -224,6 +183,9 @@ function BoardWrite(props: IBoardWriteProps) {
 
   return (
     <BoardWriteUI
+      register={register}
+      handleSubmit={handleSubmit}
+      formState={formState}
       // onChange
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
@@ -246,6 +208,7 @@ function BoardWrite(props: IBoardWriteProps) {
       isOpen={isOpen}
       isEdit={props.isEdit}
       address={address}
+      zonecode={zonecode}
       addressDetail={addressDetail}
     />
   );

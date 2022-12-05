@@ -115,6 +115,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
 
       <S.MenuButtons>
         <S.Button onClick={props.onClickMoveToBoardList}>목록으로</S.Button>
+
         <S.Button onClick={props.onClickMoveToBoardEdit}>수정하기</S.Button>
         <S.Button id={props.boardId} onClick={props.onClickDelete}>
           삭제하기
