@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { CodeCampLogosvg } from "../src/commons/styles/Imgsvg";
 
 const Wrapper = styled.div`
   background: #fff;
@@ -10,36 +12,38 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  &:hover {
-    filter: invert(100%);
-    transition: 1s;
-  }
+  background: ${(props) => (props.isHover ? "#fff" : "#000")};
 `;
 
-const ChanelImg = styled.div`
-  background: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Chanel_logo.svg/330px-Chanel_logo.svg.png");
-  height: 300px;
-  padding: 30vh;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+const Button = styled.div`
   cursor: pointer;
 `;
-const BackgroundImg = styled.div`
-  text-align: center;
-`;
 
-export default function Home() {
+const Home = () => {
+  const [isHover, setIsHover] = useState(false);
+
+  const onMouseOver = () => {
+    setIsHover(true);
+  };
+  const onMouseOut = () => {
+    setIsHover(false);
+  };
+
   const router = useRouter();
-  const Mainpage = () => {
-    router.push("/markets");
+  const onClickMainpage = () => {
+    router.push("/boards");
   };
 
   return (
-    <Wrapper>
-      <BackgroundImg>
-        <ChanelImg onClick={Mainpage}></ChanelImg>
-      </BackgroundImg>
+    <Wrapper isHover={isHover}>
+      <Button
+        onClick={onClickMainpage}
+        onMouseOver={onMouseOver}
+        onMouseOut={onMouseOut}
+      >
+        <CodeCampLogosvg width="900" fill={isHover ? "#000" : "#fff"} />
+      </Button>
     </Wrapper>
   );
-}
+};
+export default Home;
