@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { withAuth } from "../../commons/hocs/withAuth";
 import MypageUIpage from "./Mypage.presenter";
