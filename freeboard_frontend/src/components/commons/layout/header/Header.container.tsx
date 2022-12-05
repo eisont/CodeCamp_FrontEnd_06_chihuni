@@ -29,6 +29,7 @@ export default function LayoutHeader() {
   const { data: IPicked } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
   const { data: loggedIn } = useQuery(FETCH_USER_LOGGED_IN);
   setLoggenInUser(loggedIn);
+  console.log("UserInfo", loggedIn);
 
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING

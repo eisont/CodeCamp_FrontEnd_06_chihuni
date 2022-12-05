@@ -113,7 +113,7 @@ export const Menu = styled.div`
   font-weight: 400;
   font-size: 18px;
   color: #4f4f4f;
-  border-bottom: ${(props) => (!props.isSoldOut ? "2px solid #ffd600" : "")};
+  border-bottom: ${(props) => !props.isSoldOut && "2px solid #ffd600"};
 
   &:hover {
     cursor: pointer;
@@ -220,6 +220,7 @@ export const Row = styled.div`
 export const FlexOutBox = styled.div`
   width: 100%;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
   transition: 0.2s;
@@ -242,7 +243,6 @@ export const Image = styled.img`
 
 export const ColumnBox = styled.div`
   margin: 0 0 0 40px;
-  width: 850px; // 임시 가로길이
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -51,27 +51,3 @@ export const FETCHUSED_ITEMS_IBOUGHT = gql`
     }
   }
 `;
-
-export const FETCHUSED_ITEMS_ISOLD = gql`
-  query fetchUseditemsISold($page: Int, $search: String) {
-    fetchUseditemsISold(page: $page, search: $search) {
-      _id
-      name
-      remarks
-      contents
-      price
-      tags
-      images
-      pickedCount
-      useditemAddress {
-        zipcode
-        address
-        addressDetail
-        lat
-        lng
-      }
-      soldAt
-      createdAt
-    }
-  }
-`;

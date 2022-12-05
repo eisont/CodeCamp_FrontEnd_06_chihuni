@@ -4,9 +4,10 @@ export const Wrapper = styled.div`
   padding: 56px 0;
   width: 1200px;
   margin: 0 auto;
+
   display: flex;
-  cursor: default;
   align-items: flex-start;
+  cursor: default;
 `;
 
 export const UserInfo = styled.div`
@@ -21,11 +22,6 @@ export const Title = styled.div`
   font-size: 24px;
 `;
 
-export const UserPicture = styled.img`
-  margin: 48px 0 28px 0;
-  width: 80px;
-  height: 80px;
-`;
 export const UserName = styled.div`
   margin: 0 0 10px 0;
   font-size: 24px;
