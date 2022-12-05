@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   IQuery,
@@ -14,6 +15,8 @@ import {
 } from "./MyMarketItems.query";
 
 const MyMarketsItems = () => {
+  const router = useRouter();
+
   const [myItems, setMyItems] = useState(true);
   const [myPicked, setMyPicked] = useState(false);
 
@@ -40,6 +43,10 @@ const MyMarketsItems = () => {
 
   const { data: pickCountData } = useQuery(FETCH_USED_ITEMS_COUNT_IPICKED);
 
+  const onClickID = (event: any) => {
+    router.push(`/markets/${event.currentTarget.id}`);
+  };
+
   return (
     <MyMarketsItemsUI
       myItems={myItems}
@@ -52,6 +59,7 @@ const MyMarketsItems = () => {
       pickData={pickData?.fetchUseditemsIPicked}
       pickCountData={pickCountData?.fetchUseditemsCountIPicked}
       IPickedRefetch={IPickedRefetch}
+      onClickID={onClickID}
     />
   );
 };

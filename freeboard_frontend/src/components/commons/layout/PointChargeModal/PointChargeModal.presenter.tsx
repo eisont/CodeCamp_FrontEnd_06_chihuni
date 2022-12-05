@@ -47,7 +47,7 @@ const PointChargeModalUI = (props: any) => {
 
       {props.isOpen && (
         <S.SelectBox onClick={props.onChangePoint}>
-          {props.PointSelectObject.map((row) => (
+          {props.PointSelectObject.map((row: any) => (
             <S.Row key={uuidv4()} id={row.id}>
               {row.Point}
             </S.Row>

@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 `;
 
 export const UserInfo = styled.div`
-  padding: 0 15px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,7 +48,8 @@ export const Hr = styled.div`
 `;
 
 export const MyMarketsItems = styled.div`
-  margin: 0 0 23px 0;
+  margin: 5.5px 0;
+  padding: 5px 11px;
   font-weight: ${(props) => (props.myMarketsItems ? "700" : "500")};
   font-size: 18px;
   display: flex;
@@ -60,10 +60,17 @@ export const MyMarketsItems = styled.div`
     cursor: pointer;
     font-weight: 700;
     color: #000;
+
+    transition: 0.2s;
+    border-radius: 10px;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   }
 `;
 export const MyPoint = styled.div`
-  margin: 0 0 23px 0;
+  margin: 5.5px 0;
+  padding: 5px 11px;
+
   font-weight: ${(props) => (props.myPoint ? "700" : "500")};
   font-size: 18px;
   display: flex;
@@ -74,10 +81,17 @@ export const MyPoint = styled.div`
     cursor: pointer;
     font-weight: 700;
     color: #000;
+
+    transition: 0.2s;
+    border-radius: 10px;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   }
 `;
 export const MyProfile = styled.div`
-  margin: 0 0 23px 0;
+  margin: 5.5px 0;
+  padding: 5px 11px;
+
   font-weight: ${(props) => (props.myProfile ? "700" : "500")};
   font-size: 18px;
   display: flex;
@@ -88,5 +102,10 @@ export const MyProfile = styled.div`
     cursor: pointer;
     font-weight: 700;
     color: #000;
+
+    transition: 0.2s;
+    border-radius: 10px;
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   }
 `;

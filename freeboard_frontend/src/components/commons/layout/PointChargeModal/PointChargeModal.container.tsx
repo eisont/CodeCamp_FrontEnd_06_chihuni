@@ -94,8 +94,6 @@ const PointChargeModal = (props: any) => {
     );
   };
 
-  console.log("chargePrice", typeof chargePrice, chargePrice);
-
   return (
     <PointChargeModalUI
       chargePrice={chargePrice}
