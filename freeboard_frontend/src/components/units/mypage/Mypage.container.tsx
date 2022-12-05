@@ -1,19 +1,10 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { FetchUserLoggedIn } from "../../../commons/store";
-import {
-  IQuery,
-  IQueryFetchUseditemsIBoughtArgs,
-  IQueryFetchUseditemsISoldArgs,
-} from "../../../commons/types/generated/types";
 import { withAuth } from "../../commons/hocs/withAuth";
 import MypageUIpage from "./Mypage.presenter";
-import {
-  CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
-  FETCHUSED_ITEMS_IBOUGHT,
-  FETCHUSED_ITEMS_ISOLD,
-} from "./Mypage.queries";
+import { CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING } from "./Mypage.queries";
 
 declare const window: typeof globalThis & {
   IMP: any;

@@ -23,18 +23,57 @@ const MyMarketsItemsUI = (props: any) => {
       </S.SectionHead>
 
       <S.SectionMain>
-        <S.Row>
-          <S.Th>번호</S.Th>
-          <S.Th>상품명</S.Th>
-          <S.Th></S.Th>
-          <S.Th>판매가격</S.Th>
-          <S.Th>판매자</S.Th>
-          <S.Th>날짜</S.Th>
-        </S.Row>
+        {props.myItems && !props.myPicked && (
+          <>
+            <S.Row5>
+              <S.Th>번호</S.Th>
+              <S.Th>상품명</S.Th>
+              <S.Th></S.Th>
+              <S.Th>판매가격</S.Th>
+              <S.Th>날짜</S.Th>
+            </S.Row5>
+            {props.IsoldData?.map((el: any, index: number) => (
+              <S.Row5 key={uuidv4()}>
+                <S.Td>{index + 1}</S.Td>
+
+                {el?.contents === "" ? (
+                  <S.Td>상품 설명이 없습니다.</S.Td>
+                ) : (
+                  <>
+                    {typeof window !== "undefined" && (
+                      <S.Td
+                        dangerouslySetInnerHTML={{
+                          __html: DOMPurify.sanitize(String(el?.contents)),
+                        }}
+                      />
+                    )}
+                  </>
+                )}
+                {el?.buyer !== null ? (
+                  <S.Td style={{ color: "#FFD600", fontWeight: "700" }}>
+                    판매 완료
+                  </S.Td>
+                ) : (
+                  <S.Td />
+                )}
+                <S.Td>￦ {PointComma(el?.price)}</S.Td>
+                <S.Td>{getDatecomma(el?.createdAt)}</S.Td>
+              </S.Row5>
+            ))}
+          </>
+        )}
         {!props.myItems && props.myPicked && (
           <>
+            <S.Row6>
+              <S.Th>번호</S.Th>
+              <S.Th>상품명</S.Th>
+              <S.Th></S.Th>
+              <S.Th>판매가격</S.Th>
+              <S.Th>판매자</S.Th>
+              <S.Th>날짜</S.Th>
+            </S.Row6>
             {props.pickData?.map((el: any, index: number) => (
-              <S.Row key={uuidv4()}>
+              <S.Row6 key={uuidv4()}>
                 <S.Td>{index + 1}</S.Td>
 
                 {typeof window !== "undefined" && (
@@ -54,12 +93,20 @@ const MyMarketsItemsUI = (props: any) => {
                 <S.Td>￦ {PointComma(el?.price)}</S.Td>
                 <S.Td>{el?.seller?.name}</S.Td>
                 <S.Td>{getDatecomma(el?.createdAt)}</S.Td>
-              </S.Row>
+              </S.Row6>
             ))}
           </>
         )}
       </S.SectionMain>
 
+      {props.myItems && !props.myPicked && (
+        <div style={{ margin: "40px 0" }}>
+          <Paginations01
+            count={props.soldCountData}
+            refetch={props.ISoldRefetch}
+          />
+        </div>
+      )}
       {!props.myItems && props.myPicked && (
         <div style={{ margin: "40px 0" }}>
           <Paginations01
