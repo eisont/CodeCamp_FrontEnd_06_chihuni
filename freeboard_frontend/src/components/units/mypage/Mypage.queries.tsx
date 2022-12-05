@@ -1,5 +1,18 @@
 import { gql } from "@apollo/client";
 
+// 회원정보 확인
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      name
+      picture
+      userPoint {
+        amount
+      }
+    }
+  }
+`;
+
 export const CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING = gql`
   mutation createPointTransactionOfBuyingAndSelling($useritemId: ID!) {
     createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {

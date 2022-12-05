@@ -1,10 +1,10 @@
 // Signup Presenter
 
 import { Closesvg } from "../../../commons/styles/Iconsvg";
-import Modal1 from "../../commons/layout/modal";
+import Modal1 from "../../commons/layout/loginmodal";
 import * as S from "./signup.styles";
 
-export const SignupUI = (props: any) => {
+const SignupUI = (props: any) => {
   return (
     <S.Wrapper>
       <Modal1 Title="회원가입을 축하합니다!" />

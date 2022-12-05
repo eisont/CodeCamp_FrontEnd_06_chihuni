@@ -25,9 +25,6 @@ const CloseIcon = styled.div`
   right: 23.5px;
   cursor: pointer;
 `;
-const Img = styled.img`
-  width: 236px;
-`;
 const Text = styled.div`
   margin: 40px 0;
   color: #000;

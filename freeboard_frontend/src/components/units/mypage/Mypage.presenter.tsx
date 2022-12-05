@@ -12,7 +12,7 @@ import MyPoint from "../../commons/mypageComponents/myPoint/MyPoint.container";
 import MyProfile from "../../commons/mypageComponents/myProfile/MyProfile.container";
 import Uploads02 from "../../commons/uploads/02/Uploads02.containder";
 
-export default function MypageUIpage(props: any) {
+const MypageUIpage = (props: any) => {
   return (
     <>
       <Script
@@ -79,11 +79,16 @@ export default function MypageUIpage(props: any) {
 
         <S.Hr />
 
+        {/* 내 장터 */}
         {props.myMarketsItems && <MyMarketsItems />}
 
+        {/* 내 포인트 */}
         {props.myPoint && <MyPoint />}
+
+        {/* 내 프로필 */}
         {props.myProfile && <MyProfile />}
       </S.Wrapper>
     </>
   );
-}
+};
+export default MypageUIpage;

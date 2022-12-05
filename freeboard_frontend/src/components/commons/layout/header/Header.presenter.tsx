@@ -12,7 +12,7 @@ import {
   Profilesvg,
 } from "../../../../commons/styles/Iconsvg";
 
-export default function LayoutHeaderUI(props: any) {
+const LayoutHeaderUI = (props: any) => {
   return (
     <>
       <Script
@@ -27,7 +27,10 @@ export default function LayoutHeaderUI(props: any) {
 
       <S.Wrapper>
         <S.CenterBox>
-          <CodeCampLogosvg width="236" height="36" fill="#000" />
+          <div onClick={props.onClickHome} style={{ cursor: "pointer" }}>
+            <CodeCampLogosvg width="236" height="36" fill="#000" />
+          </div>
+
           {props.loggedIn?._id ? (
             <S.UserInfoBox>
               <S.FlexBox onClick={props.onClickModal}>
@@ -82,7 +85,7 @@ export default function LayoutHeaderUI(props: any) {
                       </S.User>
                     </S.UserInfo>
                     <S.Hr Bg="#000" />
-                    <S.MenuBox onClick={props.onClickPoint}>
+                    <S.MenuBox onClick={props.onClickCharge}>
                       <PointPigsvg
                         margin="0 14px 0 0"
                         width="20"
@@ -117,4 +120,6 @@ export default function LayoutHeaderUI(props: any) {
       </S.Wrapper>
     </>
   );
-}
+};
+
+export default LayoutHeaderUI;

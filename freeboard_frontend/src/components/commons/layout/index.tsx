@@ -4,19 +4,21 @@ import styled from "@emotion/styled";
 import LayoutHeader from "./header/Header.container";
 import LayoutBanner from "./banner";
 import LayoutNavigation from "./navigation";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { useRouter } from "next/router";
-import Modal1 from "./modal";
+import Modal1 from "./loginmodal";
 import LayoutFooter from "./footer/Footer.container";
+import PointChargeModal from "./PointChargeModal/PointChargeModal.container";
 
 const Body = styled.div``;
 interface ILayoutProps {
   children: ReactNode;
 }
 
-export default function Layout(props: ILayoutProps) {
+const Layout = (props: ILayoutProps) => {
+  const [isChargeModal, setIsChargeModal] = useState(false);
+
   const router = useRouter();
-  console.log(router.asPath);
   const MainPage = ["/"];
   const LoginPage = ["/login"];
   const SignupPage = ["/signup"];
@@ -36,7 +38,20 @@ export default function Layout(props: ILayoutProps) {
 
   return (
     <>
-      {!isLoginPage && !isSignupPage && !isMainPage && <LayoutHeader />}
+      {!isLoginPage && !isSignupPage && !isMainPage && (
+        <LayoutHeader
+          isChargeModal={isChargeModal}
+          setIsChargeModal={setIsChargeModal}
+        />
+      )}
+
+      {isChargeModal && (
+        <PointChargeModal
+          isChargeModal={isChargeModal}
+          setIsChargeModal={setIsChargeModal}
+        />
+      )}
+
       {!isLoginPage && !isSignupPage && !isMainPage && <LayoutNavigation />}
 
       {(isBoards || isMarkets || isMypage) && <LayoutBanner />}
@@ -46,4 +61,6 @@ export default function Layout(props: ILayoutProps) {
       {!isLoginPage && !isSignupPage && <LayoutFooter />}
     </>
   );
-}
+};
+
+export default Layout;

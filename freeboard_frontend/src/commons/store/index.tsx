@@ -7,11 +7,6 @@ export const AccessTokenState = atom({
   default: "",
 });
 
-export const FetchUserLoggedIn = atom({
-  key: "FetchUserLoggedIn",
-  default: "",
-});
-
 export const Modal = atom({
   key: "Modal",
   default: false,

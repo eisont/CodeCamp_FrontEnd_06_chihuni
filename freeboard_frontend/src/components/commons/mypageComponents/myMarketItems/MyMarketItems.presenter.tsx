@@ -7,6 +7,7 @@ import Paginations01 from "../../paginations/paginations/01/Paginations01.contai
 // import Searchbars01 from "../../searchbars/01/Searchbars01.container";
 
 const MyMarketsItemsUI = (props: any) => {
+  console.log("IsoldData", props.IsoldData);
   return (
     <S.Section>
       <S.SectionHead>
@@ -25,15 +26,16 @@ const MyMarketsItemsUI = (props: any) => {
       <S.SectionMain>
         {props.myItems && !props.myPicked && (
           <>
-            <S.Row5>
+            <S.Row5Th>
               <S.Th>번호</S.Th>
               <S.Th>상품명</S.Th>
               <S.Th></S.Th>
               <S.Th>판매가격</S.Th>
               <S.Th>날짜</S.Th>
-            </S.Row5>
+            </S.Row5Th>
+
             {props.IsoldData?.map((el: any, index: number) => (
-              <S.Row5 key={uuidv4()}>
+              <S.Row5 onClick={props.onClickID} key={uuidv4()} id={el?._id}>
                 <S.Td>{index + 1}</S.Td>
 
                 {el?.contents === "" ? (
@@ -49,6 +51,7 @@ const MyMarketsItemsUI = (props: any) => {
                     )}
                   </>
                 )}
+
                 {el?.buyer !== null ? (
                   <S.Td style={{ color: "#FFD600", fontWeight: "700" }}>
                     판매 완료
@@ -62,18 +65,19 @@ const MyMarketsItemsUI = (props: any) => {
             ))}
           </>
         )}
+
         {!props.myItems && props.myPicked && (
           <>
-            <S.Row6>
+            <S.Row6Th>
               <S.Th>번호</S.Th>
               <S.Th>상품명</S.Th>
               <S.Th></S.Th>
               <S.Th>판매가격</S.Th>
               <S.Th>판매자</S.Th>
               <S.Th>날짜</S.Th>
-            </S.Row6>
+            </S.Row6Th>
             {props.pickData?.map((el: any, index: number) => (
-              <S.Row6 key={uuidv4()}>
+              <S.Row6 onClick={props.onClickID} key={uuidv4()} id={el?._id}>
                 <S.Td>{index + 1}</S.Td>
 
                 {typeof window !== "undefined" && (
