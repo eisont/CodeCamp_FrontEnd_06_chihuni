@@ -1,5 +1,3 @@
-// 게시판 등록 presenter
-
 import * as S from "./BoardWrite.styles";
 import { Modal } from "antd";
 import { SmileOutlined } from "@ant-design/icons";
@@ -8,33 +6,26 @@ import DaumPostcode from "react-daum-postcode";
 import { v4 as uuidv4 } from "uuid";
 import Uploads01 from "../../../commons/uploads/01/Uploads01.containder";
 
-export default function BoardWriteUI(props: IBoardWriteUIProps) {
+const BoardWriteUI = (props: IBoardWriteUIProps) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper
+      onSubmit={
+        props.isEdit
+          ? props.handleSubmit(props.onClickUpdate)
+          : props.handleSubmit(props.onClickSubmit)
+      }
+    >
       <S.Title>{props.isEdit ? "게시판 수정" : "게시판 등록"}</S.Title>
       <S.WriterWrapper>
-        {/* 작성자 */}
-        <S.InputWrapper>
-          <S.Label>작성자</S.Label>
-          <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
-            <S.Writer
-              type="text"
-              placeholder="(필수) 이름을 입력해주세요."
-              // onChange={props.onChangeWriter}
-              {...props.register("writer")}
-              readOnly={!!props.data?.fetchBoard.writer}
-              defaultValue={props.data?.fetchBoard.writer || ""}
-            />
-          </form>
-        </S.InputWrapper>
         {/* 비밀번호 */}
         <S.InputWrapper>
           <S.Label>비밀번호</S.Label>
           <S.Password
             type="password"
             placeholder="(필수) 비밀번호를 작성해주세요."
-            onChange={props.onChangePassword}
+            {...props.register("password")}
           />
+          <S.Error>{props.formState?.errors?.password?.message}</S.Error>
         </S.InputWrapper>
       </S.WriterWrapper>
 
@@ -44,32 +35,39 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         <S.Subject
           type="text"
           placeholder="(필수) 제목을 작성해주세요."
-          onChange={props.onChangeTitle}
+          defaultValue={props.fetchBoardData?.fetchBoard?.title}
+          {...props.register("title")}
         />
+        <S.Error>{props.formState?.errors?.title?.message}</S.Error>
       </S.InputWrapper>
 
       <S.InputWrapper>
         <S.Label>내용</S.Label>
         <S.Contents
           placeholder="(필수) 내용을 작성해주세요."
-          onChange={props.onChangeContents}
+          defaultValue={props.fetchBoardData?.fetchBoard?.contents}
+          {...props.register("contents")}
         />
+        <S.Error>{props.formState?.errors?.contents?.message}</S.Error>
       </S.InputWrapper>
 
       <S.InputWrapper>
         <S.Label>주소</S.Label>
         <S.ZonecodeWrapper>
           <S.Zonecode
-            placeholder="00000"
             readOnly
             // value랑 defaultValue를 같이 작성합니다.
+            defaultValue={
+              props.zonecode ||
+              props.fetchBoardData?.fetchBoard.boardAddress?.zipcode
+            }
             value={
               props.zonecode ||
-              props.data?.fetchBoard.boardAddress?.zipcode ||
-              "00000"
+              props.fetchBoardData?.fetchBoard.boardAddress?.zipcode ||
+              "우편번호"
             }
           />
-          <S.SearchButton type="button" onClick={props.onClickAddressSearch}>
+          <S.SearchButton onClick={props.onClickAddressSearch} type="button">
             우편번호 검색
           </S.SearchButton>
           {props.isOpen && (
@@ -86,30 +84,36 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
         </S.ZonecodeWrapper>
         <S.Addressbasic
           readOnly
+          defaultValue={
+            props.address ||
+            props.fetchBoardData?.fetchBoard.boardAddress?.address
+          }
           value={
             props.address ||
-            props.data?.fetchBoard.boardAddress?.address ||
+            props.fetchBoardData?.fetchBoard.boardAddress?.address ||
             "(선택) 주소를 선택해주세요."
           }
         />
         <S.AddressDetail
           placeholder="(선택) 상세 주소를 입력해주세요."
-          onChange={props.onChangeAddressDetail}
+          {...props.register("addressDetail")}
           defaultValue={
             props.addressDetail ||
-            props.data?.fetchBoard.boardAddress?.addressDetail ||
+            props.fetchBoardData?.fetchBoard.boardAddress?.addressDetail ||
             ""
           }
         />
+        <S.Error>{props.formState?.errors?.addressDetail?.message}</S.Error>
       </S.InputWrapper>
 
       <S.InputWrapper>
         <S.Label>유튜브</S.Label>
         <S.Youtube
           placeholder="(선택) 링크를 복사해주세요."
-          onChange={props.onChangeYoutubeUrl}
-          defaultValue={props.data?.fetchBoard.youtubeUrl || ""}
+          {...props.register("youtubeUrl")}
+          defaultValue={props.fetchBoardData?.fetchBoard.youtubeUrl || ""}
         />
+        <S.Error>{props.formState?.errors?.youtubeUrl?.message}</S.Error>
       </S.InputWrapper>
 
       <S.ImageWrapper>
@@ -122,25 +126,15 @@ export default function BoardWriteUI(props: IBoardWriteUIProps) {
             onChangeFileUrls={props.onChangeFileUrls}
           />
         ))}
-        {/* <GraphqlMutationPageUI fileRef /> */}
       </S.ImageWrapper>
 
-      <S.OptionWrapper>
-        <S.Label>메인설정</S.Label>
-        <S.RadioButton type="radio" id="youtube" name="radio-button" />
-        <S.RadioLabel htmlFor="youtube">유튜브</S.RadioLabel>
-        <S.RadioButton type="radio" id="image" name="radio-button" />
-        <S.RadioLabel htmlFor="image">사진</S.RadioLabel>
-      </S.OptionWrapper>
-
       <S.ButtonWrapper>
-        <S.SubmitButton
-          onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
-          isActive={props.isEdit ? true : props.isActive}
-        >
+        <S.SubmitButton isActive={props.isEdit ? true : props.isActive}>
           {props.isEdit ? "수정하기" : "등록하기"}
         </S.SubmitButton>
       </S.ButtonWrapper>
     </S.Wrapper>
   );
-}
+};
+
+export default BoardWriteUI;
