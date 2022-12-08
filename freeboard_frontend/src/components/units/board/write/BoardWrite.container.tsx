@@ -21,6 +21,13 @@ const schema = yup.object({
   addressDetail: yup.string(),
   youtubeUrl: yup.string().url("url을 정확히 작성해주세요."),
 });
+const updateschema = yup.object({
+  password: yup.string().required("비밀번호는 필수 입력사항입니다."),
+  title: yup.string(),
+  contents: yup.string(),
+  addressDetail: yup.string(),
+  youtubeUrl: yup.string().url("url을 정확히 작성해주세요."),
+});
 
 const BoardWrite = (props: IBoardWriteProps) => {
   const router = useRouter();
@@ -48,17 +55,17 @@ const BoardWrite = (props: IBoardWriteProps) => {
   // 오류 메세지
 
   const { register, handleSubmit, formState } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(props.isEdit ? updateschema : schema),
     mode: "onChange",
   });
 
   useEffect(() => {
-    if (props.data?.fetchBoard.images?.length) {
-      setFileUrls([...props.data?.fetchBoard.images]);
+    if (props.fetchBoardData?.fetchBoard.images?.length) {
+      setFileUrls([...props.fetchBoardData?.fetchBoard.images]);
       // 이렇게 사용하는 것은 권장 nonono 하지만 한 줄로 나타낼 수 있어 이렇게 작성하겠습니다.
       // 상황에 따라 작성하는 방법을 바꾸면서 사용하면 될거 같습니다.
     }
-  }, [props.data]);
+  }, [props.fetchBoardData]);
 
   // Modal 부분
   const onClickAddressSearch = () => {
@@ -130,23 +137,6 @@ const BoardWrite = (props: IBoardWriteProps) => {
     const YoutubeUrlCompare =
       data?.youtubeUrl === props.fetchBoardData?.fetchBoard?.youtubeUrl;
 
-    console.log(
-      "title",
-      TitleCompare,
-      "contents",
-      ContentsCompare,
-      "zipcode",
-      zipcodeCompare,
-      "address",
-      AddressCompare,
-      "addressDetail",
-      AddressDetailCompare,
-      "youtubeUrl",
-      YoutubeUrlCompare,
-      "image",
-      ImageCompare
-    );
-
     if (
       TitleCompare &&
       ContentsCompare &&
@@ -159,7 +149,6 @@ const BoardWrite = (props: IBoardWriteProps) => {
       alert("수정한 내용이 없습니다.");
     }
 
-    console.log("data", data);
     const updateBoardInput: IUpdateBoardInput = {};
     if (!TitleCompare) updateBoardInput.title = data?.title;
     if (!ContentsCompare) updateBoardInput.contents = data?.contents;
@@ -181,7 +170,7 @@ const BoardWrite = (props: IBoardWriteProps) => {
           updateBoardInput,
         },
       });
-      Modal.success({ content: "게시물 수정에 성공하였습니다!" });
+      alert("게시물 수정에 성공하였습니다!");
       router.push(`/boards/${router.query.boardId}`);
     } catch (error: any) {
       Modal.error({ content: error.message });

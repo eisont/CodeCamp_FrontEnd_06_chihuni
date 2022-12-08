@@ -16,8 +16,8 @@ const BoardWriteUI = (props: IBoardWriteUIProps) => {
       }
     >
       <S.Title>{props.isEdit ? "게시판 수정" : "게시판 등록"}</S.Title>
+
       <S.WriterWrapper>
-        {/* 비밀번호 */}
         <S.InputWrapper>
           <S.Label>비밀번호</S.Label>
           <S.Password
@@ -29,7 +29,6 @@ const BoardWriteUI = (props: IBoardWriteUIProps) => {
         </S.InputWrapper>
       </S.WriterWrapper>
 
-      {/* 제목 */}
       <S.InputWrapper>
         <S.Label>제목</S.Label>
         <S.Subject
@@ -76,7 +75,6 @@ const BoardWriteUI = (props: IBoardWriteUIProps) => {
               onOk={props.onClickAddressSearch}
               onCancel={props.onClickAddressSearch}
               width={800}
-              closeIcon={<SmileOutlined />}
             >
               <DaumPostcode onComplete={props.onCompleteAddressSearch} />
             </Modal>
@@ -111,7 +109,7 @@ const BoardWriteUI = (props: IBoardWriteUIProps) => {
         <S.Youtube
           placeholder="(선택) 링크를 복사해주세요."
           {...props.register("youtubeUrl")}
-          defaultValue={props.fetchBoardData?.fetchBoard.youtubeUrl || ""}
+          defaultValue={props.fetchBoardData?.fetchBoard?.youtubeUrl}
         />
         <S.Error>{props.formState?.errors?.youtubeUrl?.message}</S.Error>
       </S.InputWrapper>

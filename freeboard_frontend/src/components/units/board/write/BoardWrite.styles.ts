@@ -71,7 +71,7 @@ export const ZonecodeWrapper = styled.div`
 `;
 
 export const Zonecode = styled.input`
-  width: 80px;
+  width: 100px;
   height: 52px;
   line-height: 33px;
   border: 1px solid #bdbdbd;
