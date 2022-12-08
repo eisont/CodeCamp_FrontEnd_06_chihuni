@@ -45,7 +45,7 @@ export default function BoardListUI(props: IBoardListUIProps) {
             <S.HText>날짜</S.HText>
           </S.Grid>
 
-          {props.data?.fetchBoards.map((el: any, index: any) => (
+          {props.fetchBoardsData?.fetchBoards.map((el: any, index: any) => (
             <S.Grid key={uuidv4()}>
               <S.Text>{index + 1}</S.Text>
               <S.Title onClick={props.onClickMoveToBoardDetail} id={el._id}>
