@@ -12,12 +12,11 @@ import {
   Profilesvg,
 } from "../../../../commons/styles/Iconsvg";
 import { v4 as uuidv4 } from "uuid";
-import BoardDetailCarousel from "../../../commons/carousel/boarddetail";
 import DOMPurify from "dompurify";
+import BoardDetailCarousel from "../../../commons/carousel/boarddetail";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
   const ImageCheck = props.data?.fetchBoard?.images?.filter((el: string) => el);
-
   return (
     <S.Wrapper>
       <S.Contents>
