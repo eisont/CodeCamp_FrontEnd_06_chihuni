@@ -11,7 +11,6 @@ import { CodeCampLogosvg } from "../../../../commons/styles/Imgsvg";
 
 const MarketListUIItem = (props: any) => {
   const ImageResult = props.el?.images.filter((el: any) => el);
-  console.log("ImageResult", ImageResult[0]?.length);
   return (
     <S.Row key={props.el?._id}>
       <S.FlexOutBox>

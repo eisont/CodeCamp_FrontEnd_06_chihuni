@@ -60,7 +60,7 @@ const MarketList = () => {
       setWatchProduct(result);
 
       if (event.target instanceof Element) console.log(event?.target.id);
-      router.push(`/markets/${event.target.id}`);
+      router.push(`/markets/${event.currentTarget.id}`);
     };
 
   const onClickTest = (event: any) => {

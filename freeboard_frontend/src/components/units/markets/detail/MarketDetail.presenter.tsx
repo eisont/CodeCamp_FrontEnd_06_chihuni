@@ -31,25 +31,29 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
       <S.Wrapper>
         <S.Header>
           <S.SellerInfoBox>
-            {props.data?.fetchUseditem?.seller?.picture === null ? (
+            {props.fetchUsedItemData?.fetchUseditem?.seller?.picture ===
+            null ? (
               <Profilesvg width="40" height="40" fill="#bdbdbd" />
             ) : (
               <S.SellerPhoto
                 src={
-                  props.data?.fetchUseditem?.seller?.picture?.includes(
+                  props.fetchUsedItemData?.fetchUseditem?.seller?.picture?.includes(
                     "data:image"
                   )
-                    ? props.data?.fetchUseditem?.seller?.picture
-                    : `https://storage.googleapis.com/${props.data?.fetchUseditem?.seller?.picture}`
+                    ? props.fetchUsedItemData?.fetchUseditem?.seller?.picture
+                    : `https://storage.googleapis.com/${props.fetchUsedItemData?.fetchUseditem?.seller?.picture}`
                 }
               />
             )}
             <S.SellerInfo>
               <S.SellerName>
-                {props.data?.fetchUseditem?.seller?.name}
+                {props.fetchUsedItemData?.fetchUseditem?.seller?.name}
               </S.SellerName>
               <S.CreatedAt>
-                Date: {getDatecomma(props.data?.fetchUseditem?.createdAt)}
+                Date:{" "}
+                {getDatecomma(
+                  props.fetchUsedItemData?.fetchUseditem?.createdAt
+                )}
               </S.CreatedAt>
             </S.SellerInfo>
           </S.SellerInfoBox>
@@ -63,7 +67,7 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
             />
             <Tooltip
               placement="top"
-              title={`${props.data?.fetchUseditem.useditemAddress?.address} ${props.data?.fetchUseditem.useditemAddress?.addressDetail}`}
+              title={`${props.fetchUsedItemData?.fetchUseditem.useditemAddress?.address} ${props.fetchUsedItemData?.fetchUseditem.useditemAddress?.addressDetail}`}
             >
               {/* div로 감싸지 않으면 Tooltip이 적용이 되지 않습니다. */}
               <div>
@@ -77,11 +81,15 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
 
         <S.FlexBox>
           <S.ColumnBox>
-            <S.ItemRemarks>{props.data?.fetchUseditem?.remarks}</S.ItemRemarks>
-            <S.ItemName>{props.data?.fetchUseditem?.name}</S.ItemName>
+            <S.ItemRemarks>
+              {props.fetchUsedItemData?.fetchUseditem?.remarks}
+            </S.ItemRemarks>
+            <S.ItemName>
+              {props.fetchUsedItemData?.fetchUseditem?.name}
+            </S.ItemName>
           </S.ColumnBox>
           <S.HeartBox onClick={props.onClickPickedCount}>
-            {props.data?.fetchUseditem?.pickedCount === 0 ? (
+            {props.fetchUsedItemData?.fetchUseditem?.pickedCount === 0 ? (
               <S.OutLineHeart />
             ) : (
               <Heartsvg margin="0 0 4px 0" width="30" fill="#ffd600" />
@@ -93,18 +101,20 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
         </S.FlexBox>
 
         <S.ItemPrice>
-          {PointComma(props.data?.fetchUseditem?.price)}원
+          {PointComma(props.fetchUsedItemData?.fetchUseditem?.price)}원
         </S.ItemPrice>
 
         <S.CarouselBox>
-          <MarketDetailCarousel data={props.data?.fetchUseditem?.images} />
+          <MarketDetailCarousel
+            data={props.fetchUsedItemData?.fetchUseditem?.images}
+          />
         </S.CarouselBox>
 
         {typeof window !== "undefined" && (
           <S.SectionContent
             dangerouslySetInnerHTML={{
               __html: Dompurify.sanitize(
-                String(props.data?.fetchUseditem?.contents)
+                String(props.fetchUsedItemData?.fetchUseditem?.contents)
               ),
             }}
           />
