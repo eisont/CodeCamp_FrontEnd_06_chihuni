@@ -25,6 +25,7 @@ function BoardDetail() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
+
   const { data: loggedUser } = useQuery(FETCH_USER_LOGGED_IN);
 
   // 삭제

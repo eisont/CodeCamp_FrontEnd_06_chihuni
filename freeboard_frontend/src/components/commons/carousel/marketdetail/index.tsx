@@ -29,7 +29,7 @@ const Image = styled.img`
   align-items: center;
 `;
 
-const Carousel = (props: any) => {
+const MarketDetailCarousel = (props: any) => {
   const settings = {
     // 리스트 모양 보여주기
     dots: false,
@@ -59,4 +59,4 @@ const Carousel = (props: any) => {
   );
 };
 
-export default Carousel;
+export default MarketDetailCarousel;

@@ -11,8 +11,13 @@ import {
   LinkIconsvg,
   Profilesvg,
 } from "../../../../commons/styles/Iconsvg";
+import { v4 as uuidv4 } from "uuid";
+import BoardDetailCarousel from "../../../commons/carousel/boarddetail";
+import DOMPurify from "dompurify";
 
 export default function BoardDetailUI(props: IBoardDetailUIProps) {
+  const ImageCheck = props.data?.fetchBoard?.images?.filter((el: string) => el);
+
   return (
     <S.Wrapper>
       <S.Contents>
@@ -62,21 +67,24 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
 
         <S.Body>
           <S.SectionText>{props.data?.fetchBoard?.title}</S.SectionText>
-          <S.SectionPhoto>
-            {props.data?.fetchBoard.images
-              ?.filter((el: string) => el) // 빈 사진은 보여주지 말아줘
-              .map((el: string) => (
-                <S.Image
-                  key={el}
-                  src={`https://storage.googleapis.com/${el}`}
-                />
-              ))}
-          </S.SectionPhoto>
-          <S.SectionContent>
-            {props.data?.fetchBoard?.contents}
-          </S.SectionContent>
+          {ImageCheck?.length !== 0 && (
+            <BoardDetailCarousel
+              key={uuidv4()}
+              data={props.data?.fetchBoard?.images}
+            />
+          )}
+
+          {typeof window !== "undefined" && (
+            <S.SectionContent
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                  String(props.data?.fetchBoard?.contents)
+                ),
+              }}
+            />
+          )}
           <S.SectionVideoBox>
-            {props.data?.fetchBoard.youtubeUrl && (
+            {props.data?.fetchBoard.youtubeUrl !== null && (
               <SectionVideoURL
                 url={props.data?.fetchBoard.youtubeUrl}
                 width={486}
@@ -89,18 +97,12 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
         </S.Body>
 
         <S.LikeButtonBox>
-          <S.LikeButton>
-            <LikeIconsvg
-              onClick={props.onlikeCount}
-              width="22"
-              height="20"
-              fill="#FFD600"
-            />
+          <S.LikeButton onClick={props.onlikeCount}>
+            <LikeIconsvg width="22" height="20" fill="#FFD600" />
             <S.LikeNumber>{props.data?.fetchBoard.likeCount}</S.LikeNumber>
           </S.LikeButton>
-          <S.DisLikeButton>
+          <S.DisLikeButton onClick={props.ondislikeCount}>
             <LikeIconsvg
-              onClick={props.ondislikeCount}
               width="22"
               height="20"
               fill="#828282"

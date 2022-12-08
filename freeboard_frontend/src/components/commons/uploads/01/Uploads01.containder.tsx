@@ -24,8 +24,6 @@ export default function Uploads01(props: IUploads01Props) {
     } catch (error: any) {
       Modal.error({ content: error.message });
     }
-
-    
   };
 
   return (
