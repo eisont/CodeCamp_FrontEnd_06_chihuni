@@ -2,6 +2,17 @@
 
 import { gql } from "@apollo/client";
 
+// 로그인 정보
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      _id
+      email
+      name
+      createdAt
+    }
+  }
+`;
 // 등록한 데이터 조회
 export const FETCH_BOARD = gql`
   query fetchBoard($boardId: ID!) {
@@ -13,11 +24,9 @@ export const FETCH_BOARD = gql`
       youtubeUrl
       user {
         _id
-        email
         name
         picture
         createdAt
-        updatedAt
       }
       likeCount
       dislikeCount
@@ -28,8 +37,6 @@ export const FETCH_BOARD = gql`
       }
       images
       createdAt
-      updatedAt
-      deletedAt
     }
   }
 `;

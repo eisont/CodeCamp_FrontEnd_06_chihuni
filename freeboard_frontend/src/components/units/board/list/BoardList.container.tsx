@@ -23,7 +23,7 @@ export default function BoardList() {
 
   const { data: BestBoards } = useQuery(FETCH_BOARDS_OF_THE_BEST);
 
-  const { data, refetch } = useQuery<
+  const { data: fetchBoardsData, refetch } = useQuery<
     Pick<IQuery, "fetchBoards">,
     IQueryFetchBoardsArgs
   >(FETCH_BOARDS, {
@@ -42,7 +42,6 @@ export default function BoardList() {
       search: keyword,
     },
   });
-  console.log("data", data);
 
   const onClickMoveToBoardDetail = (event: MouseEvent<HTMLDivElement>) => {
     if (event.target instanceof Element)
@@ -55,7 +54,7 @@ export default function BoardList() {
 
   return (
     <BoardListUI
-      data={data}
+      fetchBoardsData={fetchBoardsData}
       refetch={refetch}
       BestBoards={BestBoards?.fetchBoardsOfTheBest}
       onClickMoveToBoardDetail={onClickMoveToBoardDetail}

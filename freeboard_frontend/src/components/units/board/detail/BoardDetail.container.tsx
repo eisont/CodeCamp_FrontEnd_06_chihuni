@@ -9,6 +9,7 @@ import {
   FETCH_BOARD,
   LIKE_BOARD,
   DISLIKE_BOARD,
+  FETCH_USER_LOGGED_IN,
 } from "./BoardDetail.queries";
 import {
   IMutation,
@@ -24,6 +25,8 @@ function BoardDetail() {
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
+
+  const { data: loggedUser } = useQuery(FETCH_USER_LOGGED_IN);
 
   // 삭제
   const [deleteBoard] = useMutation<
@@ -98,6 +101,8 @@ function BoardDetail() {
 
   return (
     <BoardDetailUI
+      // 현재 로그인 정보 data
+      loggedUser={loggedUser}
       // 게시판의 정보를 담은 객체 data
       data={data}
       // 좋아요 & 삭제

@@ -80,7 +80,13 @@ export default function MarketCommentListUIItem(
             {props.commentel?.user?.picture === null ? (
               <Profilesvg width="40" height="40" fill="#bdbdbd" />
             ) : (
-              <S.Avatar src={props.commentel?.user?.picture} />
+              <S.Avatar
+                src={
+                  props.commentel?.user?.picture?.includes("data:image")
+                    ? props.commentel?.user?.picture
+                    : `https://storage.googleapis.com/${props.commentel?.user?.picture}`
+                }
+              />
             )}
 
             <S.TitleBox>

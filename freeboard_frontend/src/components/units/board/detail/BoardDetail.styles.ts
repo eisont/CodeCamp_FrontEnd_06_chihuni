@@ -1,11 +1,6 @@
 // 게시판 상세보기 styles
 
 import styled from "@emotion/styled";
-import {
-  LinkOutlined,
-  EnvironmentOutlined,
-  LikeOutlined,
-} from "@ant-design/icons";
 import ReactPlayer from "react-player";
 
 export const Wrapper = styled.div`
@@ -65,24 +60,22 @@ export const SectionText = styled.div`
   font-weight: 900;
   font-size: 36px;
 `;
-export const SectionPhoto = styled.div`
-  display: flex;
-  align-items: center;
-  overflow-x: scroll;
-`;
-export const Image = styled.img`
-  width: 996px;
-  height: 480px;
-  object-fit: contain;
-`;
+
 export const SectionContent = styled.p`
+  width: 996px;
+  height: 100px;
+
+  overflow: hidden;
+  white-space: normal;
+
   font-size: 16px;
-  margin: 40px 0 0 0;
+  font-weight: 400;
+  margin: 40px 0 120px 0;
 `;
 
 export const SectionVideoBox = styled.div`
+  margin: 0 0 162px 0;
   width: 100%;
-  padding: 100px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -103,7 +96,10 @@ export const LikeButton = styled.div`
   flex-direction: column;
   text-align: center;
   margin-right: 40px;
-  // background: #f00;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 export const LikeNumber = styled.p`
   color: #ffd600;
@@ -116,6 +112,10 @@ export const LikeNumber = styled.p`
 export const DisLikeButton = styled.div`
   flex-direction: column;
   text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 export const DisLikeNumber = styled.p`
   color: #828282;
@@ -139,7 +139,9 @@ export const Button = styled.button`
   background: #fff;
   border: 1px solid #bdbdbd;
 
+  transition: 0.2s;
   &:hover {
+    cursor: pointer;
     background-color: gold;
     border-color: white;
   }

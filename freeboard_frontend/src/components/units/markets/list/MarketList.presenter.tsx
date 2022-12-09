@@ -71,8 +71,6 @@ export default function MarketListUI(props: IMarketListUIProps) {
                 ))}
               </>
             )}
-
-            {/* } */}
           </InfiniteScroll>
         </S.InfiniteScrollBox>
 

@@ -78,10 +78,9 @@ export default function MarketAnswerListUIItem(
             ) : (
               <S.Avatar
                 src={
-                  // props.answerel?.user?.picture?.inclueds("data:image")
-                  // ?
-                  props.answerel?.user?.picture
-                  // : `https://storage.googleapis.com/${props.answerel?.user?.picture}`
+                  props.answerel?.user?.picture?.includes("data:image")
+                    ? props.answerel?.user?.picture
+                    : `https://storage.googleapis.com/${props.answerel?.user?.picture}`
                 }
               />
             )}
