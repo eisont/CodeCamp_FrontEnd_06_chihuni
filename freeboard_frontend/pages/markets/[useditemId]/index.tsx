@@ -20,11 +20,8 @@ const Wrapper = styled.div`
 export default function MarketDetailPage() {
   return (
     <Wrapper>
-      {/* 상세보기 컨테이너와 연결 */}
       <MarketDetail />
-      {/* 댓글 입력창과 연결 */}
       <MarketCommetnWrite />
-      {/* 댓글 리스트와 연결 */}
       <MarketCommentList />
     </Wrapper>
   );

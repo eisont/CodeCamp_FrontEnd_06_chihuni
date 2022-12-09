@@ -12,7 +12,7 @@ import { RecoilRoot } from "recoil";
 import ApolloSetting from "../src/components/commons/apollo";
 import Head from "next/head";
 
-function MyApp({ Component, pageProps }: AppProps) {
+const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
@@ -25,7 +25,6 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <RecoilRoot>
         <ApolloSetting>
-          {/* 글로벌 스타일을 적용하기 위한 것 */}
           <Global styles={globalStyles} />
           <Layout>
             <Component {...pageProps} />
@@ -34,5 +33,5 @@ function MyApp({ Component, pageProps }: AppProps) {
       </RecoilRoot>
     </>
   );
-}
+};
 export default MyApp;

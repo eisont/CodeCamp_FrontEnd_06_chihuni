@@ -47,10 +47,13 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
             )}
             <S.SellerInfo>
               <S.SellerName>
-                {props.fetchUsedItemData?.fetchUseditem?.seller?.name}
+                {props.fetchUsedItemData?.fetchUseditem?.seller?.name.length ===
+                0
+                  ? "판매자 이름 없음"
+                  : props.fetchUsedItemData?.fetchUseditem?.seller?.name}
               </S.SellerName>
               <S.CreatedAt>
-                Date:{" "}
+                Date:
                 {getDatecomma(
                   props.fetchUsedItemData?.fetchUseditem?.createdAt
                 )}
@@ -148,4 +151,5 @@ const MarketDetailUI = (props: IMarketDetailUIProps) => {
     </>
   );
 };
+
 export default MarketDetailUI;
