@@ -7,7 +7,6 @@ import Paginations01 from "../../paginations/paginations/01/Paginations01.contai
 // import Searchbars01 from "../../searchbars/01/Searchbars01.container";
 
 const MyMarketsItemsUI = (props: any) => {
-  console.log("IsoldData", props.IsoldData);
   return (
     <S.Section>
       <S.SectionHead>

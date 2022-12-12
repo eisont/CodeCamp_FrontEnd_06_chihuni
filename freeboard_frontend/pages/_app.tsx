@@ -18,10 +18,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>CodeCamp_Portfolio</title>
         <link rel="icon" href="/chihunIcon.jpg" />
-        <link
+        {/* <link
           href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
-        />
+        /> */}
       </Head>
       <RecoilRoot>
         <ApolloSetting>

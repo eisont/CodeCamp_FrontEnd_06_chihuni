@@ -6,7 +6,6 @@ import MarketAnswerListUIItem from "./MarketAnswerList.presenterItem";
 
 export default function MarketAnswerListUI(props: IMarketCommentListUIProps) {
   if (!props.data) return <div />;
-  console.log("data", props.data);
 
   return (
     <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>

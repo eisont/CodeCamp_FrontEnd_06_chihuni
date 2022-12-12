@@ -60,8 +60,6 @@ export default function MarketAnswerListUIItem(
     }
   };
 
-  console.log("data", props.answerel?.user?.picture);
-
   return (
     <>
       {!isEditSub && (
