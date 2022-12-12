@@ -22,7 +22,7 @@ import Uploads01 from "../../../commons/uploads/01/Uploads01.containder";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-export default function MarketWriteUI(pr) {
+const MarketWriteUI = (pr) => {
   const [lat] = useRecoilState(LatState);
   const [lng] = useRecoilState(LngState);
   const [nameError] = useRecoilState(nameErrorState);
@@ -161,4 +161,6 @@ export default function MarketWriteUI(pr) {
       </S.ButtonWrapper>
     </S.Wrapper>
   );
-}
+};
+
+export default MarketWriteUI;

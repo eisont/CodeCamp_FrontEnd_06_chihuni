@@ -3,12 +3,12 @@
 import styled from "@emotion/styled";
 import LayoutHeader from "./header/Header.container";
 import LayoutBanner from "./banner";
-import LayoutNavigation from "./navigation/Navigation.container";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Modal1 from "./loginmodal";
 import LayoutFooter from "./footer";
 import PointChargeModal from "./PointChargeModal/PointChargeModal.container";
+import LayoutNavigation from "./navigation";
 
 const Body = styled.div``;
 

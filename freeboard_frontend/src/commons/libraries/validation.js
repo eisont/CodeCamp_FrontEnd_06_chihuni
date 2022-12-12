@@ -1,4 +1,4 @@
-export const checkFileValidation = (file?: File) => {
+export const checkFileValidation = (file) => {
   // 타입이 없을수도 있어 ?. 라고 표현했습니다.
   if (!file?.size) {
     alert("파일이 없습니다.");

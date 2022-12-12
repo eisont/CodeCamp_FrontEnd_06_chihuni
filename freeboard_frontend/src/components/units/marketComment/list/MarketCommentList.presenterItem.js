@@ -19,6 +19,7 @@ import {
   Profilesvg,
   Questionsvg,
 } from "../../../../commons/styles/Iconsvg";
+import DOMPurify from "dompurify";
 
 const MarketCommentListUIItem = (pr) => {
   const router = useRouter();
@@ -81,7 +82,15 @@ const MarketCommentListUIItem = (pr) => {
 
             <S.TitleBox>
               <S.UserName>{pr.commentel?.user?.name}</S.UserName>
-              <S.Contents>{pr.commentel?.contents}</S.Contents>
+
+              {typeof window !== "undefined" && (
+                <S.Contents
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(String(pr.commentel?.contents)),
+                  }}
+                />
+              )}
+
               <S.CreateAt>{getDatecomma(pr.commentel?.createdAt)}</S.CreateAt>
             </S.TitleBox>
           </S.FlexBox>

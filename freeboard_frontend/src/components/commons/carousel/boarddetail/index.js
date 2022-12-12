@@ -47,12 +47,10 @@ const BoardDetailCarousel = (pr) => {
     // cssEase: 'ease',
   };
 
-  const result = pr.data?.filter((ee) => ee);
-
   return (
     <Wrapper>
       <Slick {...settings}>
-        {result?.map((el) => (
+        {pr.data?.map((el) => (
           <Image key={uuidv4()} src={`https://storage.googleapis.com/${el}`} />
         ))}
       </Slick>

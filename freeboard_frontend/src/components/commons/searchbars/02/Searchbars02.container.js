@@ -1,29 +1,24 @@
 import { useForm } from "react-hook-form";
 import Searchbars02UI from "./Searchbars02.presenter";
 
-interface IFormValues {
-  search: string;
-  mysearch: string;
-}
-
-const Searchbars02 = (props: any) => {
+const Searchbars02 = (pr) => {
   const { register, handleSubmit } = useForm();
 
-  const onClickSearch = (data: IFormValues) => {
-    props.setKeyword(data?.mysearch);
-    props.refetch({
-      // startDate: props.startDate,
-      // endDate: props.endDate,
+  const onClickSearch = (data) => {
+    pr.setKeyword(data?.mysearch);
+    pr.refetch({
+      // startDate: pr.startDate,
+      // endDate: pr.endDate,
       search: data?.mysearch,
       page: 1,
     });
   };
 
-  const onChangeStartDate = (event: any) => {
-    props.setStartDate(event.target.value);
+  const onChangeStartDate = (event) => {
+    pr.setStartDate(event.target.value);
   };
-  const onChangeEndDate = (event: any) => {
-    props.setEndDate(event.target.value);
+  const onChangeEndDate = (event) => {
+    pr.setEndDate(event.target.value);
   };
 
   return (

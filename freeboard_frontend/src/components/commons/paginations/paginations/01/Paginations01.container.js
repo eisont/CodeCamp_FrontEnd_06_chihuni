@@ -1,31 +1,30 @@
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 import Paginations01UI from "./Paginations01.presenter";
-import { IPaginations01Props } from "./Paginations01.types";
 
-export default function Paginations01(props: IPaginations01Props) {
+const Paginations01 = (pr) => {
   const [startPage, setStartPage] = useState(1);
   const [activedPage, setActivedPage] = useState(1);
-  const lastPage = props.count ? Math.ceil(props.count / 10) : 0;
+  const lastPage = pr.count ? Math.ceil(pr.count / 10) : 0;
 
-  const onClickPage = (event: MouseEvent<HTMLSpanElement>) => {
+  const onClickPage = (event) => {
     if (!(event.target instanceof Element)) return;
     const activedPage = Number(event.target.id);
     setActivedPage(activedPage);
-    props.refetch({ page: activedPage });
+    pr.refetch({ page: activedPage });
   };
 
   const onClickPrevPage = () => {
     if (startPage <= 1) return;
     setStartPage((prev) => prev - 10);
     setActivedPage(startPage - 10);
-    props.refetch({ page: startPage - 10 });
+    pr.refetch({ page: startPage - 10 });
   };
 
   const onClickNextPage = () => {
     if (startPage + 10 > lastPage) return;
     setStartPage((prev) => prev + 10);
     setActivedPage(startPage + 10);
-    props.refetch({ page: startPage + 10 });
+    pr.refetch({ page: startPage + 10 });
   };
 
   return (
@@ -38,4 +37,6 @@ export default function Paginations01(props: IPaginations01Props) {
       onClickNextPage={onClickNextPage}
     />
   );
-}
+};
+
+export default Paginations01;

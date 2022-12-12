@@ -13,7 +13,7 @@ import {
 } from "./BoardDetail.queries";
 import { withAuth } from "../../../commons/hocs/withAuth";
 
-function BoardDetail() {
+const BoardDetail = () => {
   const router = useRouter();
   // 그 페이지 조회
   const { data } = useQuery(FETCH_BOARD, {
@@ -101,6 +101,6 @@ function BoardDetail() {
       onClickDelete={onClickDelete}
     />
   );
-}
+};
 
 export default withAuth(BoardDetail);

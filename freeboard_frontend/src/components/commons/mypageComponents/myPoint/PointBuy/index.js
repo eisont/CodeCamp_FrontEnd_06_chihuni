@@ -1,11 +1,7 @@
-import * as S from "../MyPoint.style";
+import * as S from "../MyPoint.styles";
 import { v4 as uuidv4 } from "uuid";
 import { getDatecomma } from "../../../../../commons/libraries/utils";
 import { PointComma } from "../../../../../commons/libraries/point";
-import {
-  IQuery,
-  IQueryFetchPointTransactionsOfBuyingArgs,
-} from "../../../../../commons/types/generated/types";
 import { gql, useQuery } from "@apollo/client";
 
 export const FETCH_POINT_TRANSACTIONS_OF_BUYING = gql`
@@ -28,20 +24,17 @@ export const FETCH_POINT_TRANSACTIONS_OF_BUYING = gql`
 const PointBuy = () => {
   const BuyTh = ["거래일", "상품명", "거래 내역", "거래 후 잔액", "판매자"];
 
-  const { data: BuyingData } = useQuery<
-    Pick<IQuery, "fetchPointTransactionsOfBuying">,
-    IQueryFetchPointTransactionsOfBuyingArgs
-  >(FETCH_POINT_TRANSACTIONS_OF_BUYING);
+  const { data: BuyingData } = useQuery(FETCH_POINT_TRANSACTIONS_OF_BUYING);
 
   return (
     <S.SectionMain>
       <S.Row5>
-        {BuyTh.map((el: any) => (
+        {BuyTh.map((el) => (
           <S.Th key={uuidv4()}>{el}</S.Th>
         ))}
       </S.Row5>
 
-      {BuyingData?.fetchPointTransactionsOfBuying?.map((el: any) => (
+      {BuyingData?.fetchPointTransactionsOfBuying?.map((el) => (
         <S.Row5 key={uuidv4()}>
           <S.Td>{getDatecomma(el?.createdAt)}</S.Td>
 

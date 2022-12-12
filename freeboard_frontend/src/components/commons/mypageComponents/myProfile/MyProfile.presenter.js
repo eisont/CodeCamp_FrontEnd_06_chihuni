@@ -1,7 +1,7 @@
 import { Hidesvg, Showsvg } from "../../../../commons/styles/Iconsvg";
-import * as S from "./MyProfile.style";
+import * as S from "./MyProfile.styles";
 
-const MyProfileUI = (props: any) => {
+const MyProfileUI = (pr) => {
   return (
     <S.Section>
       <S.Title>비밀번호 변경</S.Title>
@@ -9,15 +9,15 @@ const MyProfileUI = (props: any) => {
         <S.Text>현재 비밀번호</S.Text>
         <S.InputFlexBox>
           <S.Input
-            type={props.showPresentPassword ? "text" : "password"}
+            type={pr.showPresentPassword ? "text" : "password"}
             placeholder="현재 비밀번호를 입력해 주세요."
           />
-          {props.showPresentPassword ? (
-            <S.ClickBt onClick={props.onClickShowPresentPassword}>
+          {pr.showPresentPassword ? (
+            <S.ClickBt onClick={pr.onClickShowPresentPassword}>
               <Hidesvg width="20" height="18" stroke="#130f26" />
             </S.ClickBt>
           ) : (
-            <S.ClickBt onClick={props.onClickShowPresentPassword}>
+            <S.ClickBt onClick={pr.onClickShowPresentPassword}>
               <Showsvg width="20" height="17" stroke="#130f26" />
             </S.ClickBt>
           )}
@@ -28,16 +28,16 @@ const MyProfileUI = (props: any) => {
         <S.Text>새 비밀번호</S.Text>
         <S.InputFlexBox>
           <S.Input
-            type={props.showNewPassword ? "text" : "password"}
+            type={pr.showNewPassword ? "text" : "password"}
             placeholder="새 비밀번호를 입력해주세요."
-            onChange={props.onChangePassword}
+            onChange={pr.onChangePassword}
           />
-          {props.showNewPassword ? (
-            <S.ClickBt onClick={props.onClickShowNewPassword}>
+          {pr.showNewPassword ? (
+            <S.ClickBt onClick={pr.onClickShowNewPassword}>
               <Hidesvg width="20" height="18" stroke="#130f26" />
             </S.ClickBt>
           ) : (
-            <S.ClickBt onClick={props.onClickShowNewPassword}>
+            <S.ClickBt onClick={pr.onClickShowNewPassword}>
               <Showsvg width="20" height="17" stroke="#130f26" />
             </S.ClickBt>
           )}
@@ -49,22 +49,22 @@ const MyProfileUI = (props: any) => {
         <S.ColumnBox>
           <S.InputFlexBox>
             <S.Input
-              type={props.showCheckPassword ? "text" : "password"}
+              type={pr.showCheckPassword ? "text" : "password"}
               placeholder="새 비밀번호를 확인해주세요."
-              onChange={props.onChangePasswordCheck}
+              onChange={pr.onChangePasswordCheck}
             />
-            {props.showCheckPassword ? (
-              <S.ClickBt onClick={props.onClickShowCheckPassword}>
+            {pr.showCheckPassword ? (
+              <S.ClickBt onClick={pr.onClickShowCheckPassword}>
                 <Hidesvg width="20" height="18" stroke="#130f26" />
               </S.ClickBt>
             ) : (
-              <S.ClickBt onClick={props.onClickShowCheckPassword}>
+              <S.ClickBt onClick={pr.onClickShowCheckPassword}>
                 <Showsvg width="20" height="17" stroke="#130f26" />
               </S.ClickBt>
             )}
           </S.InputFlexBox>
 
-          {props.password !== props.passwordCheck ? (
+          {pr.password !== pr.passwordCheck ? (
             <S.Error color="red">비밀번호가 일치하지 않습니다.</S.Error>
           ) : (
             <S.Error color="#04fc46e2">비밀번호가 일치합니다.</S.Error>
@@ -73,7 +73,7 @@ const MyProfileUI = (props: any) => {
       </S.FlexBox>
 
       <S.RightBox>
-        <S.Button onClick={props.onClickResetPassword}>비밀번호 변경</S.Button>
+        <S.Button onClick={pr.onClickResetPassword}>비밀번호 변경</S.Button>
       </S.RightBox>
     </S.Section>
   );

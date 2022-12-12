@@ -1,4 +1,4 @@
-import * as S from "../MyPoint.style";
+import * as S from "../MyPoint.styles";
 import { v4 as uuidv4 } from "uuid";
 import { getDatecomma } from "../../../../../commons/libraries/utils";
 import { PointComma } from "../../../../../commons/libraries/point";

@@ -17,6 +17,7 @@ import BoardDetailCarousel from "../../../commons/carousel/boarddetail";
 const BoardDetailUI = (pr) => {
   const ImageCheck = pr.data?.fetchBoard?.images?.filter((el) => el);
 
+  console.log("data", pr.data?.fetchBoard);
   return (
     <S.Wrapper>
       <S.Contents>
@@ -66,12 +67,8 @@ const BoardDetailUI = (pr) => {
 
         <S.Body>
           <S.SectionText>{pr.data?.fetchBoard?.title}</S.SectionText>
-          {ImageCheck?.length !== 0 && (
-            <BoardDetailCarousel
-              key={uuidv4()}
-              data={pr.data?.fetchBoard?.images}
-            />
-          )}
+
+          <BoardDetailCarousel key={uuidv4()} data={ImageCheck} />
 
           {typeof window !== "undefined" && (
             <S.SectionContent
@@ -82,6 +79,7 @@ const BoardDetailUI = (pr) => {
               }}
             />
           )}
+
           <S.SectionVideoBox>
             {pr.data?.fetchBoard.youtubeUrl !== null && (
               <SectionVideoURL

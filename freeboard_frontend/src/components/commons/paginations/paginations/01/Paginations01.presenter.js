@@ -1,8 +1,7 @@
 import { PagenationArrowsvg } from "../../../../../commons/styles/Iconsvg";
 import * as S from "./Paginations01.styles";
-import { IPaginations01UIProps } from "./Paginations01.types";
 
-export default function Paginations01UI(props: IPaginations01UIProps) {
+const Paginations01UI = (pr) => {
   return (
     <S.Wrapper>
       <S.Page>
@@ -10,14 +9,14 @@ export default function Paginations01UI(props: IPaginations01UIProps) {
       </S.Page>
       {new Array(10).fill(1).map(
         (_, index) =>
-          props.startPage + index <= props.lastPage && (
+          pr.startPage + index <= pr.lastPage && (
             <S.Page
-              key={props.startPage + index}
-              onClick={props.onClickPage}
-              id={String(props.startPage + index)}
-              isActive={props.startPage + index === props.activedPage}
+              key={pr.startPage + index}
+              onClick={pr.onClickPage}
+              id={String(pr.startPage + index)}
+              isActive={pr.startPage + index === pr.activedPage}
             >
-              {props.startPage + index}
+              {pr.startPage + index}
             </S.Page>
           )
       )}
@@ -26,4 +25,6 @@ export default function Paginations01UI(props: IPaginations01UIProps) {
       </S.Page>
     </S.Wrapper>
   );
-}
+};
+
+export default Paginations01UI;

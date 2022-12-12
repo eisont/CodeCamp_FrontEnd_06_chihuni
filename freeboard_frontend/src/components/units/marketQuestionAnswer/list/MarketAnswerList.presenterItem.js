@@ -17,6 +17,7 @@ import {
   Pencilsvg,
   Profilesvg,
 } from "../../../../commons/styles/Iconsvg";
+import DOMPurify from "dompurify";
 
 const MarketAnswerListUIItem = (pr) => {
   const [isEditSub, setIsEditSub] = useState(false);
@@ -52,8 +53,6 @@ const MarketAnswerListUIItem = (pr) => {
     }
   };
 
-  console.log("data", pr.answerel?.user?.picture);
-
   return (
     <>
       {!isEditSub && (
@@ -79,7 +78,14 @@ const MarketAnswerListUIItem = (pr) => {
 
             <S.ContentsBox>
               <S.Name>{pr.answerel?.user?.name}</S.Name>
-              <S.Contents>{pr.answerel?.contents}</S.Contents>
+
+              {typeof window !== "undefined" && (
+                <S.Contents
+                  dangerouslySetInnerHTML={{
+                    __html: DOMPurify.sanitize(String(pr.answerel?.contents)),
+                  }}
+                />
+              )}
             </S.ContentsBox>
           </S.Box>
 

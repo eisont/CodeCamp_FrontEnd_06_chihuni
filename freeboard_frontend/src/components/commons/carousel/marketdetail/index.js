@@ -12,10 +12,23 @@ const Wrapper = styled.div`
 const Slick = styled(Slider)`
   width: 400px;
 
-  .slick-prev:before,
-  .slick-next:before {
-    font-size: 36px;
-    color: rgba(0, 0, 0, 0.2);
+  .slick-prev {
+    z-index: 1;
+    left: -60px;
+
+    &::before {
+      font-size: 36px;
+      color: rgba(0, 0, 0, 0.2);
+    }
+  }
+  .slick-next {
+    z-index: 1;
+    right: -40px;
+
+    &::before {
+      font-size: 36px;
+      color: rgba(0, 0, 0, 0.2);
+    }
   }
 `;
 

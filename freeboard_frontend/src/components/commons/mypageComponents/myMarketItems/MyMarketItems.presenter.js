@@ -1,10 +1,9 @@
-import * as S from "./MyMarketItems.style";
+import * as S from "./MyMarketItems.styles";
 import { v4 as uuidv4 } from "uuid";
 import DOMPurify from "dompurify";
 import { PointComma } from "../../../../commons/libraries/point";
 import { getDatecomma } from "../../../../commons/libraries/utils";
 import Paginations01 from "../../paginations/paginations/01/Paginations01.container";
-// import Searchbars01 from "../../searchbars/01/Searchbars01.container";
 
 const MyMarketsItemsUI = (pr) => {
   return (
@@ -19,7 +18,6 @@ const MyMarketsItemsUI = (pr) => {
             마이 찜
           </S.MyPicked>
         </S.MenuBox>
-        {/* <Searchbars01 /> 검색이 안되서 빼겠습니다. */}
       </S.SectionHead>
 
       <S.SectionMain>

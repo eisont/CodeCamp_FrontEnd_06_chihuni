@@ -24,7 +24,7 @@ const MypagePage = () => {
   //
   const onClickResult = async () => {
     try {
-      const result = await createPointTransactionOfBuyingAndSelling({
+      await createPointTransactionOfBuyingAndSelling({
         variables: { useritemId: "" },
       });
     } catch (error) {

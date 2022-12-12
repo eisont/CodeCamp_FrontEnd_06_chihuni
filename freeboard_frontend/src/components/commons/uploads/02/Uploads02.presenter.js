@@ -1,19 +1,18 @@
 import { ImageChange, Profilesvg } from "../../../../commons/styles/Iconsvg";
-import * as S from "./Uploads02.styled";
-import { IUploads01UIProps } from "./Uploads02.types";
+import * as S from "./Uploads02.styles";
 
-export default function Uploads02UI(props: IUploads01UIProps) {
+const Uploads02UI = (pr) => {
   return (
     <>
-      {props?.picture !== null ? (
+      {pr?.picture !== null ? (
         <S.UserPictureBox>
-          <S.UserPicture src={props?.picture} />
+          <S.UserPicture src={pr?.picture} />
         </S.UserPictureBox>
       ) : (
         <S.UserPictureBox>
           <Profilesvg width="80" height="80" fill="#bdbdbd" />
-          {props.myProfile && (
-            <S.AbsoluteBox onClick={props.onClickUpload}>
+          {pr.myProfile && (
+            <S.AbsoluteBox onClick={pr.onClickUpload}>
               <ImageChange
                 width="20"
                 height="20"
@@ -25,13 +24,13 @@ export default function Uploads02UI(props: IUploads01UIProps) {
         </S.UserPictureBox>
       )}
 
-      {/* {props.fileUrl ? (
+      {/* {pr.fileUrl ? (
         <S.UploadImage
-          onClick={props.onClickUpload}
-          src={`https://storage.googleapis.com/${props.fileUrl}`}
+          onClick={pr.onClickUpload}
+          src={`https://storage.googleapis.com/${pr.fileUrl}`}
         />
       ) : (
-        <S.UploadButton onClick={props.onClickUpload} type="button">
+        <S.UploadButton onClick={pr.onClickUpload} type="button">
           <>+</>
           <>Upload</>
         </S.UploadButton>
@@ -39,9 +38,11 @@ export default function Uploads02UI(props: IUploads01UIProps) {
 
       <S.UploadFileHidden
         type="file"
-        ref={props.fileRef}
-        onChange={props.onChangeFile}
+        ref={pr.fileRef}
+        onChange={pr.onChangeFile}
       />
     </>
   );
-}
+};
+
+export default Uploads02UI;

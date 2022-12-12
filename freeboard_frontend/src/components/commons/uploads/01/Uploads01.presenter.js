@@ -2,7 +2,7 @@ import {
   UploadButton,
   UploadFileHidden,
   UploadImage,
-} from "./Uploads01.styled";
+} from "./Uploads01.styles";
 
 const Uploads01UI = (pr) => {
   return (

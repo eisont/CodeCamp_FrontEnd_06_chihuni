@@ -3,7 +3,7 @@ import {
   PointChargeIconsvg,
   SelectArrow,
 } from "../../../../commons/styles/Iconsvg";
-import * as S from "./PointChargeModal.style";
+import * as S from "./PointChargeModal.styles";
 import { v4 as uuidv4 } from "uuid";
 
 const PointChargeModalUI = (pr) => {

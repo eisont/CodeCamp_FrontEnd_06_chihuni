@@ -12,10 +12,10 @@ const MyProfile = () => {
 
   const [resetUserPassword] = useMutation(RESET_USER_PASSWORD);
 
-  const onChangePassword = (event: any) => {
+  const onChangePassword = (event) => {
     setPassword(event.target.value);
   };
-  const onChangePasswordCheck = (event: any) => {
+  const onChangePasswordCheck = (event) => {
     setPasswordCheck(event.target.value);
   };
 
@@ -43,7 +43,7 @@ const MyProfile = () => {
       } else {
         alert("비밀번호가 일치하지 않습니다.");
       }
-    } catch (error: any) {
+    } catch (error) {
       alert(error.message);
     }
   };

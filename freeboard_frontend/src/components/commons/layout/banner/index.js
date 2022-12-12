@@ -53,7 +53,7 @@ const DogImg = styled.img`
   object-fit: cover;
 `;
 
-export default function LayoutBanner() {
+const LayoutBanner = () => {
   const settings = {
     // 리스트 모양 보여주기
     dots: true,
@@ -173,4 +173,6 @@ export default function LayoutBanner() {
       </Slick>
     </Wrapper>
   );
-}
+};
+
+export default LayoutBanner;
